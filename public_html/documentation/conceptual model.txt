@@ -1,0 +1,49 @@
+Data Entities
+
+
+User - Strong
+
+User_ID (PK)
+User_Skill_ID (FK)
+Username
+User_Full_Name
+User_Activation_Token
+User_Email
+User_Hash
+User_Profile_Image_URL
+User_Type
+User_Pricing
+User_About Me
+
+
+Media - Strong
+Media_ID (PK)
+Media_User_ID (FK)
+Media_Portfolio_Image_URL
+
+
+Skill Tags - Strong
+Skill_ID (PK)
+Skill_Type_Name
+Skill_Icon_URL
+
+Messages - Strong
+
+Message_Id (PK)
+Message_User_ID_One (FK1)
+Message_User_ID_Two (FK2)
+Message_Text
+Message_Date_Time
+
+Favorite Makers - Weak
+
+Favorite_Maker_User_ID (FK1)
+Favoritor_User_ID (FK2)
+
+
+Relationships:
+
+Many users can message many other users
+Many users can favorite many other users
+One user can have many skill tags
+One user can have many pieces of media
