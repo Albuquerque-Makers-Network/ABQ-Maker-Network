@@ -27,7 +27,7 @@ Skill_ID (PK)
 Skill_Type_Name
 Skill_Icon_URL
 
-Messages - Strong
+Messages - Weak
 
 Message_Id (PK)
 Message_User_ID_One (FK1)
