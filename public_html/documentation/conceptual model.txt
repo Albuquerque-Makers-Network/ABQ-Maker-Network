@@ -4,46 +4,52 @@ Data Entities
 User - Strong
 
 User_ID (PK)
-User_Skill_ID (FK)
-Username
-User_Full_Name
-User_Activation_Token
-User_Email
-User_Hash
-User_Profile_Image_URL
-User_Type
-User_Pricing
-User_About Me
+user_full_name
+user_activation_token
+user_email
+user_hash
+user_profile_image_url
+user_type
+user_about_me
 
+Maker Profile - Strong
 
-Media - Strong
-Media_ID (PK)
-Media_User_ID (FK)
-Media_Portfolio_Image_URL
-
+maker_profile_id
+maker_user_id (FK)
+maker_primary_portfolio_image_url
+maker_second_portfolio_image_url
+maker_third_portfolio_image_url
+maker_fourth_portfolio_image_url
+maker_pricing
+maker_about_me
 
 Skill Tags - Strong
-Skill_ID (PK)
-Skill_Type_Name
-Skill_Icon_URL
+
+skill_id (PK)
+skill_type_name
+
+Maker Skills - Weak
+
+maker_skills_maker_profile_id (FK)
+maker_skill_id
 
 Messages - Weak
 
-Message_Id (PK)
-Message_User_ID_One (FK1)
-Message_User_ID_Two (FK2)
-Message_Text
-Message_Date_Time
+message_id (PK)
+message_user_id_one (FK1)
+message_User_id_two (FK2)
+message_text
+message_date_time
 
 Favorite Makers - Weak
 
-Favorite_Maker_User_ID (FK1)
-Favoritor_User_ID (FK2)
+favorite_maker_user_id (FK1)
+favoritor_user_id (FK2)
 
 
 Relationships:
 
 Many users can message many other users
 Many users can favorite many other users
-One user can have many skill tags
-One user can have many pieces of media
+One user can have many skills
+one user has one maker profile
