@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Conceptual Model and ERD</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+<div>
+  <h1 class="text-center m-5 text-decoration-underline">ERD</h1>
+  <div class="container my-3 d-flex justify-content-center">
+    <img src="./ERD1.jpg" alt="ERD" >
+  </div>
+
+  <h1 class="text-center m-5 text-decoration-underline">Conceptual Model</h1>
+  <div class="container border border-dark my-3">
+    <div>
+        <h2>Data Entities</h2>
+        <hl></hl>
+        <h3>User</h3>
+          <ul>
+            <li><strong>user_id (PK)</strong></li>
+            <li>user_name</li>
+            <li>user_full_name</li>
+            <li>user_activation_token</li>
+            <li>user_email</li>
+            <li>user_hash</li>
+            <li>user_profile_image_url</li>
+            <li>user_is_maker</li>
+            <li>user_about_me</li>
+            <li>user_pricing</li>
+          </ul>
+        <h3>Portfolio</h3>
+        <ul>
+          <li><strong>portfolio_id (PK)</strong></li>
+          <li>portfolio_user_id(FK)</li>
+          <li>portfolio_image_url</li>
+        </ul>
+        <h3>Skill</h3>
+        <ul>
+          <li><strong>skill_id (PK)</strong></li>
+          <li>skill_type</li>
+        </ul>
+        <h3>Maker Skills</h3>
+        <ul>
+          <li>maker_skills_maker_profile_id (FK)</li>
+          <li>maker_skill_id (FK)</li>
+        </ul>
+    </div>
+</div>
+
+  <div class="container border border-dark my-3">
+    <h2>Relationships</h2>
+    <ul>
+      <li>One user can have many portfolio pictures</li>
+      <li>One user can have many skills</li>
+    </ul>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>
