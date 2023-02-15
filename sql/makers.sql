@@ -26,6 +26,7 @@ CREATE TABLE portfolio
     PRIMARY KEY (portfolio_id),
     FOREIGN KEY (portfolio_profile_id) REFERENCES profile (profile_id)
 );
+CREATE INDEX ON profile(profile_id);
 
 CREATE TABLE skill
 (
@@ -39,5 +40,8 @@ CREATE TABLE maker_skill
     maker_skill_id UUID NOT NULL,
     maker_skill_maker_profile_id UUID NOT NULL,
     FOREIGN KEY (maker_skill_maker_profile_id) REFERENCES profile (profile_id),
-    FOREIGN KEY (maker_skill_id) REFERENCES skill (skill_id)
-);
+    FOREIGN KEY (maker_skill_id) REFERENCES skill (skill_id),
+    PRIMARY KEY (profile_id, skill_id)
+        );
+CREATE INDEX ON profile(profile_id);
+CREATE INDEX ON skill(skill_id);
