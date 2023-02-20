@@ -1,16 +1,18 @@
 import {Schema} from "express-validator";
-import {escape} from "querystring";
 
 export const signupValidator: Schema = {
 
     profileAboutMe: {
+        isLength: {
+            errorMessage: 'About me must have 350 characters or less',
+            options: {max: 350}
+        },
         optional: {
             options: {
                 nullable: true
             }
         }
     },
-
 
     profileEmail: {
         isEmail:  {
@@ -42,9 +44,19 @@ export const signupValidator: Schema = {
     profilePasswordConfirm: {
     isLength: {
         errorMessage: 'Confirm password must be at least eight characters',
+        options: {min: 8}
     },
-        trim: true,
-        escape: true
+        custom: {
+            errorMessage: 'Password confirmation does not match password',
+            options: (value, { req, location, path }) => {
+                if (value !== req.body.profilePassword) {
+                    throw new Error('Password confirmation does not match password')
+                }
+
+                // Indicates the success of this synchronous custom validator
+                return true
+            }
+        }
     },
 
     profileImageURL: {
@@ -55,7 +67,9 @@ export const signupValidator: Schema = {
     },
 
 
-// profileIsMaker:
+    profileIsMaker: {
+        isBoolean: true
+    },
 
     profileName: {
         escape: true,
@@ -67,6 +81,10 @@ export const signupValidator: Schema = {
     },
 
     profilePricing: {
+        isLength: {
+            errorMessage: 'About me must have 128 characters or less',
+            options: {max: 128}
+        },
         optional: {
             options: {
                 nullable: true

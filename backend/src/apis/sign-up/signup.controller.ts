@@ -12,16 +12,19 @@ export async function signupProfileController (request: Request, response: Respo
         const mailgunClient: Client = mailgun.client({username: 'api', key: process.env.MAILGUN_API_KEY as string})
 
         const {
-            profileAboutMe,
             profileEmail,
+            profileAboutMe,
             profileFullName,
             profilePassword,
             profileImageURL,
             profileIsMaker,
-            profilePricing
+            profileName,
+            profilePricing,
         } = request.body
         const profileHash = await setHash(profilePassword)
         const profileActivationToken = setActivationToken()
+
+
 
         const basePath: string = `${request.protocol}://${request.hostname}/${request.originalUrl}/activation/${profileActivationToken}`
         const message = `<h2>Welcome to the ABQ Maker Network!</h2>
@@ -31,22 +34,22 @@ export async function signupProfileController (request: Request, response: Respo
         const mailgunMessage = {
             from: `Mailgun Sandbox <postmaster@${process.env.MAILGUN_DOMAIN as string}>`,
             to: profileEmail,
-            subject: 'So close! Get started with the ABQ Maker Network by activating your account.'
+            subject: 'So close! Get started with the ABQ Maker Network by activating your account.',
             html: message
         }
 
         let profile: Profile;
         profile = {
             profileId: null,
-            profileAboutMe: null,
+            profileAboutMe: profileAboutMe ?? null,
             profileActivationToken,
             profileEmail,
             profileFullName,
             profileHash,
-            profileImageURL null,
+            profileImageURL: profileImageURL ?? null,
             profileIsMaker,
             profileName,
-            profilePricing null,
+            profilePricing: profilePricing ?? null,
         };
         await insertProfile(profile)
         await mailgunClient.messages.create(process.env.MAILGUN_DOMAIN as string, mailgunMessage)
