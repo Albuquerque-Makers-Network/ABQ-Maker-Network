@@ -12,7 +12,7 @@ CREATE TABLE profile
     profile_full_name VARCHAR(32) NOT NULL,
     profile_hash CHAR(97) NOT NULL,
     profile_image_url VARCHAR(128),
-    profile_is_maker CHAR(1),
+    profile_is_maker CHAR(1) NOT NULL,
     profile_name VARCHAR(64) NOT NULL UNIQUE,
     profile_pricing VARCHAR(128),
     PRIMARY KEY (profile_id)
