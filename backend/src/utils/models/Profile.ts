@@ -30,7 +30,7 @@ export async function selectProfileByProfileActivationToken (profileActivationTo
 }
 
 export async function selectProfileByProfileEmail (profileEmail: string): Promise <Profile|null> {
-    const result = <Profile[]> await sql`SELECT profile_id, profile_about_me, profile_activation_token, profile_email, profile_full_name, profile_hash, profile_image_url, profile_is_maker, profile_name, profile_pricing WHERE profile_email = ${profileEmail}`
+    const result = <Profile[]> await sql`SELECT profile_id, profile_about_me, profile_activation_token, profile_email, profile_full_name, profile_hash, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_email = ${profileEmail}`
     return result?.length === 1 ? result[0] : null
 }
 
