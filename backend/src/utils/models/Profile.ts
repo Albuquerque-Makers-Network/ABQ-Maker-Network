@@ -1,6 +1,6 @@
 import {sql} from "../database.utils";
 
-export interface Profile{
+export interface Profile {
     profileId: string|null
     profileAboutMe: string
     profileActivationToken: string
@@ -24,4 +24,14 @@ export async function insertProfile (profile: Profile): Promise<string> {
     return 'Profile successfully created!'
 }
 
+export async function selectProfileByProfileActivationToken (profileActivationToken: string): Promise<Profile|null> {
+    const result = <Profile[]> await sql `SELECT profile_id, profile_activation_token, profile_email, profile_full_name, profile_hash, profile_is_maker, profile_name FROM profile WHERE profile_activation_token = ${profileActivationToken}`
+    return result?.length === 1 ? result [0] : null
+}
+
+export async function updateProfile (profile: Profile): Promise<string> {
+    const {profileId, profileAboutMe, profileActivationToken, profileEmail, profileFullName, profileHash, profileImageURL, profileIsMaker, profileName, profilePricing} = profile
+    await sql `UPDATE profile SET profile_activation_token = ${profileActivationToken}, profile_about_me = ${profileAboutMe}, profile_email = ${profileEmail}, profile_full_name = ${profileFullName}, profile_hash = ${profileHash}, profile_image_url = ${profileImageURL}, profile_is_maker = ${profileIsMaker}, profile_name = ${profileName}, profile_pricing = ${profilePricing}`
+    return 'Profile successfully updated'
+}
 
