@@ -29,7 +29,7 @@ export async function selectProfileByProfileActivationToken (profileActivationTo
     return result?.length === 1 ? result [0] : null
 }
 
-export async function updateProfile(profile: { profileName: string; profilePricing: string; profileEmail: string; profileAboutMe: string; profileActivationToken: null; profileFullName: string; profileId: string | null; profileHash: string; profileIsMaker: string; profileImageURL: string | null }): Promise<string> {
+export async function updateProfile (profile: Profile): Promise<string> {
     const {profileId, profileAboutMe, profileActivationToken, profileEmail, profileFullName, profileHash, profileImageURL, profileIsMaker, profileName, profilePricing} = profile
     await sql `UPDATE profile SET profile_activation_token = ${profileActivationToken}, profile_about_me = ${profileAboutMe}, profile_email = ${profileEmail}, profile_full_name = ${profileFullName}, profile_hash = ${profileHash}, profile_image_url = ${profileImageURL}, profile_is_maker = ${profileIsMaker}, profile_name = ${profileName}, profile_pricing = ${profilePricing}`
     return 'Profile successfully updated'
