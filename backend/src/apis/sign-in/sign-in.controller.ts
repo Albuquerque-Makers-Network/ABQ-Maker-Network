@@ -47,7 +47,7 @@ function signInSuccessful (request: Request, response: Response, profile: Profil
         profileId,
         profileAboutMe,
         profileEmail,
-        profileImageURL,
+        profileImageUrl,
         profileIsMaker,
         profileName,
         profilePricing
@@ -57,14 +57,17 @@ function signInSuccessful (request: Request, response: Response, profile: Profil
         profileId,
         profileAboutMe,
         profileEmail,
-        profileImageURL,
+        profileImageUrl,
         profileIsMaker,
         profileName,
         profilePricing
     }, signature)
 
+    // @ts-ignore
     request.session.profile = profile
+    // @ts-ignore
     request.session.jwt = authorization
+    // @ts-ignore
     request.session.signature = signature
 
     response.header({

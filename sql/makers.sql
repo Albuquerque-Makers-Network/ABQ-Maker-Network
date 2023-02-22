@@ -1,13 +1,14 @@
-DROP TABLE IF EXISTS profile;
-DROP TABLE IF EXISTS portfolio;
-DROP TABLE IF EXISTS skill;
 DROP TABLE IF EXISTS maker_skill;
+DROP TABLE IF EXISTS skill;
+DROP TABLE IF EXISTS portfolio;
+DROP TABLE IF EXISTS profile;
+
 
 CREATE TABLE profile
 (
     profile_id UUID NOT NULL,
     profile_about_me VARCHAR(350),
-    profile_activation_token UUID NOT NULL,
+    profile_activation_token CHAR(32),
     profile_email VARCHAR(128) NOT NULL UNIQUE,
     profile_full_name VARCHAR(32) NOT NULL,
     profile_hash CHAR(97) NOT NULL,

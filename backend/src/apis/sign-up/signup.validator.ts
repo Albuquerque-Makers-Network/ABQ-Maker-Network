@@ -59,7 +59,7 @@ export const signupValidator: Schema = {
         }
     },
 
-    profileImageURL: {
+    profileImageUrl: {
     optional: true,
     isURL: {
         errorMessage: 'Profile image is malformed please upload new image'

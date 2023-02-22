@@ -5,6 +5,7 @@ import { Profile, selectProfileByProfileActivationToken, updateProfile } from ".
 export async function activationController ( request: Request, response: Response, nextFunction: NextFunction ): Promise<Response<Status>> {
   try {
     const {activation} = request.params
+    console.log(activation)
     const profile = await selectProfileByProfileActivationToken(activation)
     console.log ( profile )
 
@@ -27,6 +28,6 @@ export async function activationController ( request: Request, response: Respons
 
     return (profile != null) ? await activationSucceeded (profile) : activationFailed()
   } catch (error: any) {
-    return response.json ({status: 500, data: null, message: error.message })
+    return response.json ({status: 500, data: null, message: error.message})
   }
 }

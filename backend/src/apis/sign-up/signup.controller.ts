@@ -16,7 +16,7 @@ export async function signupProfileController (request: Request, response: Respo
             profileAboutMe,
             profileFullName,
             profilePassword,
-            profileImageURL,
+            profileImageUrl,
             profileIsMaker,
             profileName,
             profilePricing,
@@ -24,9 +24,9 @@ export async function signupProfileController (request: Request, response: Respo
         const profileHash = await setHash(profilePassword)
         const profileActivationToken = setActivationToken()
 
+// make sure the 8080 is removed at end of bootcamp
 
-
-        const basePath: string = `${request.protocol}://${request.hostname}/${request.originalUrl}/activation/${profileActivationToken}`
+        const basePath: string = `${request.protocol}://${request.hostname}:8080${request.originalUrl}/activation/${profileActivationToken}`
         const message = `<h2>Welcome to the ABQ Maker Network!</h2>
         <p>Please make sure you have verified your account. Check your email!</p>
         <p><a href="${basePath}">${basePath}</a></p>
@@ -46,7 +46,7 @@ export async function signupProfileController (request: Request, response: Respo
             profileEmail,
             profileFullName,
             profileHash,
-            profileImageURL: profileImageURL ?? null,
+            profileImageUrl: profileImageUrl ?? null,
             profileIsMaker,
             profileName,
             profilePricing: profilePricing ?? null,
