@@ -42,3 +42,22 @@ export async function updateProfile (profile: Profile): Promise<string> {
     return 'Profile successfully updated'
 }
 
+export async function selectProfileByProfileId (profileId : string): Promise<Profile|null> {
+    const result = <Profile[]>await sql `SELECT profile_id, profile_activation_token, profile_email, profile_full_name, profile_hash, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_id = ${profileId}`
+       return result?.length === 1 ? result[0] : null
+}
+export async function selectProfileByProfileFullName (profileFullName: string): Promise<Profile|null> {
+    const result = <Profile[]> await sql `SELECT profile_id, profile_activation_token, profile_email, profile_full_name, profile_hash, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_full_name = ${profileFullName}`
+        return result?.length === 1 ? result [0] : null
+}
+export async function selectProfileByProfileName (profileName: string): Promise<Profile|null> {
+    const result = <Profile[]> await sql `SELECT profile_id, profile_activation_token, profile_email, profile_full_name, profile_hash, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_name = ${profileName}`
+    return result?.length === 1 ? result [0] : null
+}
+
+
+export async function selectPartialProfileByProfileId (profileId: string): Promise<Profile|null> {
+    const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_id = ${profileId}`
+
+    return result?.length === 1 ? result[0] : null
+}
