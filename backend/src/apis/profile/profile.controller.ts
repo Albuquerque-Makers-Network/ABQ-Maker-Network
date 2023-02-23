@@ -1,8 +1,11 @@
-import {Request, Response} from "express";
+import {NextFunction, Request, Response} from "express";
 import {
     Profile,
     PartialProfile,
     selectPartialProfileByProfileId,
+    selectPartialProfileByProfileEmail,
+    selectPartialProfileByProfileFullName,
+    selectPartialProfileByProfileName,
     updateProfile,
     selectWholeProfileByProfileId
 } from "../../utils/models/Profile";
@@ -58,6 +61,13 @@ export async function putProfileController (request: Request, response: Response
     };
 
 
+/**
+ * Express controller that returns a profile object with the provided primary key
+ * @param request  An object modeling the current request provided by Express.
+ * @param response an object modeling the response that will be sent to the client.
+ * @return A promise containing a status object with either a success or failure message set to the message field
+ */
+
 export async function getProfileByProfileIdController (request: Request, response: Response): Promise<Response> {
     try {
         const { profileId } = request.params
@@ -67,5 +77,73 @@ export async function getProfileByProfileIdController (request: Request, respons
         return response.json(status)
     } catch (error:any) {
         return (response.json({status: 400, data: null, message: error.message}))
+    }
+};
+
+/**
+ * Express controller that returns a profile object with the provided profileName
+ * @param request  An object modeling the current request provided by Express.
+ * @param response an object modeling the response that will be sent to the client.
+ * @return A promise containing a status object with either a success or failure message set to the message field
+ */
+
+
+export async function getProfileByProfileNameController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
+    try {
+        const { profileName } = request.params
+        const data = await selectPartialProfileByProfileName(profileName)
+        return response.json({ status: 200, message: null, data })
+    } catch (error) {
+        return response.json({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+};
+
+
+/**
+ * Express controller that returns a profile object with the provided profileFullName
+ * @param request  An object modeling the current request provided by Express.
+ * @param response an object modeling the response that will be sent to the client.
+ * @return A promise containing a status object with either a success or failure message set to the message field
+ */
+
+
+export async function getProfileByProfileFullNameController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
+    try {
+        const { profileFullName } = request.params
+        const data = await selectPartialProfileByProfileFullName(profileFullName)
+        return response.json({ status: 200, message: null, data })
+    } catch (error) {
+        return response.json({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+};
+
+
+/**
+ * Express controller that returns a profile object with the provided profileEmail
+ * @param request  An object modeling the current request provided by Express.
+ * @param response an object modeling the response that will be sent to the client.
+ * @return A promise containing a status object with either a success or failure message set to the message field
+ */
+
+
+export async function getProfileByProfileEmailController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
+    try {
+        const { profileEmail } = request.params
+        const data = await selectPartialProfileByProfileEmail(profileEmail)
+        return response.json({ status: 200, message: null, data })
+    } catch (error) {
+        return response.json({
+            status: 500,
+            message: '',
+            data: []
+        })
     }
 };
