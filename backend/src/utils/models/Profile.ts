@@ -1,5 +1,15 @@
 import {sql} from "../database.utils";
 
+export interface PartialProfile {
+    profileId: string|null
+    profileAboutMe: string
+    profileEmail: string
+    profileFullName: string
+    profileImageUrl: string|null
+    profileIsMaker: string
+    profileName: string
+    profilePricing: string
+}
 export interface Profile {
     profileId: string|null
     profileAboutMe: string
@@ -42,7 +52,7 @@ export async function updateProfile (profile: Profile): Promise<string> {
     return 'Profile successfully updated'
 }
 
-export async function selectProfileByProfileId (profileId : string): Promise<Profile|null> {
+export async function selectWholeProfileByProfileId (profileId : string): Promise<Profile|null> {
     const result = <Profile[]>await sql `SELECT profile_id, profile_activation_token, profile_email, profile_full_name, profile_hash, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_id = ${profileId}`
        return result?.length === 1 ? result[0] : null
 }
