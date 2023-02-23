@@ -20,11 +20,12 @@ export async function insertMakerSkill (makerSkill: MakerSkill): Promise<string>
 
 export async function selectMakerSkillBySkillId (makerSkillId: string): Promise<MakerSkill[]> {
   return <MakerSkill[]>
-  await sql `SELECT maker_skill_maker_profile_id, maker_skill_id FROM maker_skill WHERE maker_skill_id = ${makerSkillId}`
+    await sql `SELECT maker_skill_maker_profile_id, maker_skill_id FROM maker_skill WHERE maker_skill_id = ${makerSkillId}`
 }
 
-export async function selectMakerSkillByProfileId (makerSkillMakerProfileId: string): Promise<MakerSkill[]> {
-  return <MakerSkill[]> await sql `SELECT maker_skill_maker_profile_id, maker_skill_id FROM maker_skill WHERE maker_skill_maker_profile_id = ${makerSkillMakerProfileId}`
+export async function selectMakerSkillByProfileId ( makerSkillMakerProfileId: string): Promise<MakerSkill[]> {
+  return <MakerSkill[]>
+    await sql `SELECT maker_skill_maker_profile_id, maker_skill_id FROM maker_skill WHERE maker_skill_maker_profile_id = ${makerSkillMakerProfileId}`
 }
 
 export async function deleteMakerSkill (makerSkill: MakerSkill): Promise<string> {

@@ -34,7 +34,7 @@ export async function getMakerSkillByProfileIdController ( request: Request, res
     const { makerSkillMakerProfileId } = request.params
     const postGresResponse = await selectMakerSkillByProfileId ( makerSkillMakerProfileId )
     const data = postGresResponse ?? null
-    const status: Status = {status: 200, data, message: null}
+    const status: Status = { status: 200, data, message: null}
     return response.json(status)
   } catch ( error:any ) {
     return ( response.json({ status: 400, data: null, message: error.message }))
