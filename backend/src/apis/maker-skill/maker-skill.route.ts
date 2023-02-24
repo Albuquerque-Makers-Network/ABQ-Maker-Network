@@ -14,11 +14,11 @@ export const makerSkillRoute: Router = Router()
 makerSkillRoute.route('/')
 
 
-makerSkillRoute.route('/:makerSkillId')
+makerSkillRoute.route('/makerskillid/:makerSkillId')
   .get( asyncValidatorController ( [check ( 'makerSkillId', 'Please provide a valid skill ID').isUUID() ])
   , getMakerSkillBySkillIdController )
 
-makerSkillRoute.route('/:makerSkillMakerProfileId')
+makerSkillRoute.route('/makerprofileid/:makerSkillMakerProfileId')
   .get ( asyncValidatorController ( [ check ( 'makerSkillMakerProfileId', 'Please provide a valid maker skill profile ID').isUUID() ])
    , getMakerSkillByProfileIdController )
 
