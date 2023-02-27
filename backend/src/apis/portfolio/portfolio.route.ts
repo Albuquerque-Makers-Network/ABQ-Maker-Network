@@ -11,17 +11,16 @@ import {portfolioValidator} from "./portfolio.validator";
 
 
 export const portfolioRoute: Router = Router()
-portfolioRoute.route('/')
+portfolioRoute.route ( '/' )
 
-portfolioRoute.route('/:portfolioId')
-  .post ( isLoggedIn, asyncValidatorController ( ( checkSchema ( portfolioValidator )))
-    , postPortfolioController)
-  .get ( asyncValidatorController ( [ check ( 'porfolioId', 'Please provide a valid portfolio ID' ).isUUID () ])
-  , getPortfolioByPortfolioIdController)
-  .delete ( isLoggedIn, asyncValidatorController ( [ check ( 'porfolioId', 'Please provide a valid portfolio ID' ).isUUID () ])
-    , postPortfolioController)
+portfolioRoute.route ( '/:portfolioProfileId' )
+  .get ( asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
+    , getPortfolioImageByProfileIdController )
+  .delete ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
+    , postPortfolioController )
+  .post ( isLoggedIn, asyncValidatorController (( checkSchema ( portfolioValidator )))
+    , postPortfolioController )
 
-portfolioRoute.route('/:portfolioProfileId')
-  .get ( asyncValidatorController ( [ check ( 'porfolioId', 'Please provide a valid portfolio ID' ).isUUID () ])
-    , getPortfolioImageByProfileIdController)
-
+portfolioRoute.route ( '/:portfolioId' )
+  .get ( asyncValidatorController ( [ check ( 'portfolioId', 'Please provide a valid portfolio ID' ).isUUID () ])
+  , getPortfolioByPortfolioIdController )
