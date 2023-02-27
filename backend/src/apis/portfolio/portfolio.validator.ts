@@ -14,9 +14,9 @@ export const portfolioValidator: Schema = {
         }
     },
 
-    porfolioImageUrl: {
+    portfolioImageUrl: {
         isURL: {
             errorMessage: 'Profile image is malformed please upload new image'
         }
     },
-}
+}git

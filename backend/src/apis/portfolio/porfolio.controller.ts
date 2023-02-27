@@ -1,7 +1,6 @@
 import {Request, Response} from "express";
 import { Status } from "../../utils/interfaces/Status";
-import {Profile, selectPartialProfileByProfileId} from "../../utils/models/Profile";
-import {deleteMakerSkill} from "../../utils/models/MakerSkill";
+import {Profile} from "../../utils/models/Profile";
 
 export async function postPortfolioController (request: Request, response: Response): Promise<Response<Status>> {
     try {
@@ -9,16 +8,12 @@ export async function postPortfolioController (request: Request, response: Respo
         const profile: Profile = request.session.profile as Profile
         const portfolioProfileId: string = profile.profileId as string
 
-        const porfolioImage: PortfolioImage = {
+        const portfolioImage: PortfolioImage = {
             portfolioId: null,
             portfolioProfileId,
             portfolioImageUrl
         }
-        const result = await (MODEL
-        FUNCTION
-        HERE
-    )
-        (porfolioImage)
+        const result = await (MODELFUNCTIONHERE)portfolioImage
         const status: Status = {
             status: 200,
             message: result,
@@ -64,8 +59,8 @@ export async function getPortfolioByPortfolioIdController (request: Request, res
 export async function deletePortfolioImageController ( request: Request, response: Response ) : Promise <Response> {
 
     try {
-        const { makerSkillMakerProfileId, makerSkillId } = request.params
-        const postGresResponse = await deleteMakerSkill ({ makerSkillMakerProfileId, makerSkillId })
+        const { porfolioId, portfolioProfileId, portfolioImageUrl } = request.params
+        const postGresResponse = await deletePortfolio ({ portfolioId, portfolioProfileId, portfolioImageUrl })
         const data = postGresResponse ?? null
         const status: Status = { status: 200, data, message:null }
         return response.json (status)
