@@ -2,7 +2,7 @@ import {sql} from "../database.utils";
 
 
 export interface Portfolio {
-  portfolioId: string
+  portfolioId: string | null,
   portfolioProfileId: string
   portfolioImageUrl: string
 
@@ -16,19 +16,19 @@ export interface Portfolio {
 
 export async function insertPortfolio ( portfolio: Portfolio ) : Promise < string > {
   const { portfolioId, portfolioProfileId, portfolioImageUrl } = portfolio
-  await sql `INSERT INTO portfolio ( portfolio_id, portfolio_profile_id, portfolio_image_url ) VALUES (${ portfolioId}, ${ portfolioProfileId }, ${ portfolioImageUrl })`
+  await sql `INSERT INTO portfolio ( portfolio_id, portfolio_profile_id, portfolio_image_url ) VALUES (${ portfolioId }, ${ portfolioProfileId }, ${ portfolioImageUrl })`
   return 'Portfolio successfully updated'
 }
 
-export async function selectPortfolioByProfileId ( portfolioId : string ): Promise < Portfolio [] > {
+export async function selectPortfolioByPortfolioId ( portfolioId : string ): Promise < Portfolio [] > {
 return < Portfolio [] >
-  await sql `SELECT portfolio_id, portfolio_profile_id, portfolio_image_urls FROM portfolio WHERE portfolio_id = ${ portfolioId }`
+  await sql `SELECT portfolio_id, portfolio_profile_id, portfolio_image_url FROM portfolio WHERE portfolio_id = ${ portfolioId }`
 }
 
 export async function selectPortfolioByPortfolioProfileId
 ( portfolioProfileId: string ) : Promise < Portfolio [] > {
   return < Portfolio [] >
-  await sql `SELECT portfolio_id, portfolio_profile_id, portfolio_image_urls FROM portfolio WHERE portfolio_profile_id = ${ portfolioProfileId }`
+  await sql `SELECT portfolio_id, portfolio_profile_id, portfolio_image_url FROM portfolio WHERE portfolio_profile_id = ${ portfolioProfileId }`
 }
 
 export async function deletePortfolio ( portfolio : Portfolio ) : Promise < string > {
