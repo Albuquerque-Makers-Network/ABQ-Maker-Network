@@ -1,5 +1,6 @@
 import express, { Application } from 'express'
 import morgan from 'morgan'
+
 // Routes
 import { indexRoute } from './apis/index.route'
 import session from 'express-session'
@@ -10,6 +11,7 @@ import {SignInRouter} from './apis/sign-in/sign-in.route';
 import {SignOutRoute} from "./apis/sign-out/sign-out.route";
 import {profileRoute} from "./apis/profile/profile.route";
 import {makerSkillRoute} from "./apis/maker-skill/maker-skill.route";
+import {ImageUploadRouter} from "./apis/image-upload/image-upload.route";
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
 const RedisStore = RedisConnect(session)
@@ -55,6 +57,7 @@ export class App {
     this.app.use('/apis/sign-out', SignOutRoute)
     this.app.use ('/apis/profile', profileRoute)
     this.app.use ('/apis/maker-skill', makerSkillRoute)
+    this.app.use ('apis/image-upload', ImageUploadRouter)
   }
 
   // starts the server and tells the terminal to post a message that the server is running and on what port
@@ -63,4 +66,3 @@ export class App {
     console.log('Express application built successfully')
   }
 }
-
