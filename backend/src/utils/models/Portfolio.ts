@@ -15,8 +15,8 @@ export interface Portfolio {
  **/
 
 export async function insertPortfolio ( portfolio: Portfolio ) : Promise < string > {
-  const { portfolioId, portfolioProfileId, portfolioImageUrl } = portfolio
-  await sql `INSERT INTO portfolio ( portfolio_id, portfolio_profile_id, portfolio_image_url ) VALUES (${ portfolioId }, ${ portfolioProfileId }, ${ portfolioImageUrl })`
+  const { portfolioProfileId, portfolioImageUrl } = portfolio
+  await sql `INSERT INTO portfolio ( portfolio_id, portfolio_profile_id, portfolio_image_url ) VALUES ( gen_random_uuid(), ${ portfolioProfileId }, ${ portfolioImageUrl })`
   return 'Portfolio successfully updated'
 }
 
