@@ -59,8 +59,8 @@ export class App {
     this.app.use('/apis/sign-out', SignOutRoute)
     this.app.use ('/apis/profile', profileRoute)
     this.app.use ('/apis/maker-skill', makerSkillRoute)
-    this.app.use ('apis/image-upload', ImageUploadRouter)
-    this.app.use ('apis/skills', skillsRouter)
+    this.app.use ('/apis/image-upload', ImageUploadRouter)
+    this.app.use ('/apis/skills', skillsRouter)
   }
 
   // starts the server and tells the terminal to post a message that the server is running and on what port
