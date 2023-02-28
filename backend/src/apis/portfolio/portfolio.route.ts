@@ -13,11 +13,15 @@ import {portfolioValidator} from "./portfolio.validator";
 export const portfolioRoute: Router = Router()
 portfolioRoute.route ( '/' )
 
+function deletePortfolioController() {
+
+}
+
 portfolioRoute.route ( '/profile/:portfolioProfileId' )
   .get ( asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
     , getPortfolioImageByProfileIdController )
   .delete ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
-    , postPortfolioController )
+    , deletePortfolioController )
   .post ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioImageUrl', 'Please provide a valid Image URL' ).isURL () ])
     , postPortfolioController )
 
