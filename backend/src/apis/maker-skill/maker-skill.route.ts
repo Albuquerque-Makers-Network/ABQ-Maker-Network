@@ -19,8 +19,7 @@ makerSkillRoute.route('/makerskillid/:makerSkillId')
   , getMakerSkillBySkillIdController )
 
 makerSkillRoute.route('/makerprofileid/:makerSkillMakerProfileId')
-  .get ( asyncValidatorController ( [ check ( 'makerSkillMakerProfileId', 'Please provide a valid maker skill profile ID').isUUID() ])
-   , getMakerSkillByProfileIdController )
+  .get ( asyncValidatorController ( [ check ( 'makerSkillMakerProfileId', 'Please provide a valid maker skill profile ID').isUUID() ]), getMakerSkillByProfileIdController )
 
 makerSkillRoute.route( '/:makerSkillMakerProfileId/:makerSkillId')
   .post ( isLoggedIn, asyncValidatorController ( [ check ( 'makerSkillMakerProfileId', 'Please provide a valid maker skill profile ID').isUUID() ])
