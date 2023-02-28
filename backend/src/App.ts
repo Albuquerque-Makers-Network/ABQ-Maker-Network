@@ -14,6 +14,7 @@ import {profileRoute} from "./apis/profile/profile.route";
 import {makerSkillRoute} from "./apis/maker-skill/maker-skill.route";
 import {ImageUploadRouter} from "./apis/image-upload/image-upload.route";
 import {skillsRouter} from "./apis/skill/skill.route";
+import {portfolioRoute} from "./apis/portfolio/portfolio.route";
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
 const RedisStore = RedisConnect(session)
@@ -57,6 +58,7 @@ export class App {
     this.app.use('/apis/sign-up', signupRoute)
     this.app.use('/apis/sign-in', SignInRouter)
     this.app.use('/apis/sign-out', SignOutRoute)
+    this.app.use('/apis/portfolio', portfolioRoute)
     this.app.use ('/apis/profile', profileRoute)
     this.app.use ('/apis/maker-skill', makerSkillRoute)
     this.app.use ('/apis/image-upload', ImageUploadRouter)

@@ -9,7 +9,7 @@ export interface MakerSkill {
 
 /**
  * Function to insert profile object into postgres database
- * @param makerSkill Profile object that will be inserted into the database
+ * @param makerSkill object that will be inserted into the database
  * @return success message if the sql statement was executed with no errors
  **/
 export async function insertMakerSkill (makerSkill: MakerSkill): Promise<string> {
@@ -20,7 +20,7 @@ export async function insertMakerSkill (makerSkill: MakerSkill): Promise<string>
 
 export async function selectMakerSkillBySkillId ( makerSkillId: string ): Promise<MakerSkill[]> {
   return <MakerSkill[]>
-    await sql `SELECT maker_skill_maker_profile_id, maker_skill_id FROM maker_skill WHERE maker_skill_id = ${makerSkillId}`
+    await sql `SELECT maker_skill_maker_profile_id, maker_skill_id FROM maker_skill WHERE maker_skill_id = ${ makerSkillId }`
 }
 
 export async function selectMakerSkillByProfileId ( makerSkillMakerProfileId: string): Promise<MakerSkill[]> {
