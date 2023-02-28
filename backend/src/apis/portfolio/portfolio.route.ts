@@ -2,6 +2,7 @@ import {Router} from "express";
 import {asyncValidatorController} from "../../utils/controllers/async-validator.controller";
 import {check, checkSchema} from "express-validator";
 import {
+  deletePortfolioImageController,
   getPortfolioByPortfolioIdController,
   getPortfolioImageByProfileIdController,
   postPortfolioController
@@ -21,7 +22,7 @@ portfolioRoute.route ( '/profile/:portfolioProfileId' )
   .get ( asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
     , getPortfolioImageByProfileIdController )
   .delete ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
-    , deletePortfolioController )
+    , deletePortfolioImageController )
   .post ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioImageUrl', 'Please provide a valid Image URL' ).isURL () ])
     , postPortfolioController )
 
