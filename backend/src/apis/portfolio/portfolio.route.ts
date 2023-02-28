@@ -18,7 +18,7 @@ portfolioRoute.route ( '/profile/:portfolioProfileId' )
     , getPortfolioImageByProfileIdController )
   .delete ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
     , postPortfolioController )
-  .post ( isLoggedIn, asyncValidatorController (( checkSchema ( portfolioValidator )))
+  .post ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioImageUrl', 'Please provide a valid Image URL' ).isURL () ])
     , postPortfolioController )
 
 portfolioRoute.route ( '/:portfolioId' )
