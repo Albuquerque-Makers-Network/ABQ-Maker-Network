@@ -65,8 +65,8 @@ export async function getPortfolioByPortfolioIdController (request: Request, res
 export async function deletePortfolioImageController ( request: Request, response: Response ) : Promise <Response> {
 
     try {
-        const { portfolioId, portfolioProfileId, portfolioImageUrl } = request.params
-        const postGresResponse = await deletePortfolio ({portfolioId, portfolioProfileId, portfolioImageUrl })
+        const { portfolioId } = request.params
+        const postGresResponse = await deletePortfolio ( portfolioId )
         const data = postGresResponse ?? null
         const status: Status = { status: 200, data, message:null }
         return response.json (status)

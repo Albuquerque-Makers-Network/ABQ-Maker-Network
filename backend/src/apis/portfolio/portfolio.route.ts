@@ -21,11 +21,11 @@ function deletePortfolioController() {
 portfolioRoute.route ( '/profile/:portfolioProfileId' )
   .get ( asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
     , getPortfolioImageByProfileIdController )
-  .delete ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
-    , deletePortfolioImageController )
   .post ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioImageUrl', 'Please provide a valid Image URL' ).isURL () ])
     , postPortfolioController )
 
 portfolioRoute.route ( '/:portfolioId' )
   .get ( asyncValidatorController ( [ check ( 'portfolioId', 'Please provide a valid portfolio ID' ).isUUID () ])
   , getPortfolioByPortfolioIdController )
+  .delete ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioId', 'Please provide a valid portfolio ID' ).isUUID () ])
+    , deletePortfolioImageController )

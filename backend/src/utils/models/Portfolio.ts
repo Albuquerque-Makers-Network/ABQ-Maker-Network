@@ -31,9 +31,8 @@ export async function selectPortfolioByPortfolioProfileId
   await sql `SELECT portfolio_id, portfolio_profile_id, portfolio_image_url FROM portfolio WHERE portfolio_profile_id = ${ portfolioProfileId }`
 }
 
-export async function deletePortfolio ( portfolio : Portfolio ) : Promise < string > {
-  const { portfolioId, portfolioProfileId, portfolioImageUrl } = portfolio
-  await sql `DELETE FROM portfolio WHERE portfolio_id = ${ portfolioId } AND portfolio_image_url = ${ portfolioImageUrl }`
+export async function deletePortfolio ( portfolioId : string ) : Promise < string > {
+  await sql `DELETE FROM portfolio WHERE portfolio_id = ${ portfolioId }`
   return 'Portfolio successfully deleted'
 }
 
