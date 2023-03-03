@@ -4,6 +4,7 @@ import './App.css'
 import { Home } from './Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {SignUp} from "./SignUp.jsx";
+import {MakerProfile} from "./MakerProfile.jsx";
 
 
 export function App() {
@@ -14,6 +15,7 @@ export function App() {
                     <Route  path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
                     <Route path={'/sign-up'} element={<SignUp />} />
+                    <Route path={'/maker-profile'} element={<MakerProfile />} />
                 </Routes>
             </BrowserRouter>
         </>
