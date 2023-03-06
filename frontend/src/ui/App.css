@@ -1,6 +1,6 @@
 /*Navigation Bar*/
 
-/*Controls whether the profile icon is displayed or link to the account page is diplayed*/
+/*Controls profile icon display. Image is displayed on full screen, account link on mobile*/
 @media (max-width: 992px){
     #nav-pic{
         display: none

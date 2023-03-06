@@ -1,9 +1,12 @@
 import React from "react"
+import {Search} from "./Search.jsx";
+import {SkillIcons} from "./SkillIcons"
 
 export function Home() {
     return (
         <>
-            <h1>Home</h1>
+           <Search/>
+            <SkillIcons/>
         </>
     )
 }
