@@ -5,8 +5,6 @@ import { Home } from './landing page/Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {SignUp} from "./sign-up/SignUp.jsx";
 import {MakerProfile} from "./maker-profile/MakerProfile.jsx";
-import {SignUp} from "./SignUp.jsx";
-import {MakerProfile} from "./MakerProfile.jsx";
 import {Navigation} from "./Navigation.jsx";
 
 
