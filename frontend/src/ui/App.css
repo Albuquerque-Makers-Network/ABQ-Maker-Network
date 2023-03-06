@@ -1,0 +1,16 @@
+/*Navigation Bar*/
+
+/*Controls whether the profile icon is displayed or link to the account page is diplayed*/
+@media (max-width: 992px){
+    #nav-pic{
+        display: none
+
+    }
+}
+
+@media (min-width: 992px){
+    #nav-account{
+        display: none;
+    }
+}
+

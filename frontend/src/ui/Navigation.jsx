@@ -16,7 +16,9 @@ export function Navigation(){
                         <Nav className="ms-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/sign-up">Sign In/Up</Nav.Link>
-                            <Nav.Link href="/sign-up"><Image fluid className='border border-0 rounded-circle' src={ProfilePicture} width='40'/></Nav.Link>
+                            {/*image displays on full screen, text on mobile*/}
+                            <Nav.Link id="nav-pic"  href="/sign-up"><Image fluid className='border border-0 rounded-circle' src={ProfilePicture} width='40'/></Nav.Link>
+                            <Nav.Link id="nav-account" href="/sign-up">Account Page</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
