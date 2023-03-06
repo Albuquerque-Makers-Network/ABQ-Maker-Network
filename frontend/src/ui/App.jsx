@@ -5,12 +5,14 @@ import { Home } from './landing page/Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {SignUp} from "./SignUp.jsx";
 import {MakerProfile} from "./MakerProfile.jsx";
+import {Navigation} from "./Navigation.jsx";
 
 
 export function App() {
     return (
         <>
             <BrowserRouter>
+                <Navigation/>
                 <Routes>
                     <Route  path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
