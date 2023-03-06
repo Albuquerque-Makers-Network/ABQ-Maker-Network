@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
-import { Home } from './Home.jsx'
+import { Home } from './landing page/Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {SignUp} from "./SignUp.jsx";
 import {MakerProfile} from "./MakerProfile.jsx";
