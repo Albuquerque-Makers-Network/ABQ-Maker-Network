@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 import { Home } from './Home.jsx'
 import { FourOhFour } from './FourOhFour'
-import {SignUp} from "./SignUp.jsx";
-import {MakerProfile} from "./MakerProfile.jsx";
+import {SignUp} from "./sign-up/SignUp.jsx";
+import {MakerProfile} from "./maker-profile/MakerProfile.jsx";
 
 
 export function App() {
