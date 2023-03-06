@@ -8,15 +8,15 @@ export function Navigation(){
         <>
             <Navbar bg="light" variant="light" expand="lg">
                 <Container fluid>
+                    <Navbar.Brand className='my-3 mx-5' href="/">
+                        <Image className="me-4" fluid src={Logo} alt='image of ABQ Maker Network logo. Text reads ABQ Maker Network.' width='100'/>ABQ Maker Network
+                    </Navbar.Brand>
                     <Navbar.Toggle className='ms-auto'  aria-controls="basic-navbar-nav"/>
-                    <Navbar.Collapse  className='my-3 mx-5' id="basic-navbar-nav" >
-                        <Navbar.Brand href="/">
-                        <Image fluid src={Logo} alt='image of ABQ Maker Network logo. Text reads ABQ Maker Network.' width='100'/> ABQ Maker Network
-                        </Navbar.Brand>
+                    <Navbar.Collapse className='my-3 mx-5' id="basic-navbar-nav" >
                         <Nav className="ms-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/sign-up">Sign In/Up</Nav.Link>
-                            <Nav.Link href="/sign-up"><Image fluid src={ProfilePicture} width='30'/></Nav.Link>
+                            <Nav.Link href="/sign-up"><Image fluid className='border border-0 rounded-circle' src={ProfilePicture} width='40'/></Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
