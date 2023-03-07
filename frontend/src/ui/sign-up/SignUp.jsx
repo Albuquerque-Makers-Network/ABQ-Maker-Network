@@ -33,8 +33,8 @@ export function SignUp() {
         <Form.Group className="mb-4 px-3">
           {/*<Form.Label className="text-light fw-bold">New password:</Form.Label>*/}
           <Form.Control type="password" placeholder="Enter your new password" className="fw-bold border border-dark border-2" minLength={8} />
-          <Form.Text className="text-light">
-            Password instructions
+          <Form.Text className="text-dark">
+            Please select a password that is at least 8 characters long
           </Form.Text>
         </Form.Group>
 
