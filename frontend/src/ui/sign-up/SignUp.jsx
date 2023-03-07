@@ -8,23 +8,21 @@ export function SignUp() {
     <section>
       <Container className="bg-light mt-5 rounded-4 border border-dark border-3">
         <h1 className="text-center text-dark pt-3">Sign-Up</h1>
-        <Form.Group className="my-3 px-3">
+        <Form.Group className="my-3 px-3 ">
           <Form className="bg-light rounded-2 align-content-center w-50 border border-dark border-2 ps-3">
             {['radio'].map((type) => (
-              <div key={`inline-${type}`}>
-                <Form.Label className="fw-bold pe-3">Account Type:</Form.Label>
-                <Form.Check label="Maker" name ="group1" type={type} id={`inline-${type}`}/>
-                <Form.Check label="Community Member" name ="group1" type={type} id={`inline-${type}`} />
+              <div key={`inline-${type}`} className="pt-2">
+                <Form.Label inline className="col-12 col-lg-4 fw-bold pe-3">Account Type:</Form.Label>
+                <Form.Check inline className="col-12 col-lg-5" label="Community Member" name ="group1" type={type} id={`inline-${type}`} />
+                <Form.Check inline label="Maker" name ="group1" type={type} id={`inline-${type}`}/>
               </div>
             ))}
           </Form>
-            <Form.Text>
-
-          </Form.Text>
         </Form.Group>
+
         <Form.Group className="mb-4 px-3">
           {/*<Form.Label className="text-light fw-bold">Name:</Form.Label>*/}
-          <Form.Control type="name" placeholder="Enter your full name" className="fw-bold border border-dark border-2 shadow" maxLength={32} />
+          <Form.Control type="name" placeholder="Enter your full name" className="fw-bold border border-dark border-2" maxLength={32} />
           <Form.Text>
 
           </Form.Text>
