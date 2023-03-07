@@ -23,17 +23,13 @@ export function SignUp() {
         <Form.Group className="mb-4 px-3">
           {/*<Form.Label className="text-light fw-bold">Name:</Form.Label>*/}
           <Form.Control type="name" placeholder="Enter your full name" className="fw-bold border border-dark border-2" maxLength={32} />
-          <Form.Text>
-
-          </Form.Text>
         </Form.Group>
+
         <Form.Group className="mb-4 px-3">
           {/*<Form.Label className="text-light fw-bold">New username:</Form.Label>*/}
           <Form.Control type="username" placeholder="Enter your preferred username" className="fw-bold border border-dark border-2" maxLength={32} />
-          <Form.Text>
-
-          </Form.Text>
         </Form.Group>
+
         <Form.Group className="mb-4 px-3">
           {/*<Form.Label className="text-light fw-bold">New password:</Form.Label>*/}
           <Form.Control type="password" placeholder="Enter your new password" className="fw-bold border border-dark border-2" minLength={8} />
@@ -41,20 +37,17 @@ export function SignUp() {
             Password instructions
           </Form.Text>
         </Form.Group>
+
         <Form.Group className="mb-4 px-3">
           {/*<Form.Label className="text-light fw-bold">Confirm password:</Form.Label>*/}
           <Form.Control type="password" placeholder="Confirm your new password" className="fw-bold border border-dark border-2" minLength={8} />
-          <Form.Text>
-
-          </Form.Text >
         </Form.Group>
+
         <Form.Group className="mb-4 px-3">
           {/*<Form.Label className="text-light fw-bold">E-mail:</Form.Label>*/}
           <Form.Control type="email" placeholder="Enter your e-mail address" className="fw-bold border border-dark border-2"/>
-          <Form.Text>
-
-          </Form.Text>
         </Form.Group>
+
         <Form.Group className="d-flex justify-content-center">
           <Button variant="light" type="submit" className="mb-3 fw-bold border border-dark border-2">Submit</Button>
         </Form.Group>
