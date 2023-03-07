@@ -7,12 +7,12 @@ export function Navigation(){
     return (
         <>
             <Navbar bg="light" variant="light" expand="lg">
-                <Container fluid>
-                    <Navbar.Brand className='my-3 mx-5' href="/">
-                        <Image className="me-4" fluid src={Logo} alt='image of ABQ Maker Network logo. Text reads ABQ Maker Network.' width='100'/>ABQ Maker Network
+                <Container fluid className='mx-md-5 mx-1'>
+                    <Navbar.Brand className='my-3' href="/">
+                        <Image className="me-4" fluid src={Logo} alt='image of ABQ Maker Network logo. Text reads ABQ Maker Network.' width='70rem'/>ABQ Maker Network
                     </Navbar.Brand>
                     <Navbar.Toggle className='ms-auto'  aria-controls="basic-navbar-nav"/>
-                    <Navbar.Collapse className='my-3 mx-5' id="basic-navbar-nav" >
+                    <Navbar.Collapse className='my-3' id="basic-navbar-nav" >
                         <Nav className="ms-auto">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/sign-up">Sign In/Up</Nav.Link>
