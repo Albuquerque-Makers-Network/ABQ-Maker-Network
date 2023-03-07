@@ -3,7 +3,7 @@
 /*Controls profile icon display. Image is displayed on full screen, account link on mobile*/
 @media (max-width: 992px){
     #nav-pic{
-        display: none
+        display: none;
 
     }
 }
@@ -13,4 +13,5 @@
         display: none;
     }
 }
+
 
