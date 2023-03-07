@@ -7,7 +7,7 @@ export function SignUp() {
 
     <section>
       <Container className="bg-light mt-5 rounded-4 border border-dark border-3">
-        <h1 className="text-center text-dark pt-3">Sign-Up</h1>
+        <h1 className="text-center text-dark py-5">Sign-Up</h1>
         <Form.Group className="my-3 px-3 ">
           <Form className="bg-light rounded-2 align-content-center w-50 border border-dark border-2 ps-3">
             {['radio'].map((type) => (
@@ -49,7 +49,7 @@ export function SignUp() {
         </Form.Group>
 
         <Form.Group className="d-flex justify-content-center">
-          <Button variant="light" type="submit" className="mb-3 fw-bold border border-dark border-2">Submit</Button>
+          <Button variant="dark" type="submit" className="mb-3 fw-bold border border-dark border-2">Submit</Button>
         </Form.Group>
       </Container>
     </section>
