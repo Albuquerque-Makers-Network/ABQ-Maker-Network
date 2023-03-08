@@ -1,0 +1,17 @@
+/*Navigation Bar*/
+
+/*Controls profile icon display. Image is displayed on full screen, account link on mobile*/
+@media (max-width: 992px){
+    #nav-pic{
+        display: none;
+
+    }
+}
+
+@media (min-width: 992px){
+    #nav-account{
+        display: none;
+    }
+}
+
+
