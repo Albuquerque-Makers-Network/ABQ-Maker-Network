@@ -5,6 +5,8 @@ import { Home } from './Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {SignUp} from "./SignUp.jsx";
 import {MakerProfile} from "./MakerProfile.jsx";
+import {CommunityAccount} from "./CommunityAccount/CommunityAccount.jsx";
+import {MakerAccount} from "./MakerAccount/MakerAccount.jsx";
 
 
 export function App() {
@@ -16,6 +18,9 @@ export function App() {
                     <Route path={"*"} element={<FourOhFour />} />
                     <Route path={'/sign-up'} element={<SignUp />} />
                     <Route path={'/maker-profile'} element={<MakerProfile />} />
+                    <Route path={'/community-account'} element={<CommunityAccount />} />
+                    <Route path={'/maker-account'} element={<MakerAccount />} />
+
                 </Routes>
             </BrowserRouter>
         </>
