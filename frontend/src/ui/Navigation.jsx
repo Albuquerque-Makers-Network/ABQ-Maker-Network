@@ -9,9 +9,9 @@ export function Navigation(){
             <Navbar bg="light" variant="light" expand="lg">
                 <Container fluid className='mx-md-5 mx-1'>
                     <Navbar.Brand className='my-3' href="/">
-                        <Image className="me-4" fluid src={Logo} alt='image of ABQ Maker Network logo. Text reads ABQ Maker Network.' width='70rem'/>ABQ Maker Network
+                        <Image className="me-4" fluid src={Logo} alt='image of ABQ Maker Network logo. Text reads ABQ Maker Network.' width='70rem'/><h2 className={'fs-5 d-inline-flex align-self-center'}>ABQ Maker Network</h2>
                     </Navbar.Brand>
-                    <Navbar.Toggle className='ms-auto'  aria-controls="basic-navbar-nav"/>
+                    <Navbar.Toggle className='ms-auto mb-3'  aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse className='my-3' id="basic-navbar-nav" >
                         <Nav className="ms-auto">
                             <Nav.Link href="/">Home</Nav.Link>
