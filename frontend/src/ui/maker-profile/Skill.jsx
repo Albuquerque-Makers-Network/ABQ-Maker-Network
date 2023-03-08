@@ -10,9 +10,9 @@ export function Skill () {
       {/*remove below*/}
       <p className="rounded-4 bg-dark text-white text-center p-2 me-1 d-inline-block ">Metalworking</p>
       <p className="rounded-4 bg-dark text-white text-center p-2 me-1 d-inline-block ">Other Skill</p>
-      <p className="rounded-4 bg-dark text-white text-center p-2 me-1 d-inline-block ">Skill 1</p>
-      <p className="rounded-4 bg-dark text-white text-center p-2 me-1 d-inline-block ">Skill 1</p>
-      <p className="rounded-4 bg-dark text-white text-center p-2 me-1 d-inline-block ">Skill 1</p>
+      <p className="rounded-4 bg-dark text-white text-center p-2 me-1 d-inline-block ">Woodworking</p>
+        <p className="rounded-4 bg-dark text-white text-center p-2 me-1 d-inline-block ">Woodworking</p>
+        <p className="rounded-4 bg-dark text-white text-center p-2 me-1 d-inline-block ">Woodworking</p>
       </Container>
     </>
   )

@@ -1,5 +1,5 @@
 import {Button, Container, Form} from "react-bootstrap";
-import "./SignUp.css"
+import style from "./SignUp.css"
 
 export function SignUp() {
   return (

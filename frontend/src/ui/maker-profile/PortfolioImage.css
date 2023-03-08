@@ -3,3 +3,8 @@
     align-self: center;
     transform: scale(2)
 }
+
+#portfolio-image {
+    max-height: 300px;
+    max-width: 300px;
+}
