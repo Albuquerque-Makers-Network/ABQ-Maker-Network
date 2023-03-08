@@ -1,5 +1,33 @@
-/*Navigation Bar*/
+@font-face {
+    font-family: 'AlfaSlabOne';
+    src: local('AlfaSlabOne'), url('../assets/fonts/alfa-slab-one-regular.ttf') format('truetype');
+    font-weight: auto;
+}
 
+:root {
+    /*colors*/
+    --cusyellow: #FFB20F;
+    --cusDarkGrey: #686868;
+    --cusLightGrey: #EEF1F3;
+    --cusOffBlack: #231F20;
+}
+
+h1, h2{
+    font-family: 'AlfaSlabOne', cursive;
+    font-size: 2rem;
+}
+
+h3, h4, h5, h6 {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+p{
+    font-family: Helvetica, sans-serif;
+}
+
+
+/*Navigation Bar*/
 /*Controls profile icon display. Image is displayed on full screen, account link on mobile*/
 @media (max-width: 992px){
     #nav-pic{
