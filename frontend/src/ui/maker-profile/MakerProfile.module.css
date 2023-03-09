@@ -1,0 +1,7 @@
+body {
+    background-color: var(--cusDarkGrey);
+}
+
+#background-about-me {
+    background-color: var(--cusLightGrey);
+}
