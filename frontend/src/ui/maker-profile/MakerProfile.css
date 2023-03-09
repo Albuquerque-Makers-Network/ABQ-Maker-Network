@@ -18,3 +18,7 @@
     max-height: 300px;
     max-width: 300px;
 }
+
+#profile-name, #skills-name, #pricing,  #about-me-text, #email-text {
+    text-shadow: 2px 2px var(--cusOffBlack);
+}
