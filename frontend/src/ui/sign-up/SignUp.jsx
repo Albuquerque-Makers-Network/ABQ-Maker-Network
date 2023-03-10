@@ -47,7 +47,7 @@ export function SignUp() {
         </Form.Group>
 
         <Form.Group className="d-flex justify-content-center">
-          <Button variant="dark" type="submit" className="mb-3 fw-bold border border-dark border-2">Submit</Button>
+          <Button variant="light" type="submit" className="mb-3 fw-bold border border-dark border-2">Submit</Button>
         </Form.Group>
       </Container>
     </section>
