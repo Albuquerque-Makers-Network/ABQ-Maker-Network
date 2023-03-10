@@ -13,7 +13,7 @@
 }
 
 body{
-    background-color: var(--cusLightGrey);
+    /*background-color: var(--cusLightGrey);*/
 }
 nav{
     background-color: var(--cusyellow);
