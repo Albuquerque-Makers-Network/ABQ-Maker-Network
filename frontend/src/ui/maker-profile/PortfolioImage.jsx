@@ -1,5 +1,4 @@
 import {Image} from "react-bootstrap";
-import "./PortfolioImage.module.css";
 export function PortfolioImage () {
   return (
     <>

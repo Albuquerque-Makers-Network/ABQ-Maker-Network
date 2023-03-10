@@ -1,0 +1,24 @@
+#background-about-me, #pricing {
+    background-color: var(--cusDarkGrey);
+    border: 1mm ridge var(--cusOffBlack);
+}
+
+.profile-skills {
+    background-color: var(--cusyellow);
+    border: solid 2px var(--cusOffBlack);
+}
+
+#portfolio-image:hover {
+    border-color: black;
+    align-self: center;
+    transform: scale(2)
+}
+
+#portfolio-image {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+#profile-name, #skills-name, #pricing,  #about-me-text, #email-text {
+    text-shadow: 2px 2px var(--cusOffBlack);
+}
