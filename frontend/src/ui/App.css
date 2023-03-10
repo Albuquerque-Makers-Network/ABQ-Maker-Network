@@ -46,6 +46,7 @@ p{
     color: white;
     align-items: center;
     text-align: center;
+    padding: 10rem;
 }
 
 #error-content{
