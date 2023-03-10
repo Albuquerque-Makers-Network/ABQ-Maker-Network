@@ -1,3 +1,40 @@
+@font-face {
+    font-family: 'AlfaSlabOne';
+    src: local('AlfaSlabOne'), url('../assets/fonts/alfa-slab-one-regular.ttf') format('truetype');
+    font-weight: auto;
+}
+
+:root {
+    /*colors*/
+    --cusyellow: #FFB20F;
+    --cusDarkGrey: #686868;
+    --cusLightGrey: #EEF1F3;
+    --cusOffBlack: #231F20;
+}
+
+body{
+    background-color: var(--cusLightGrey);
+}
+nav{
+    background-color: var(--cusyellow);
+    font-family: 'AlfaSlabOne', cursive;
+}
+
+h1, h2{
+    font-family: 'AlfaSlabOne', cursive;
+    font-size: 2rem;
+    font-kerning: normal;
+}
+
+h3, h4, h5, h6 {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+p{
+    font-family: Helvetica, sans-serif;
+}
+
 /*Navigation Bar*/
 
 /*Controls profile icon display. Image is displayed on full screen, account link on mobile*/
@@ -13,5 +50,9 @@
         display: none;
     }
 }
-
-
+/*removes brand icon on smaller screens so text doesnt overflow*/
+@media (max-width: 400px){
+#nav-brand{
+    display: none;
+}
+}

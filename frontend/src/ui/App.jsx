@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
+import '../assets/fonts/alfa-slab-one-regular.ttf'
 import { Home } from './landing page/Home.jsx'
 import { FourOhFour } from './FourOhFour'
 import {CommunityAccount} from "./CommunityAccount/CommunityAccount.jsx";

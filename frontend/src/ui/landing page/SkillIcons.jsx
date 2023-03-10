@@ -30,11 +30,11 @@ export function SkillIcons() {
                     </Col>
                     <Col xs={3} md={2} lg={1} className='text-center p-1'>
                         <Button type='submit' className='bg-transparent border-0'><Image fluid src={Woodworking} alt='Icon of a piece of wood and chisel' width='100'/></Button>
-                        <p>Woodwork</p>
+                        <p>Woodworking</p>
                     </Col>
                     <Col xs={3} md={2} lg={1} className='text-center p-1'>
                         <Button type='submit' className='bg-transparent border-0'><Image fluid src={Metalworking} alt='Icon of an anvil' width='100'/></Button>
-                        <p>Metalwork</p>
+                        <p>Metalworking</p>
                     </Col>
                     <Col xs={3} md={2} lg={1} className='text-center p-1'>
                         <Button type='submit' className='bg-transparent border-0'><Image fluid src={Welding} alt='Icon of a welding hood and torch' width='100'/></Button>
