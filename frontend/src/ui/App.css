@@ -35,6 +35,27 @@ p{
     font-family: Helvetica, sans-serif;
 }
 
+/*404 page*/
+
+#error {
+    background-image: url("../assets/404-gear.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 50vh;
+    display: flex;
+    color: white;
+    align-items: center;
+    text-align: center;
+}
+
+#error-content{
+    width: 50%;
+}
+
+#fourOHfour {
+    font-size: 10rem;
+}
+
 /*Navigation Bar*/
 
 /*Controls profile icon display. Image is displayed on full screen, account link on mobile*/
@@ -56,3 +77,4 @@ p{
     display: none;
 }
 }
+
