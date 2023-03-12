@@ -10,12 +10,12 @@ export function PhotoUpload() {
 
     return (
     <>
-        <Container className="bg-light border mt-5 rounded-4">
+        <Container id="portfolio-setting" className="mt-5 my-3 p-4 rounded-4">
+            <h2 className='my-3'>Portfolio</h2>
         <div className="App">
-            <h1>Add Image:</h1>
+            <h4 className='my-3'>Add Image:</h4>
             <input type="file" onChange={handleChange} />
             <img src={file} />
-
         </div>
         </Container>
     </>

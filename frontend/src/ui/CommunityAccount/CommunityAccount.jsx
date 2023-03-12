@@ -1,6 +1,7 @@
 import React from "react";
 import {Container, Form, Button} from "react-bootstrap";
 import "../App.css"
+import "./CommunityAccount.css"
 
 export function CommunityAccount() {
     return (
@@ -8,8 +9,8 @@ export function CommunityAccount() {
             {/*<Navigation /> (coming soon)*/}
 
         <section>
-            <Container className="community-account-form">
-                <h1 className="text-center pt-3 mb-4">Community Account</h1>
+            <Container id="community-account" className="mt-5 rounded-4 border border-dark border-3">
+                <h1 className="text-center text-light py-5">Account Settings</h1>
                 <Form.Group className="mb-4 px-3">
                     <Form.Control type="name" placeholder="First Name"className="fw-bold text-bg-light text-center p-3" minLenghth={2} />
                     <Form.Text>
@@ -36,7 +37,7 @@ export function CommunityAccount() {
                     </Form.Text>
                 </Form.Group>
                 <Form.Group className="d-flex justify-content-center">
-                    <Button variant="light" type="submit" size="lg">Submit changes</Button>
+                    <Button variant="light" type="submit" className="mb-3">Submit changes</Button>
                 </Form.Group>
             </Container>
         </section>

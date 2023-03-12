@@ -6,6 +6,7 @@ import {Pricing} from "./components/Pricing.jsx";
 import {UserName} from "./components/UserName.jsx";
 import {PhotoUpload} from "./components/PhotoUpload.jsx";
 import {Categories} from "./components/Categories.jsx";
+import "./MakerAccount.css"
 
 
 
@@ -14,38 +15,33 @@ export function MakerAccount() {
         <>
         <section>
             <Container className="maker-account-form">
-                <Row>
-                    <Col>
+                <h1 className='mt-5'>Account Settings</h1>
+                <Row id='primary-content'>
+                    <Col sm={12} lg={4}>
                         <UserName />
                     </Col>
-                    <Col xs={5}>
+                    <Col sm={12} lg={8}>
                         <Row>
-                            <Col>
+                            <Col xs={12} lg={6}>
                                 <AboutMe />
                             </Col>
-                            <Col>
+                            <Col xs={12} lg={6}>
                                 <Pricing />
+                            </Col>
+                            <Col xs={12}>
+                                <Categories />
                             </Col>
                         </Row>
                     </Col>
-                    <Col>
-                        <Categories />
-                    </Col>
-
-                    <Col>
-                        <Container>
-                            <PhotoUpload />
-                        </Container>
-                        <Form.Group>
-                            <div className="d-grid gap-2">
-                                <Button variant="light" type="submit" size="lg">
-                                    Submit Changes
-                                </Button>
-                            </div>
-                        </Form.Group>
-                    </Col>
                 </Row>
-
+                <PhotoUpload />
+                <Form.Group>
+                    <Container className="d-grid my-4">
+                        <Button type="submit" size="lg" id="changes-button">
+                            Submit Changes
+                        </Button>
+                    </Container>
+                </Form.Group>
             </Container>
         </section>
         </>

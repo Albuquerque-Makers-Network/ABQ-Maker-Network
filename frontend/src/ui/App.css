@@ -15,10 +15,15 @@
 body{
     /*background-color: var(--cusLightGrey);*/
 }
+
+/*Navigation Bar*/
+
 nav{
     background-color: var(--cusyellow);
     font-family: 'AlfaSlabOne', cursive;
 }
+
+/*Global*/
 
 h1{
     font-family: 'AlfaSlabOne', cursive;
@@ -44,7 +49,7 @@ p{
 /*404 page*/
 
 #error {
-    background-image: url("../assets/404-gear.svg");
+    background-image: url("../assets/fourOhFour-gear.svg");
     background-repeat: no-repeat;
     background-position: center;
     min-height: 50vh;

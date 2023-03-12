@@ -1,0 +1,16 @@
+#category-container, #about-me-setting, #pricing-setting, #user-name-setting, #portfolio-setting{
+    background-color: var(--cusDarkGrey);
+    border: 1mm ridge var(--cusOffBlack);
+    color: White
+}
+
+#changes-button{
+    background-color: var(--cusyellow);
+    color: var(--cusOffBlack);
+    border: 1mm ridge var(--cusOffBlack)
+}
+
+#changes-button:hover{
+   background-color: var(--cusOffBlack);
+    color: white;
+}

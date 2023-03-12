@@ -22,7 +22,7 @@ export function App() {
                     <Route path={"*"} element={<FourOhFour />} />
                     <Route path={'/sign-up'} element={<SignUp />} />
                     <Route path={'/maker-profile'} element={<MakerProfile />} />
-                    <Route path={'/CommunityAccount'} element={<CommunityAccount />} />
+                    <Route path={'/community-account'} element={<CommunityAccount />} />
                     <Route path={'/maker-account'} element={<MakerAccount />} />
 
                 </Routes>
