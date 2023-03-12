@@ -5,6 +5,7 @@
 #profile-card{
     background-color: var(--cusyellow);
     border: solid 3px var(--cusOffBlack);
+    font-family: Bungee, cursive;
 }
 
 #profile-card:hover{
