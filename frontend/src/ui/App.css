@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'AlfaSlabOne';
-    src: local('AlfaSlabOne'), url('../assets/fonts/alfa-slab-one-regular.ttf') format('truetype');
+    font-family: 'Bungee';
+    src: local('Bungee'), url('../assets/fonts/Bungee-Regular.ttf') format('truetype');
     font-weight: auto;
 }
 
@@ -20,19 +20,19 @@ body{
 
 nav{
     background-color: var(--cusyellow);
-    font-family: 'AlfaSlabOne', cursive;
+    font-family: 'Bungee', cursive;
 }
 
 /*Global*/
 
 h1{
-    font-family: 'AlfaSlabOne', cursive;
+    font-family: 'Bungee', cursive;
     font-size: 2rem;
     font-kerning: normal;
 }
 
 h2{
-    font-family: 'AlfaSlabOne', cursive;
+    font-family: 'Bungee', cursive;
     font-size: 1.75rem;
     font-kerning: normal;
 }
