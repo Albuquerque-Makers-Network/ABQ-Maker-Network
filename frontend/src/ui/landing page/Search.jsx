@@ -10,7 +10,7 @@ export function Search() {
                 <Col sm={10}>
                     <Form className="d-flex">
                             <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search"/>
-                            <Button variant="outline-light">Search</Button>
+                            <Button id='search-button' variant="outline-light">Search</Button>
                     </Form>
                 </Col>
                 <Col sm={2}>

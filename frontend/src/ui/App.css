@@ -20,9 +20,15 @@ nav{
     font-family: 'AlfaSlabOne', cursive;
 }
 
-h1, h2{
+h1{
     font-family: 'AlfaSlabOne', cursive;
     font-size: 2rem;
+    font-kerning: normal;
+}
+
+h2{
+    font-family: 'AlfaSlabOne', cursive;
+    font-size: 1.75rem;
     font-kerning: normal;
 }
 

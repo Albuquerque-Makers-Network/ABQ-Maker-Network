@@ -8,7 +8,7 @@ export function ProfileCards() {
         <>
             <Row>
                 <Col className='my-3' xs={6} md={4} lg={3}>
-                    <Card id='profile-card' className="border-1">
+                    <Card id='profile-card'>
                         <Card.Link href="/maker-profile">
                             <Card.Img fluid variant="top" src={ProfilePicture}/>
                         </Card.Link>
