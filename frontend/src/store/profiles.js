@@ -1,7 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {httpConfig} from "../ui/shared/utils/httpconfig"
 
 const profileSlice = createSlice({
-    name: "profiles".
+    name: "profiles",
     initialState: {},
     reducers: {
         setProfile: (profiles, action) => {
@@ -13,7 +14,9 @@ const profileSlice = createSlice({
 
 export const {setProfile} = profileSlice.actions
 
+export function fetchProfileByProfileId = (profileId) => async (dispatch, getState){
 
+}
 
 
 export default profileSlice.reducer

@@ -1,8 +1,8 @@
 import {Container, Image, Nav, Navbar} from "react-bootstrap";
 import React from "react";
-import Logo from "../assets/maker-network-logo.png"
-import ProfilePicture from "../assets/profile-placeholder.png"
-import "./App.css"
+import Logo from "../../../assets/maker-network-logo.png"
+import ProfilePicture from "../../../assets/profile-placeholder.png"
+import "../../App.css"
 export function Navigation(){
     return (
         <>
