@@ -1,12 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {httpConfig} from "../ui/shared/utils/httpconfig"
+import {httpConfig} from "../ui/shared/utils"
 
 const profileSlice = createSlice({
     name: "profiles",
     initialState: {},
     reducers: {
         setProfile: (profiles, action) => {
-        return action.payload
+            profiles[action.payload.profileId] = action.payload.data
         }
     }
 }
@@ -14,9 +14,15 @@ const profileSlice = createSlice({
 
 export const {setProfile} = profileSlice.actions
 
-export function fetchProfileByProfileId = (profileId) => async (dispatch, getState){
+export const fetchProfileByProfileId = (profileId) => async (dispatch, getState)=> {
+    const state = getState()
 
+    const profiles = state.profiles
+    console.log(profiles[profileId])
+    if(profiles[profileId] === undefined){
+        const{data} = await httpConfig(`/apis/profile/${profileId}`)
+        dispatch(setProfile({profileId, data}))
+    }
 }
-
 
 export default profileSlice.reducer
