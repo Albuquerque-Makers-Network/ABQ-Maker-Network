@@ -1,4 +1,5 @@
 import {
+    getAllProfilesController,
     getProfileByProfileEmailController,
     getProfileByProfileFullNameController,
     getProfileByProfileIdController,
@@ -14,8 +15,8 @@ import { profileValidator } from "./profile.validator";
 
 export const profileRoute: Router = Router()
 profileRoute.route('/')
-.post(putProfileController)
-
+    .post(putProfileController)
+    .get (getAllProfilesController)
 
 profileRoute.route('/:profileId')
     .get(asyncValidatorController([check('profileId', 'please provide a valid profileId').isUUID()])

@@ -76,3 +76,7 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
     const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_id = ${profileId}`
     return result?.length === 1 ? result[0] : null
 }
+
+export async function selectAllProfiles (): Promise<Profile[]> {
+    return sql<Profile[]> `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile ORDER BY profile_full_name DESC`
+}

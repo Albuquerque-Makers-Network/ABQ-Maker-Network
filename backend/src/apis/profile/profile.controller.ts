@@ -7,7 +7,7 @@ import {
     selectPartialProfileByProfileFullName,
     selectPartialProfileByProfileName,
     updateProfile,
-    selectWholeProfileByProfileId
+    selectWholeProfileByProfileId, selectAllProfiles
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
 
@@ -147,3 +147,19 @@ export async function getProfileByProfileEmailController (request: Request, resp
         })
     }
 };
+
+export async function getAllProfilesController (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const data = await selectAllProfiles()
+        // return the response
+        const status: Status = {status: 200, message: null, data}
+        return response.json(status)
+    } catch (error) {
+        return response.json({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+}
+
