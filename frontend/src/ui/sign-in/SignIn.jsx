@@ -7,9 +7,9 @@ import * as Yup from "yup"
 import {useDispatch} from "react-redux";
 import jwtDecode from "jwt-decode";
 import {getAuth} from "../../store/auth.js";
-import {FormDebugger} from '../shared/FormDebugger'
-import {DisplayError} from "../shared/components/display-error/DisplayError.js";
-import {DisplayStatus} from "../shared/components/display-status/display-status.js";
+// import {FormDebugger} from '../shared/FormDebugger'
+import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
+import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
 
 export function SignIn() {
 
@@ -17,11 +17,11 @@ export function SignIn() {
 
   const validator = Yup.object().shape({
     profileEmail: Yup.string()
-        .email("please provide valid email")
-        .required("email is required"),
+        .email("Please provide valid email")
+        .required("Email is required"),
     profilePassword: Yup.string()
-        .required("password is required")
-        .min(8, "password must be at least eight characters")
+        .required("Password is required")
+        .min(8, "Password must be at least eight characters")
   });
 
   const signInValues = {
@@ -75,7 +75,7 @@ function SignInFormContent(props){
     <>
       <Form onSubmit={handleSubmit}>
 
-        <Form.Group className="mb-4 px-3" controlId={profileEmail}>
+        <Form.Group className="mb-4 px-3" controlId={'profileEmail'}>
           <InputGroup>
             <Form.Control
               className="form-control"
@@ -109,10 +109,10 @@ function SignInFormContent(props){
 
         <Form.Group className="d-flex justify-content-center">
           {/*<Button variant="light" type="submit" className="mb-3 fw-bold border border-dark border-2">Submit</Button>*/}
-          <Button className='btn mb-3 fw-bold border border-dark border-2' type="Submit">Submit</Button>
+          <Button id="sign-in-submit" className='m-2 btn mb-3 fw-bold border border-dark border-2' type="Submit">Submit</Button>
           {" "}
           <Button
-            className='btn btn-danger'
+            className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
             onClick={handleReset}
             disabled={!dirty || isSubmitting}
             >Reset</Button>
