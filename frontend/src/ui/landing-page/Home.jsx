@@ -4,8 +4,15 @@ import {SkillIcons} from "./SkillIcons"
 import {ProfileCards} from "./ProfileCards.jsx";
 import {Container, Image, Row, Col} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
+import {useSelector} from "react-redux";
+import profiles from "../../store/profiles.js";
 
-export function Home() {
+export function Home() {{
+    const profiles = useSelector(state => state.profiles ? state.profiles : []);
+    console.log("state", profiles)}
+
+    console.log("slice", profiles)
+
     return (
         <>
             <section id='intro'>
