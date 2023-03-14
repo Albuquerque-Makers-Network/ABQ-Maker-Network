@@ -1,7 +1,7 @@
 import React from "react"
-import {Search} from "./Search.jsx";
-import {SkillIcons} from "./SkillIcons"
-import {ProfileCards} from "./ProfileCards.jsx";
+import {Search} from "./componeents/Search.jsx";
+import {SkillIcons} from "./componeents/SkillIcons.jsx"
+import {ProfileCards} from "./componeents/ProfileCards.jsx";
 import {Container, Image, Row, Col} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
 import {useSelector} from "react-redux";

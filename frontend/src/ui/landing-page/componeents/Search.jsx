@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Col, Row, Container, Dropdown, DropdownButton, Form} from "react-bootstrap";
-import './LandingPage.css'
+import '../LandingPage.css'
 
 export function Search() {
     return (

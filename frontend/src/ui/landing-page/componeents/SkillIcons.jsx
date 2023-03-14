@@ -1,17 +1,17 @@
 import React from "react"
 import {Row, Col, Button, Container, Image, Dropdown, DropdownButton} from "react-bootstrap";
-import Logo from "../../assets/maker-network-logo.png";
-import ThreePrint from "../../assets/icons/skill-icons-3dPrint.svg";
-import Ceramics from "../../assets/icons/skill-icons-ceramics.svg"
-import Jewelry from "../../assets/icons/skill-icons-jewelry.svg"
-import Laser from "../../assets/icons/skill-icons-laser.svg"
-import Metalworking from "../../assets/icons/skill-icons-metalworking.svg"
-import Printing from "../../assets/icons/skill-icons-printing.svg"
-import ScreenPrint from "../../assets/icons/skill-icons-screenprint.svg"
-import Sewing from "../../assets/icons/skill-icons-sewing.svg"
-import Welding from "../../assets/icons/skill-icons-welding.svg"
-import Woodworking from "../../assets/icons/skill-icons-woodworking.svg"
-import "./LandingPage.css"
+import Logo from "../../../assets/maker-network-logo.png";
+import ThreePrint from "../../../assets/icons/skill-icons-3dPrint.svg";
+import Ceramics from "../../../assets/icons/skill-icons-ceramics.svg"
+import Jewelry from "../../../assets/icons/skill-icons-jewelry.svg"
+import Laser from "../../../assets/icons/skill-icons-laser.svg"
+import Metalworking from "../../../assets/icons/skill-icons-metalworking.svg"
+import Printing from "../../../assets/icons/skill-icons-printing.svg"
+import ScreenPrint from "../../../assets/icons/skill-icons-screenprint.svg"
+import Sewing from "../../../assets/icons/skill-icons-sewing.svg"
+import Welding from "../../../assets/icons/skill-icons-welding.svg"
+import Woodworking from "../../../assets/icons/skill-icons-woodworking.svg"
+import "../LandingPage.css"
 
 
 export function SkillIcons() {
