@@ -4,7 +4,9 @@ import React from "react";
 import {Skill} from "./Skill.jsx";
 import "../App.css"
 import "./MakerProfile.css"
+import {fetchProfileByProfileId} from "../../store/profiles.js";
 
+fetchProfileByProfileId()
 export function MakerProfile() {
 
 

@@ -2,6 +2,21 @@ import {Button, Container, Form} from "react-bootstrap";
 import style from "./SignUp.css"
 
 export function SignUp() {
+
+  const { profile } = ''
+
+  const validationObject = Yup.object().shape ({
+    profileEmail: Yup.string ()
+      .email ( 'Email muse be a valid email' )
+    profileFullName : Yup.string ()
+      .max ( 32, 'Input less than 32 characters' )
+    profileHash : Yup.string ()
+    profileHash2?
+    profileIsMaker
+    profileName
+  })
+
+
   return (
     <>
 
