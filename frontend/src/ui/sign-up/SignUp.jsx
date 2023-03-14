@@ -1,5 +1,6 @@
 import {Button, Container, Form} from "react-bootstrap";
 import style from "./SignUp.css"
+import {Link} from "react-router-dom";
 
 export function SignUp() {
   return (
@@ -50,6 +51,10 @@ export function SignUp() {
           <Button variant="light" type="submit" className="mb-3 fw-bold border border-dark border-2">Submit</Button>
         </Form.Group>
       </Container>
+  <Container className='my-4 text-center'>
+      <h4>Already a member?</h4>
+    <Link to='/sign-in'><h5>Sign In HERE</h5></Link>
+  </Container>
     </section>
     </>
   )
