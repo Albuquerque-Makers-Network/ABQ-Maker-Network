@@ -7,7 +7,6 @@ import * as Yup from "yup"
 import {useDispatch} from "react-redux";
 import jwtDecode from "jwt-decode";
 import {getAuth} from "../../store/auth.js";
-// import {FormDebugger} from '../shared/FormDebugger'
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
 
@@ -34,12 +33,12 @@ export function SignIn() {
         .then(reply => {
           let {message, type} = reply;
           setStatus({message, type});
-          if (reply.status === 200 && reply.headers["authorization"]) {
+          if (reply.status === 200 && reply.headers["authorization"] ()) {
             window.localStorage.removeItem("authorization");
             window.localStorage.setItem("authorization", reply.headers["authorization"]);
             resetForm();
             let jwtToken = jwtDecode(reply.headers["authorization"])
-            dispatch(getAuth(jwtToken))
+            dispatch(getAuth(jwtToken));
           }
         });
   };
