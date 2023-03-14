@@ -9,6 +9,7 @@ import {SignUp} from "./sign-up/SignUp.jsx";
 import {MakerProfile} from "./maker-profile/MakerProfile.jsx";
 import {Navigation} from "./shared/components/Navigation.jsx";
 import {Provider} from "react-redux";
+import {SignIn} from "./sign-in/SignIn.jsx";
 
 
 
@@ -23,6 +24,7 @@ export function App(props) {
                             <Route  path='/' element={<Home />} />
                             <Route path={"*"} element={<FourOhFour />} />
                             <Route path={'/sign-up'} element={<SignUp />} />
+                            <Route path={'/sign-in'} element={<SignIn />} />
                             <Route path={'/maker-profile'} element={<MakerProfile />} />
                             <Route path={'/community-account'} element={<CommunityAccount />} />
                             <Route path={'/maker-account'} element={<MakerAccount />} />

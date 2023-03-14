@@ -2,7 +2,6 @@ import React from "react";
 import ProfilePicture from "../../assets/profile-placeholder.png"
 import {Card, Row, Col} from "react-bootstrap";
 import "./LandingPage.css"
-
 export function ProfileCards() {
     return (
         <>
