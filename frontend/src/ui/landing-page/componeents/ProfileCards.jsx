@@ -4,7 +4,6 @@ import "../LandingPage.css"
 export function ProfileCards(props) {
     const {allProfiles} = props
     return (
-
         <>
             <Col className='my-3' xs={6} sm={6} md={4} lg={3}>
                 <Card id='profile-card'>
