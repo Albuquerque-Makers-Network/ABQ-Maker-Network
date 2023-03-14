@@ -7,12 +7,15 @@ const profileSlice = createSlice({
     reducers: {
         setProfile: (profiles, action) => {
             profiles[action.payload.profileId] = action.payload.data
+        },
+        setAllProfiles: (profiles, action) => {
+            return action.payload
         }
     }
 }
 )
 
-export const {setProfile} = profileSlice.actions
+export const {setProfile, setAllProfiles} = profileSlice.actions
 
 export const fetchProfileByProfileId = (profileId) => async (dispatch, getState)=> {
     const state = getState()
@@ -25,6 +28,24 @@ export const fetchProfileByProfileId = (profileId) => async (dispatch, getState)
     }
 }
 
+console.log('actions', profileSlice)
 
+export const fetchAllProfiles = () => {
+    return async function (dispatch) {
+        const {data} = await httpConfig('/apis/profile/')
+        if (Array.isArray(data)=== false){
+            throw new Error('data is malformed')
+    }
+        const profileDictionary = data.reduce(
+            (accumulator, currentValue) => {
+            accumulator[currentValue.profileId] = currentValue
+            return accumulator
+        },
+        {}
+        )
+        console.log(profileDictionary)
+        dispatch (setAllProfiles(profileDictionary))
+    }
+}
 
 export default profileSlice.reducer

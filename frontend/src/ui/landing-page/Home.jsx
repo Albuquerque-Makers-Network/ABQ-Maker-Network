@@ -4,14 +4,25 @@ import {SkillIcons} from "./componeents/SkillIcons.jsx"
 import {ProfileCards} from "./componeents/ProfileCards.jsx";
 import {Container, Image, Row, Col} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
-import {useSelector} from "react-redux";
-import profiles from "../../store/profiles.js";
+import {useDispatch, useSelector} from "react-redux";
+import profiles, {fetchAllProfiles} from "../../store/profiles.js";
 
-export function Home() {{
-    const profiles = useSelector(state => state.profiles ? state.profiles : []);
-    console.log("state", profiles)}
+export const Home = () => {
 
-    console.log("slice", profiles)
+    const allProfiles = useSelector(state => {
+        if (state?.profiles.constructor.name === "Object") {
+            return Object.values(state.profiles)
+        } else []
+    })
+
+    const dispatch = useDispatch()
+    const initialEffect = () => {
+        dispatch(fetchAllProfiles())
+    }
+
+    React.useEffect(initialEffect, [])
+
+    console.log(profiles)
 
     return (
         <>
@@ -37,7 +48,9 @@ export function Home() {{
             </section>
             <section>
                 <Container className="my-5 mx-auto px-md-0 px-4">
-                    <ProfileCards/>
+                    <Row>
+                    {allProfiles.map(allProfiles => <ProfileCards allProfiles={allProfiles} key={allProfiles.profileId}/>)}
+                    </Row>
                 </Container>
             </section>
         </>
