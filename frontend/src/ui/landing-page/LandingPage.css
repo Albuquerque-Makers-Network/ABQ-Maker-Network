@@ -8,6 +8,11 @@
     font-family: Bungee, cursive;
 }
 
+#home-profile-card-image{
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
 #home-card-link {
     color: inherit;
     text-decoration: inherit;
