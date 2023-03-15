@@ -188,8 +188,7 @@ function SignUpFormContent (props) {
             <Button id="sign-up-submit"
                     variant="light"
                     type="Submit"
-                    className="mb-3 fw-bold border border-dark border-2"
-                    disabled={!dirty || isSubmitting}>Submit</Button>
+                    className="mb-3 fw-bold border border-dark border-2">Submit</Button>
           </Form.Group>
 
           <Container className='my-4 text-center'>
