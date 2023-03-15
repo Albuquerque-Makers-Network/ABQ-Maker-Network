@@ -22,7 +22,6 @@ export const Home = () => {
 
     React.useEffect(initialEffect, [])
 
-    console.log(profiles)
 
     return (
         <>

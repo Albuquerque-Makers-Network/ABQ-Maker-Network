@@ -28,7 +28,6 @@ export const fetchProfileByProfileId = (profileId) => async (dispatch, getState)
     }
 }
 
-console.log('actions', profileSlice)
 
 export const fetchAllProfiles = () => {
     return async function (dispatch) {
@@ -43,7 +42,6 @@ export const fetchAllProfiles = () => {
         },
         {}
         )
-        console.log(profileDictionary)
         dispatch (setAllProfiles(profileDictionary))
     }
 }
