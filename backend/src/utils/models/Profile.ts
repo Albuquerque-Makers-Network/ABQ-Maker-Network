@@ -6,7 +6,7 @@ export interface PartialProfile {
     profileEmail: string
     profileFullName: string
     profileImageUrl: string|null
-    profileIsMaker: string
+    profileIsMaker: boolean
     profileName: string
     profilePricing: string
 }
@@ -18,7 +18,7 @@ export interface Profile {
     profileFullName: string
     profileHash: string
     profileImageUrl: string|null
-    profileIsMaker: string
+    profileIsMaker: boolean
     profileName: string
     profilePricing: string
 }
@@ -77,6 +77,6 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
     return result?.length === 1 ? result[0] : null
 }
 
-export async function selectAllProfiles (): Promise<Profile[]> {
-    return sql<Profile[]> `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile ORDER BY profile_full_name DESC`
+export async function selectAllIsMakerProfiles (): Promise<Profile[]> {
+    return sql<Profile[]> `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_is_maker = true ORDER BY profile_full_name DESC`
 }

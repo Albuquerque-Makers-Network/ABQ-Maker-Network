@@ -32,6 +32,7 @@ export const fetchProfileByProfileId = (profileId) => async (dispatch, getState)
 export const fetchAllProfiles = () => {
     return async function (dispatch) {
         const {data} = await httpConfig('/apis/profile/')
+        console.log(data)
         if (Array.isArray(data)=== false){
             throw new Error('data is malformed')
     }
@@ -42,6 +43,7 @@ export const fetchAllProfiles = () => {
         },
         {}
         )
+        console.log(profileDictionary)
         dispatch (setAllProfiles(profileDictionary))
     }
 }

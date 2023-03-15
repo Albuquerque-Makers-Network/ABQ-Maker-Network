@@ -17,7 +17,7 @@ export const SignUp = () => {
       profileFullName: "",
       profilePassword: "",
       profilePasswordConfirm: "",
-      profileIsMaker: "",
+      profileIsMaker: false,
       profileName: ""
     }
 
@@ -65,17 +65,7 @@ return (
 )
 }
 
-function RadioGroup(props) {
-  return null;
-}
 
-RadioGroup.propTypes = {
-  name: PropTypes.string,
-  className: PropTypes.string,
-  type: PropTypes.string,
-  value: PropTypes.any,
-  children: PropTypes.node
-};
 
 function SignUpFormContent (props) {
 
@@ -102,8 +92,8 @@ function SignUpFormContent (props) {
                 <InputGroup className="bg-light rounded-2 align-content-center w-50  border border-dark border-2 ps-3">
                     <div className="pt-2">
                       <Form.Label className="col-12 col-lg-auto fw-bold pe-3">Account Type:</Form.Label>
-                      <Form.Check inline label="Community Member" name="profileIsMaker" type={"radio"} id={"profileIsMaker"} value={0} onChange = { handleChange } onBlur = { handleBlur } defaultChecked={values.profileIsMaker === 0}/>
-                      <Form.Check inline label="Maker" name="profileIsMaker" type={"radio"} id={"profileIsMaker"} value={1} onChange = { handleChange } onBlur = { handleBlur } defaultChecked={values.profileIsMaker === 1}/>
+                      <Form.Check inline label="Community Member" name="profileIsMaker" type={"radio"} id={"profileIsMaker"} value={false} onChange = { handleChange } onBlur = { handleBlur } defaultChecked={values.profileIsMaker === false}/>
+                      <Form.Check inline label="Maker" name="profileIsMaker" type={"radio"} id={"profileIsMaker"} value={true} onChange = { handleChange } onBlur = { handleBlur } defaultChecked={values.profileIsMaker === true}/>
                     </div>
                 </InputGroup>
               <DisplayError errors={errors} touched={touched} field={"profileIsMaker"}/>

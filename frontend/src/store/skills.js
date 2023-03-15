@@ -26,7 +26,6 @@ export const fetchAllSkills = () => {
             },
         {}
         )
-        console.log(skillsDictionary)
         dispatch (setAllSkills(skillsDictionary))
     }
 }

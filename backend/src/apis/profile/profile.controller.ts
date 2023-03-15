@@ -7,7 +7,7 @@ import {
     selectPartialProfileByProfileFullName,
     selectPartialProfileByProfileName,
     updateProfile,
-    selectWholeProfileByProfileId, selectAllProfiles
+    selectWholeProfileByProfileId, selectAllIsMakerProfiles
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
 
@@ -148,9 +148,9 @@ export async function getProfileByProfileEmailController (request: Request, resp
     }
 };
 
-export async function getAllProfilesController (request: Request, response: Response): Promise<Response<Status>> {
+export async function getAllIsMakerProfilesController (request: Request, response: Response): Promise<Response<Status>> {
     try {
-        const data = await selectAllProfiles()
+        const data = await selectAllIsMakerProfiles()
         // return the response
         const status: Status = {status: 200, message: null, data}
         return response.json(status)

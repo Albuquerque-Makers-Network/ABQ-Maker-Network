@@ -5,15 +5,19 @@ import {ProfileCards} from "./componeents/ProfileCards.jsx";
 import {Container, Image, Row} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllProfiles} from "../../store/profiles.js";
+import profile, {fetchAllProfiles} from "../../store/profiles.js";
 
 export const Home = () => {
 
     const allProfiles = useSelector(state => {
-        if (state?.profiles.constructor.name === "Object") {
+        if (state?.profiles.constructor.name === "Object")
+            // && (Object.profileIsMaker === true))
+        {
             return Object.values(state.profiles)
         } else []
     })
+
+    console.log(profile)
 
     const dispatch = useDispatch()
     const initialEffect = () => {
@@ -48,7 +52,7 @@ export const Home = () => {
             <section>
                 <Container className="my-5 mx-auto px-md-0 px-4">
                     <Row>
-                    {allProfiles.map(allProfiles => <ProfileCards allProfiles={allProfiles} key={allProfiles.profileId}/>)}
+                        {allProfiles.map(allProfiles => <ProfileCards allProfiles={allProfiles} key={allProfiles.profileId}/>)}
                     </Row>
                 </Container>
             </section>

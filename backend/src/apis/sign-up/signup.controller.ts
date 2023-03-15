@@ -38,6 +38,11 @@ export async function signupProfileController (request: Request, response: Respo
             html: message
         }
 
+        let profileIsMakerBoolean = false
+        if (profileIsMaker === "true") {
+            profileIsMakerBoolean = true
+        }
+
         let profile: Profile;
         profile = {
             profileId: null,
@@ -47,7 +52,7 @@ export async function signupProfileController (request: Request, response: Respo
             profileFullName,
             profileHash,
             profileImageUrl: profileImageUrl ?? null,
-            profileIsMaker,
+            profileIsMaker: profileIsMakerBoolean,
             profileName,
             profilePricing: profilePricing ?? null,
         };
