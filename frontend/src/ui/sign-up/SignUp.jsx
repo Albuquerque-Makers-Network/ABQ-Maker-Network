@@ -38,6 +38,7 @@ export const SignUp = () => {
       .required ( 'Account Type must be selected'),
     profileName: Yup.string ()
       .required ( 'Username is required')
+      .min ( 7, 'Username must be at least 7 characters')
       .max ( 64, 'Username can not be more than 64 characters')
   })
 
