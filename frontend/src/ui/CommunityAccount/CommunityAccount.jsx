@@ -8,7 +8,7 @@ import { EditCommunityAccountForm } from "./EditCommunityAccountForm";
 export const CommunityAccount = () => {
 
     const dispatch = useDispatch()
-    const profile = useSelector(state => state.auth ? state.auth : null)
+    const profile = useSelector(state => state.currentUser ? state.currentUser : null)
 
     const sideEffects = () => {
         dispatch(fetchCurrentUser())
