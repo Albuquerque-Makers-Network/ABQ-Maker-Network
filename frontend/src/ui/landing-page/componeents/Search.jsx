@@ -1,8 +1,17 @@
 import React from "react";
 import {Button, Col, Row, Container, Dropdown, DropdownButton, Form} from "react-bootstrap";
 import '../LandingPage.css'
+import {useSelector} from "react-redux";
 
-export function Search() {
+export const Search = () => {
+    // function to place all skills into dropdown menu
+    const allSkills = useSelector (state => {
+        if (state?.skills.constructor.name === "Object"){
+            return Object.values(state.profiles)
+    } else []
+    })
+
+
     return (
         <>
             <Container fluid className="p-0">
