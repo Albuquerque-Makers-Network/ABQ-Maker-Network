@@ -33,12 +33,13 @@ export function SignIn() {
         .then(reply => {
           let {message, type} = reply;
           setStatus({message, type});
-          if (reply.status === 200 && reply.headers["authorization"] ()) {
+          if (reply.status === 200 && reply.headers["authorization"] ) {
             window.localStorage.removeItem("authorization");
             window.localStorage.setItem("authorization", reply.headers["authorization"]);
             resetForm();
             let jwtToken = jwtDecode(reply.headers["authorization"])
             dispatch(getAuth(jwtToken));
+
           }
         });
   };
