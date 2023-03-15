@@ -2,12 +2,12 @@ import React from "react";
 import {Button, Col, Row, Container, Form, DropdownButton} from "react-bootstrap";
 import '../../LandingPage.css'
 import {useDispatch, useSelector} from "react-redux";
-import skills, {fetchAllSkills} from "../../../../store/skills.js";
+import {fetchAllSkills} from "../../../../store/skills.js";
 import {SkillDropDown} from "./SkillDropDown.jsx";
 
 export const Search = () => {
 
-    // this places all skills into dropdown menu
+    // this places all skills into dropdown button
     const allSkills = useSelector (state => {
         if (state?.skills.constructor.name === "Object"){
             return Object.values(state.skills)
@@ -20,8 +20,6 @@ export const Search = () => {
     }
 
     React.useEffect(initialEffect, [])
-
-    console.log(skills)
 
     return (
         <>
