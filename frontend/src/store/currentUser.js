@@ -20,7 +20,7 @@ export const fetchCurrentUser = () => async ( dispatch, getState ) => {
   await dispatch ( fetchAuth() )
   const { auth } = getState ()
   if ( auth !== null ) {
-    const { data } = await httpConfig.get ( `/apis/profile/$ { auth.profileId }` )
+    const { data } = await httpConfig.get ( `/apis/profile/${ auth.profileId }` )
     dispatch ( getCurrentUserByProfileId ( data ) )
   }
 }

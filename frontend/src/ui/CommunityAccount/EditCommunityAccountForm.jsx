@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { DisplayError } from "../shared/components/display-error/DisplayError.jsx";
 import { DisplayStatus } from "../shared/components/display-status/display-status.jsx";
+import {FormDebugger} from "../shared/FormDebugger.jsx";
 
 export const EditCommunityAccountForm = (props) => {
 
@@ -13,7 +14,7 @@ export const EditCommunityAccountForm = (props) => {
 
     const validationObject = Yup.object().shape({
 
-        fullName: Yup.string()
+        profileFullName: Yup.string()
             .max ( 32, 'Input less than 32 characters' ),
         profileEmail: Yup.string()
             .email( 'Email must be a valid email' ),
@@ -30,8 +31,8 @@ export const EditCommunityAccountForm = (props) => {
 
     function submitEditedProfile (values, { resetForm, setStatus }) {
 
-        const submitUpdatedProfile = (updatedProfile) => {
-            httpConfig.put(`/apis/profile/${profile.profileId}`, updatedProfile)
+
+            httpConfig.put(`/apis/profile/${profile.profileId}`, values)
                 .then(reply => {
                     let {message, type} = reply
 
@@ -41,7 +42,7 @@ export const EditCommunityAccountForm = (props) => {
                     setStatus({message, type})
                     return (reply)
                 })
-        }
+
 
     }
 
@@ -91,14 +92,14 @@ export const EditCommunityAccountForm = (props) => {
                             className="form-control"
                             name="fullName"
                             type="text"
-                            value={values.fullName}
+                            value={values.profileFullName}
                             placeholder="Full Name"
                             onChange={handleChange}
                             onBlur={handleBlur}
 
                         />
                     </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={'fullName'}/>
+                    <DisplayError errors={errors} touched={touched} field={'profileFullName'}/>
                 </Form.Group>
                 <Form.Group className="mb-4 px-3" controlId="profileEmail">
                     <Form.Label>Update your e-mail address</Form.Label>
@@ -191,6 +192,9 @@ export const EditCommunityAccountForm = (props) => {
                 </Form.Group>
                 </Form>
                 <DisplayStatus status={status}/>
+
+                <FormDebugger {...props} />
+
             </>
     )
 }
