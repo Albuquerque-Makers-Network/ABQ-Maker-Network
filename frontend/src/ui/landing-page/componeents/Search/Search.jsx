@@ -1,16 +1,26 @@
 import React from "react";
-import {Button, Col, Row, Container, Dropdown, DropdownButton, Form} from "react-bootstrap";
-import '../LandingPage.css'
-import {useSelector} from "react-redux";
+import {Button, Col, Row, Container, Form, DropdownButton} from "react-bootstrap";
+import '../../LandingPage.css'
+import {useDispatch, useSelector} from "react-redux";
+import skills, {fetchAllSkills} from "../../../../store/skills.js";
+import {SkillDropDown} from "./SkillDropDown.jsx";
 
 export const Search = () => {
     // function to place all skills into dropdown menu
     const allSkills = useSelector (state => {
         if (state?.skills.constructor.name === "Object"){
             return Object.values(state.profiles)
-    } else []
+        } else []
     })
 
+    const dispatch = useDispatch()
+    const initialEffect = () => {
+        dispatch(fetchAllSkills())
+    }
+
+    React.useEffect(initialEffect, [])
+
+    console.log(skills)
 
     return (
         <>
@@ -24,7 +34,7 @@ export const Search = () => {
                 </Col>
                 <Col sm={2}>
                     <DropdownButton variant="outline-light" id="dropdown-button" title="All Skills">
-                            <Dropdown.Item>Skill</Dropdown.Item>
+                        {allSkills.map(allSkills => <SkillDropDown allSkills={allSkills} key ={allSkills.skillId}/>)}
                     </DropdownButton>
                 </Col>
             </Row>

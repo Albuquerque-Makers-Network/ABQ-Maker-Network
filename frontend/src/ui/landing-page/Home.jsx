@@ -1,11 +1,11 @@
 import React from "react"
-import {Search} from "./componeents/Search.jsx";
+import {Search} from "./componeents/Search/Search.jsx";
 import {SkillIcons} from "./componeents/SkillIcons.jsx"
 import {ProfileCards} from "./componeents/ProfileCards.jsx";
-import {Container, Image, Row, Col} from "react-bootstrap";
+import {Container, Image, Row} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
 import {useDispatch, useSelector} from "react-redux";
-import profiles, {fetchAllProfiles} from "../../store/profiles.js";
+import {fetchAllProfiles} from "../../store/profiles.js";
 
 export const Home = () => {
 
