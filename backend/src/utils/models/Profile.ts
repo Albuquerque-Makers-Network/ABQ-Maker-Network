@@ -80,3 +80,12 @@ export async function selectPartialProfileByProfileId (profileId: string): Promi
 export async function selectAllIsMakerProfiles (): Promise<Profile[]> {
     return sql<Profile[]> `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_is_maker = true ORDER BY profile_full_name DESC`
 }
+
+export async function selectProfileBySkillId (skillId: string): Promise<Profile[]>{
+    return sql<Profile[]> `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile
+    JOIN maker_skill ON profile.profile_id = maker_skill.maker_skill_maker_profile_id
+    JOIN skill ON maker_skill.maker_skill_id = skill.skill_id WHERE skill_id = ${skillId}`
+}
+
+
+

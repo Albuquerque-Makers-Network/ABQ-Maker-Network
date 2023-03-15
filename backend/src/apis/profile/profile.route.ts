@@ -3,7 +3,7 @@ import {
     getProfileByProfileEmailController,
     getProfileByProfileFullNameController,
     getProfileByProfileIdController,
-    getProfileByProfileNameController,
+    getProfileByProfileNameController, getProfileBySkillIdController,
     putProfileController
 } from "./profile.controller";
 import { Router } from 'express'
@@ -38,4 +38,9 @@ profileRoute.route('/profileFullName/:profileFullName')
 profileRoute.route('/profileEmail/:profileEmail')
     .get(asyncValidatorController([check('profileEmail', 'please provide a valid profileEmail').isString()])
         , getProfileByProfileEmailController
+    )
+
+profileRoute.route('/skills/:skillId')
+    .get(asyncValidatorController([check('skillId', 'please provide a valid skillId').isUUID()])
+        , getProfileBySkillIdController
     )

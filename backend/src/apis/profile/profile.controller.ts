@@ -7,7 +7,7 @@ import {
     selectPartialProfileByProfileFullName,
     selectPartialProfileByProfileName,
     updateProfile,
-    selectWholeProfileByProfileId, selectAllIsMakerProfiles
+    selectWholeProfileByProfileId, selectAllIsMakerProfiles, selectProfileBySkillId
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
 
@@ -58,7 +58,7 @@ export async function putProfileController (request: Request, response: Response
         catch (error:any){
         return response.json({status: 400, data: null, message: error.message})
         }
-    };
+    }
 
 
 /**
@@ -78,7 +78,7 @@ export async function getProfileByProfileIdController (request: Request, respons
     } catch (error:any) {
         return (response.json({status: 400, data: null, message: error.message}))
     }
-};
+}
 
 /**
  * Express controller that returns a profile object with the provided profileName
@@ -100,7 +100,7 @@ export async function getProfileByProfileNameController (request: Request, respo
             data: []
         })
     }
-};
+}
 
 
 /**
@@ -123,7 +123,7 @@ export async function getProfileByProfileFullNameController (request: Request, r
             data: []
         })
     }
-};
+}
 
 
 /**
@@ -146,7 +146,7 @@ export async function getProfileByProfileEmailController (request: Request, resp
             data: []
         })
     }
-};
+}
 
 export async function getAllIsMakerProfilesController (request: Request, response: Response): Promise<Response<Status>> {
     try {
@@ -163,3 +163,21 @@ export async function getAllIsMakerProfilesController (request: Request, respons
     }
 }
 
+/**
+ * Express controller that returns a profile object by skillId through Maker_Skill table
+ * @param request  An object modeling the current request provided by Express.
+ * @param response an object modeling the response that will be sent to the client.
+ * @return A promise containing a status object with either a success or failure message set to the message field
+ */
+
+export async function getProfileBySkillIdController (request: Request, response: Response): Promise<Response> {
+    try {
+        const { skillId } = request.params
+        const postGresResponse = await selectProfileBySkillId(skillId)
+        const data = postGresResponse ?? null
+        const status: Status = { status: 200, data, message: null }
+        return response.json(status)
+    } catch (error:any) {
+        return (response.json({status: 400, data: null, message: error.message}))
+    }
+}
