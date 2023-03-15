@@ -6,7 +6,7 @@
     text-shadow: 2px 2px var(--cusOffBlack);
 }
 
-#placeholder-text::placeholder {
+.placeholder-text::placeholder {
     color: black;
     opacity: 1;
 }
