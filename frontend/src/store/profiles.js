@@ -21,7 +21,7 @@ export const fetchProfileByProfileId = (profileId) => async (dispatch, getState)
     const state = getState()
 
     const profiles = state.profiles
-    console.log(profiles[profileId])
+    // console.log(profiles[profileId])
     if(profiles[profileId] === undefined){
         const{data} = await httpConfig(`/apis/profile/${profileId}`)
         dispatch(setProfile({profileId, data}))
@@ -43,7 +43,7 @@ export const fetchAllProfiles = () => {
         },
         {}
         )
-        console.log(profileDictionary)
+        // console.log(profileDictionary)
         dispatch (setAllProfiles(profileDictionary))
     }
 }

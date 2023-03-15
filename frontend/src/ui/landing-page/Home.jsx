@@ -6,22 +6,31 @@ import {Container, Image, Row} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
 import {useDispatch, useSelector} from "react-redux";
 import profile, {fetchAllProfiles} from "../../store/profiles.js";
+import {fetchAllPopularSkills} from "../../store/skills.js";
 
 export const Home = () => {
 
+    // adds all maker profiles to page
     const allProfiles = useSelector(state => {
         if (state?.profiles.constructor.name === "Object")
-            // && (Object.profileIsMaker === true))
         {
             return Object.values(state.profiles)
         } else []
     })
 
-    console.log(profile)
+    // adds all popular skills to page
+    const allPopularSkills = useSelector(state => {
+        if (state?.skills.constructor.name === "Object")
+        {
+            return Object.values(state.skills)
+        } else []
+    })
+
+    // console.log(profile)
 
     const dispatch = useDispatch()
     const initialEffect = () => {
-        dispatch(fetchAllProfiles())
+        dispatch(fetchAllProfiles()), dispatch(fetchAllPopularSkills())
     }
 
     React.useEffect(initialEffect, [])
@@ -46,7 +55,11 @@ export const Home = () => {
             <section>
                 <Container className="my-5 mx-auto px-md-0 px-4">
                     <h4 className="my-3">Popular Skills</h4>
-                    <SkillIcons/>
+                    <Container>
+                        <Row id='skill-icons' className='gap-md- gap-lg-3'>
+                            {allPopularSkills.map(allPopularSkills => <SkillIcons allPopularSkills={allPopularSkills} key={allPopularSkills.skillId}/>)}
+                        </Row>
+                    </Container>
                 </Container>
             </section>
             <section>
