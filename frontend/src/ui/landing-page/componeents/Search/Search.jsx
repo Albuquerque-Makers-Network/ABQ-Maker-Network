@@ -6,10 +6,11 @@ import skills, {fetchAllSkills} from "../../../../store/skills.js";
 import {SkillDropDown} from "./SkillDropDown.jsx";
 
 export const Search = () => {
-    // function to place all skills into dropdown menu
+
+    // this places all skills into dropdown menu
     const allSkills = useSelector (state => {
         if (state?.skills.constructor.name === "Object"){
-            return Object.values(state.profiles)
+            return Object.values(state.skills)
         } else []
     })
 
@@ -34,7 +35,7 @@ export const Search = () => {
                 </Col>
                 <Col sm={2}>
                     <DropdownButton variant="outline-light" id="dropdown-button" title="All Skills">
-                        {allSkills.map(allSkills => <SkillDropDown allSkills={allSkills} key ={allSkills.skillId}/>)}
+                        {allSkills.map(allSkills => <SkillDropDown allSkills={allSkills} key={allSkills.skillId}/>)}
                     </DropdownButton>
                 </Col>
             </Row>
