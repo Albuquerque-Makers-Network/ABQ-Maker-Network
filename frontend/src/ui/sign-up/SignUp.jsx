@@ -2,11 +2,13 @@ import {Button, Container, FormControl, Form, InputGroup} from "react-bootstrap"
 import "./SignUp.css"
 import React from "react"
 import { httpConfig } from "../shared/utils/httpconfig"
-import {Formik} from "formik"
+import {Field, Formik} from "formik"
 import * as Yup from "yup"
 import {Link} from "react-router-dom";
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
+import * as PropTypes from "prop-types";
+import {FormDebugger} from "../shared/FormDebugger.jsx";
 
 export const SignUp = () => {
 
@@ -62,6 +64,18 @@ return (
 )
 }
 
+function RadioGroup(props) {
+  return null;
+}
+
+RadioGroup.propTypes = {
+  name: PropTypes.string,
+  className: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.any,
+  children: PropTypes.node
+};
+
 function SignUpFormContent (props) {
 
   const {
@@ -82,24 +96,14 @@ function SignUpFormContent (props) {
       <Form onSubmit = { handleSubmit } >
         <section>
           <Container className="bg-light mt-5 rounded-4 border border-dark border-3" id="sign-up-form">
-            <h1 className="text-center text-dark py-5">Sign-Up</h1>
+            <h1 className="text-center text-light py-5" id="sign-up">Sign-Up</h1>
             <Form.Group className="my-3 px-3" controlId = "profileIsMaker">
                 <InputGroup className="bg-light rounded-2 align-content-center w-50  border border-dark border-2 ps-3">
-                  {/*<FormControl*/}
-                  {/*    name="profileIsMaker"*/}
-                  {/*    type="boolean"*/}
-                  {/*    value = { values.profileIsMaker}*/}
-                  {/*    onChange = { handleChange }*/}
-                  {/*    onBlur = { handleBlur }*/}
-                  {/*  className="form-control">*/}
-                  {['radio'].map((type) => (
-                    <div key={`inline-${type}`} className="pt-2">
-                      <Form.Label inline className="col-12 col-lg-auto fw-bold pe-3">Account Type:</Form.Label>
-                      <Form.Check inline label="Community Member" name="group1" type={type} id={`inline-${type}`} />
-                      <Form.Check inline label="Maker" name="group1" type={type} id={`inline-${type}`}/>
+                    <div className="pt-2">
+                      <Form.Label className="col-12 col-lg-auto fw-bold pe-3">Account Type:</Form.Label>
+                      <Form.Check inline label="Community Member" name="profileIsMaker" type={"radio"} id={"profileIsMaker"} value={0} onChange = { handleChange } onBlur = { handleBlur } defaultChecked={values.profileIsMaker === 0}/>
+                      <Form.Check inline label="Maker" name="profileIsMaker" type={"radio"} id={"profileIsMaker"} value={1} onChange = { handleChange } onBlur = { handleBlur } defaultChecked={values.profileIsMaker === 1}/>
                     </div>
-                  ))}
-                    {/*</FormControl>*/}
                 </InputGroup>
               <DisplayError errors={errors} touched={touched} field={"profileIsMaker"}/>
             </Form.Group>
@@ -129,7 +133,7 @@ function SignUpFormContent (props) {
                 onChange = { handleChange }
                 onBlur = { handleBlur }
                 className="form-control fw-bold border border-dark border-2 placeholder-text"
-                maxLength={32}  />
+                maxLength={64}  />
             </InputGroup>
             <DisplayError errors = { errors } touched = { touched } field = { "profileName"} />
           </Form.Group>
@@ -196,7 +200,7 @@ function SignUpFormContent (props) {
           </Container>
         </section>
       </Form>
-
+<FormDebugger props={ props }/>
       <DisplayStatus status= { status } />
 
     </>
