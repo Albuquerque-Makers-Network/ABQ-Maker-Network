@@ -21,7 +21,7 @@ export function SkillIcons() {
             <Container>
                 <Row id='skill-icons' className='gap-md-2 gap-lg-3'>
                     <Col xs={3} md={2} lg={1} className='text-center p-1'>
-                        <Button type='submit' className='bg-transparent border-0'><Image fluid src={ThreePrint} alt='3d Printer Icon' width='100'/></Button>
+                        <Button type='submit' className='bg-transparent border-0'><Image fluid src={"https://res.cloudinary.com/dldavnvm3/image/upload/v1678912639/skill-icons-3dPrint_kupiyu.svg"} alt='3d Printer Icon' width='100'/></Button>
                         <p>3d Printing</p>
                     </Col>
                     <Col xs={3} md={2} lg={1} className='text-center p-1'>
