@@ -8,32 +8,19 @@ import {ProfileCards} from "./ProfileCards.jsx";
 
 export function SkillIcons(props) {
 
-    const {popularSkills} = props
+    const {popularSkill, filterProfilesBySkill} = props
 
-    // const allProfiles = useSelector(state => {
-    //     if (state?.profiles.constructor.name === "Object")
-    //     {
-    //         return Object.values(state.profiles)
-    //     } else []
-    // })
-    //
-    //
     function handleClick() {
-        alert('you clicked this!')
 
-    //     const dispatch = useDispatch()
-    //     const initialEffect = () => {
-    //         dispatch ( fetchProfileBySkillId(allProfiles) )
-    //     }
-    //
-    //     React.useEffect (initialEffect, [])
+        filterProfilesBySkill(popularSkill.skillId)
+
     }
 
     return (
         <>
-            <Col xs={3} md={2} lg={1} className='text-center p-1'>
-                <Button onClick={handleClick} type='submit' className='bg-transparent border-0'><Image fluid src={popularSkills.skillIconUrl} width='100'/></Button>
-                <p>{popularSkills.skillType}</p>
+            <Col onClick={handleClick} xs={3} md={2} lg={1} className='text-center p-1'>
+                <Image fluid src={popularSkill.skillIconUrl} width='100'/>
+                <p>{popularSkill.skillType}</p>
             </Col>
         </>
     )

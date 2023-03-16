@@ -7,7 +7,7 @@ import {CommunityAccount} from "./CommunityAccount/CommunityAccount.jsx";
 import {MakerAccount} from "./MakerAccount/MakerAccount.jsx";
 import {SignUp} from "./sign-up/SignUp.jsx";
 import {MakerProfile} from "./maker-profile/MakerProfile.jsx";
-import {Navigation} from "./shared/components/Navigation.jsx";
+import {Navigation} from "./shared/components/NavBar/Navigation.jsx";
 import {Provider} from "react-redux";
 import {SignIn} from "./sign-in/SignIn.jsx";
 

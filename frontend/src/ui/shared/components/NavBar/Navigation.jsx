@@ -1,9 +1,23 @@
 import {Container, Image, Nav, Navbar} from "react-bootstrap";
 import React from "react";
-import Logo from "../../../assets/maker-network-logo.png"
-import ProfilePicture from "../../../assets/profile-placeholder.png"
-import "../../App.css"
+import Logo from "../../../../assets/maker-network-logo.png"
+import "../../../App.css"
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCurrentUser} from "../../../../store/currentUser.js";
+import {SignedIn} from "./SignedIn"
+import {NotSignedIn} from "./NotSignedIn.jsx";
+
 export function Navigation(){
+
+    const dispatch = useDispatch()
+    const profile = useSelector(state => state.currentUser ? state.currentUser : null)
+
+    const sideEffects = () => {
+        dispatch(fetchCurrentUser())
+    }
+
+    React.useEffect(sideEffects, [dispatch])
+
     return (
         <>
             <Navbar className='my-3' expand="lg">
@@ -14,13 +28,17 @@ export function Navigation(){
                     </Navbar.Brand>
                     <Navbar.Toggle className='ms-auto mb-3 border-3'  aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse className='my-3' id="basic-navbar-nav" >
-                        <Nav className="ms-auto d-flex align-items-center">
-                            <Nav.Link  href="/">Home</Nav.Link>
-                            <Nav.Link href="/sign-up">Sign In/Up</Nav.Link>
-                            {/*image displays on full screen, text on mobile*/}
-                            <Nav.Link id="nav-pic"  href="/maker-account"><Image fluid className='border border-0 rounded-3' src={ProfilePicture} width='50'/></Nav.Link>
-                            <Nav.Link id="nav-account" href="/maker-account">Account Page</Nav.Link>
-                        </Nav>
+                        {!profile &&
+                            <>
+                                <NotSignedIn profile={profile}/>
+                            </>
+                        }
+
+                        {profile &&
+                            <>
+                                <SignedIn profile={profile}/>
+                            </>
+                        }
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

@@ -6,13 +6,13 @@ const profileFiltersSlice = createSlice ({
     name: "profileFilters",
     initialState : {},
     reducers: {
-        getProfilebySkill: (profileFilters, action) => {
+        getProfileBySkill: (profileFilters, action) => {
             profiles[action.payload.skillId] = action.payload.data
         }
     }
 })
 
-export const {getProfilebySkill} = profileFiltersSlice.actions
+export const {getProfileBySkill} = profileFiltersSlice.actions
 
 export const fetchProfileBySkillId = (skillId) => async (dispatch, getState) => {
     const state = getState()
@@ -21,7 +21,7 @@ export const fetchProfileBySkillId = (skillId) => async (dispatch, getState) => 
 
     if (profiles[skillId] === undefined) {
         const {data} = await httpConfig(`/apis/profile/skills/${skillId}`)
-        dispatch(getProfilebySkill({skillId, data}))
+        dispatch(getProfileBySkill({skillId, data}))
     }
 }
 

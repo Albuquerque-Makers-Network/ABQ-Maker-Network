@@ -7,11 +7,12 @@ import Logo from "../../assets/maker-network-logo.png";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllProfiles} from "../../store/profiles.js";
 import {fetchAllSkills} from "../../store/skills.js";
+import {fetchProfileBySkillId} from "../../store/profiles.js";
 
 export const Home = () => {
 
     // adds all maker profiles to page
-    const allProfiles = useSelector(state => {
+    const profiles = useSelector(state => {
         if (state?.profiles.constructor.name === "Object")
         {
             return Object.values(state.profiles)
@@ -50,6 +51,9 @@ export const Home = () => {
 
     React.useEffect(initialEffect, [])
 
+    const filterProfilesBySkill = (skillId) => {
+        dispatch (fetchProfileBySkillId(skillId))
+    }
 
     return (
         <>
@@ -72,15 +76,16 @@ export const Home = () => {
                     <h4 className="my-3">Popular Skills</h4>
                     <Container>
                         <Row id='skill-icons' className='gap-md- gap-lg-3'>
-                            {popularSkills.map(popularSkills => <SkillIcons popularSkills={popularSkills} key={popularSkills.skillId}/>)}
+                            {popularSkills.map(popularSkill => <SkillIcons filterProfilesBySkill={filterProfilesBySkill} popularSkill={popularSkill} key={popularSkill.skillId}/>)}
                         </Row>
                     </Container>
                 </Container>
+
             </section>
             <section>
                 <Container className="my-5 mx-auto px-md-0 px-4">
                     <Row>
-                        {allProfiles.map(allProfiles => <ProfileCards allProfiles={allProfiles} key={allProfiles.profileId}/>)}
+                        {profiles.map(profile => <ProfileCards profile={profile} key={profile.profileId}/>)}
                     </Row>
                 </Container>
             </section>
