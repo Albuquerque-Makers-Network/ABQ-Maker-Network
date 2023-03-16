@@ -1,11 +1,12 @@
 import {Col, Image} from "react-bootstrap";
+import React from "react";
 
-export const PortfolioImages = ( props ) => {
-  const { allPortfolios } = props
+export const PortfolioImages = () => {
+
   return (
     <>
       <Col className = "p-2 rounded-4">
-          <Image src={ allPortfolios.portfolioImageUrl} />
+          <Image src={ portfolio.portfolioImageUrl} />
       </Col>
     </>
   )
