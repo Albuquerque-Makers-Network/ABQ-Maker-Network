@@ -6,7 +6,7 @@ import {Container, Image, Row} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
 import {useDispatch, useSelector} from "react-redux";
 import profile, {fetchAllProfiles} from "../../store/profiles.js";
-import {fetchAllPopularSkills} from "../../store/skills.js";
+import {fetchAllPopularSkills, fetchAllSkills} from "../../store/skills.js";
 
 export const Home = () => {
 
@@ -19,9 +19,24 @@ export const Home = () => {
     })
 
     // adds all popular skills to page
-    const allPopularSkills = useSelector(state => {
+    const popularSkills = useSelector(state => {
         if (state?.skills.constructor.name === "Object")
         {
+            let popularSkills = []
+            for (let skillId in state.skills) {
+                if (state.skills[skillId].skillIsPopular === true){
+                    popularSkills.push(state.skills[skillId])
+                }
+            }
+            return popularSkills
+
+        } else []
+    })
+
+    console.log(popularSkills)
+
+    const allSkills = useSelector (state => {
+        if (state?.skills.constructor.name === "Object"){
             return Object.values(state.skills)
         } else []
     })
@@ -30,7 +45,7 @@ export const Home = () => {
 
     const dispatch = useDispatch()
     const initialEffect = () => {
-        dispatch(fetchAllProfiles()), dispatch(fetchAllPopularSkills())
+        dispatch(fetchAllProfiles()), dispatch(fetchAllSkills())
     }
 
     React.useEffect(initialEffect, [])
@@ -48,7 +63,7 @@ export const Home = () => {
                     <Container className="my-5 mx-auto px-md-0 px-4">
                         <h3 className="my-3">Ready to start collaborating with others?</h3>
                         <p>Start searching by maker information or skill type.</p>
-                        <Search/>
+                        <Search allSkills={allSkills}/>
                     </Container>
                 </Container>
             </section>
@@ -57,7 +72,7 @@ export const Home = () => {
                     <h4 className="my-3">Popular Skills</h4>
                     <Container>
                         <Row id='skill-icons' className='gap-md- gap-lg-3'>
-                            {allPopularSkills.map(allPopularSkills => <SkillIcons allPopularSkills={allPopularSkills} key={allPopularSkills.skillId}/>)}
+                            {popularSkills.map(popularSkills => <SkillIcons popularSkills={popularSkills} key={popularSkills.skillId}/>)}
                         </Row>
                     </Container>
                 </Container>

@@ -5,21 +5,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchAllSkills} from "../../../../store/skills.js";
 import {SkillDropDown} from "./SkillDropDown.jsx";
 
-export const Search = () => {
+export const Search = (props) => {
 
-    // this places all skills into dropdown button
-    const allSkills = useSelector (state => {
-        if (state?.skills.constructor.name === "Object"){
-            return Object.values(state.skills)
-        } else []
-    })
-
-    const dispatch = useDispatch()
-    const initialEffect = () => {
-        dispatch(fetchAllSkills())
-    }
-
-    React.useEffect(initialEffect, [])
+const {allSkills} = props
 
     return (
         <>
