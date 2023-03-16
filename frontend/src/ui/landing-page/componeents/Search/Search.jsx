@@ -1,8 +1,6 @@
 import React from "react";
 import {Button, Col, Row, Container, Form, DropdownButton} from "react-bootstrap";
 import '../../LandingPage.css'
-import {useDispatch, useSelector} from "react-redux";
-import {fetchAllSkills} from "../../../../store/skills.js";
 import {SkillDropDown} from "./SkillDropDown.jsx";
 
 export const Search = (props) => {

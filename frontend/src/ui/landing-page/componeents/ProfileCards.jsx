@@ -1,8 +1,7 @@
 import React from "react";
 import {Card, Col, Container, Image} from "react-bootstrap";
 import "../LandingPage.css"
-import {Link, Route, useParams} from "react-router-dom";
-import {MakerProfile} from "../../maker-profile/MakerProfile.jsx";
+import {Link} from "react-router-dom";
 
 export function ProfileCards(props) {
   const {allProfiles} = props

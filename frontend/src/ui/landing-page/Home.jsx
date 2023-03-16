@@ -5,8 +5,8 @@ import {ProfileCards} from "./componeents/ProfileCards.jsx";
 import {Container, Image, Row} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
 import {useDispatch, useSelector} from "react-redux";
-import profile, {fetchAllProfiles} from "../../store/profiles.js";
-import {fetchAllPopularSkills, fetchAllSkills} from "../../store/skills.js";
+import {fetchAllProfiles} from "../../store/profiles.js";
+import {fetchAllSkills} from "../../store/skills.js";
 
 export const Home = () => {
 
@@ -33,7 +33,7 @@ export const Home = () => {
         } else []
     })
 
-    console.log(popularSkills)
+    // console.log(popularSkills)
 
     const allSkills = useSelector (state => {
         if (state?.skills.constructor.name === "Object"){
