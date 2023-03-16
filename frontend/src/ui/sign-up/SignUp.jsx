@@ -7,7 +7,6 @@ import * as Yup from "yup"
 import {Link} from "react-router-dom";
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
-import * as PropTypes from "prop-types";
 import {FormDebugger} from "../shared/FormDebugger.jsx";
 
 export const SignUp = () => {

@@ -25,7 +25,7 @@ export function App(props) {
                             <Route path={"*"} element={<FourOhFour />} />
                             <Route path={'/sign-up'} element={<SignUp />} />
                             <Route path={'/sign-in'} element={<SignIn />} />
-                            <Route path={'/maker-profile'} element={<MakerProfile />} />
+                            <Route path={'/maker-profile/:profileId'} element={<MakerProfile />} />
                             <Route path={'/community-account'} element={<CommunityAccount />} />
                             <Route path={'/maker-account'} element={<MakerAccount />} />
                         </Routes>
