@@ -1,6 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {httpConfig} from "../ui/shared/utils/httpconfig"
-import {getProfileBySkill} from "./profileFilters.js";
 
 const profileSlice = createSlice({
     name: "profiles",

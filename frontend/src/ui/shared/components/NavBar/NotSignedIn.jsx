@@ -1,5 +1,4 @@
-import {Button, Col, Image, Nav} from "react-bootstrap";
-import ProfilePicture from "../../../../assets/profile-placeholder.png";
+import {Nav} from "react-bootstrap";
 
 export const NotSignedIn = (props) => {
 

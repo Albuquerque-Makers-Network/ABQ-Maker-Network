@@ -1,9 +1,6 @@
 import React from "react"
 import {Col, Button, Image} from "react-bootstrap";
 import "../LandingPage.css"
-import {fetchProfileBySkillId} from "../../../store/profileFilters.js";
-import {useDispatch, useSelector} from "react-redux";
-import {ProfileCards} from "./ProfileCards.jsx";
 
 
 export function SkillIcons(props) {
