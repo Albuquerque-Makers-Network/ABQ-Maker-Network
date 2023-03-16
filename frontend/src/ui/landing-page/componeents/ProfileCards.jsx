@@ -9,8 +9,7 @@ export function ProfileCards(props) {
 
   return (
     <>
-<Link to={`/maker-profile/${allProfiles.profileId}`} element={<MakerProfile />} >
-    <Col className='my-3' xs={6} sm={6} md={4} lg={3}>
+<Link to={`/maker-profile/${allProfiles.profileId}`} className='col my-3' xs={6} sm={6} md={4} lg={3}>
       <Card id='profile-card'>
         <Card.Link id="home-card-link" href="/maker-profile">
           <Container id="home-profile-card-image" className='d-flex p-0 m-0'>
@@ -21,7 +20,6 @@ export function ProfileCards(props) {
           </Card.Body>
         </Card.Link>
       </Card>
-    </Col>
 </Link>
 </>
 )
