@@ -1,13 +1,14 @@
 import {Col, Container, Image, Row} from "react-bootstrap";
 import React from "react";
-import {Skill} from "./Skill.jsx";
+import {Skill} from "./components/Skill.jsx";
 import "../App.css"
 import "./MakerProfile.css"
 import {fetchProfileByProfileId} from "../../store/profiles.js";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {PortfolioImages} from "./PortfolioImage.jsx";
-import portfolios, {fetchAllPortfolios, fetchPortfolioByProfileId} from "../../store/portfolios.js";
+import {PortfolioImages} from "./components/PortfolioImage.jsx";
+import portfolios, {fetchPortfolioByProfileId} from "../../store/portfolios.js";
+import {fetchSkillByProfileId} from "../../store/skills.js";
 
 
 export function MakerProfile() {
@@ -15,14 +16,13 @@ export function MakerProfile() {
 
   //extracts profileId from Object
   const profileId = selectedProfileId.profileId
-  const portfolioProfileId = profileId
 
   const dispatch = useDispatch()
 
   const initialEffect = () => {
     dispatch (fetchProfileByProfileId(profileId))
-    // dispatch (fetchAllPortfolios())
-    // dispatch (fetchSkillsByMakerProfileId (portfolioProfileId))
+    dispatch (fetchSkillByProfileId(profileId))
+    dispatch (fetchPortfolioByProfileId(profileId))
   }
 
   React.useEffect( initialEffect, [profileId])
@@ -35,19 +35,35 @@ export function MakerProfile() {
     }
   })
 
-  // const portfolios = useSelector (state => {
-  //   if (state?.portfolios.constructor.name === "Object") {
-  //     return Object.values(state.portfolios)
-  //   } else {
-  //     return null
-  //   }
-  // })
+  const portfolio = useSelector (state => {
+    if (state?.portfolios[profileId]){
+      return state.portfolios[profileId]
+    } else {
+      return null
+    }
+  })
 
+  // console.log(portfolio.portfolioId)
+
+  const skill = useSelector (state => {
+    if (state?.skills.constructor.name === "Object"){
+      return Object.values(state.skills)
+    } else {
+      return null
+    }
+  })
+
+  console.log(skill.skillId)
 
   //renders portfolios on page
   // const renderedPortfolios = (portfolios) => {
   //   return portfolios.map (portfolio => <PortfolioImages portfolio={portfolio}/> )
   // }
+
+  //renders skills on page
+  const renderedSkills = (skills) => {
+    return skills.map (skill => <Skill skill={skill}/> )
+  }
 
       return (
         <>
@@ -64,17 +80,19 @@ export function MakerProfile() {
                 <p id="email-text">{profile.profileEmail}</p>
               </Col>
 
-              <Col className="order-2 order-sm-3 my-3 mt-lg-0 d-block d-lg-inline">
+              <Col className="order-2 order-sm-3 my-3 mt-lg-0 d-block d-lg-inline justify-content-center">
                 <h2 className="text-center text-lg-start text-light" id="skills-name">Skills:</h2>
-                <Skill/>
+                <Row>
+                {renderedSkills(skill)}
+                </Row>
               </Col>
             </Row>
           </Container>
-          {/*{renderedPortfolios(portfolios)}*/}
+
           <Container>
             <Row>
               <Col className="my-3">
-
+                {/*{renderedPortfolios(portfolios)}*/}
               </Col>
               <Col xs={12} md={4} className="rounded-4 p-4 mt-4 mb-auto text-white" id="pricing">
                 <h2 className="text-md-center text-sm-start">Pricing:</h2>

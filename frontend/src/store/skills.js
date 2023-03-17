@@ -56,25 +56,22 @@ export const fetchAllPopularSkills = () => {
     }
 }
 
-export const fetchSkillByProfileId = (profileId) => async (dispatch, getState) => {
-    const state = getState()
-    const skills = state.skills
-
-    if (skills[profileId] === undefined) {
-        const {data} = await httpConfig(`/apis/skills/profiles/${profileId}`)
-        if (Array.isArray(data)=== false){
-            throw new Error('data is malformed')
+export const fetchSkillByProfileId = (profileId) => {
+    return async function (dispatch) {
+        const { data } = await httpConfig(`/apis/skills/profileId/${profileId}`)
+        if ( Array.isArray(data)===false) {
+            throw new Error ('data is malformed')
         }
-        const SkillsDictionary = data.reduce(
-          (accumulator, currentValue) => {
-              accumulator[currentValue.skillId] = currentValue
-              return accumulator
-          },
-          {}
-        )
-        dispatch (setProfileSkills(SkillsDictionary))
+        const skills = data.reduce(
+              (accumulator, currentValue) => {
+                  accumulator[currentValue.skillId] = currentValue
+                  return accumulator
+              },
+              {}
+            )
+            dispatch(setProfileSkills(skills))
+        }
     }
-}
 
 
 

@@ -1,6 +1,6 @@
 import {Col, Image} from "react-bootstrap";
 import React from "react";
-import portfolios from "../../store/portfolios.js";
+import portfolios from "../../../store/portfolios.js";
 
 export const PortfolioImages = (props) => {
 const {portfolio} = props
