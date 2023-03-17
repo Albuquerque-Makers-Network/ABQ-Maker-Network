@@ -2,8 +2,6 @@ import {Nav} from "react-bootstrap";
 
 export const NotSignedIn = (props) => {
 
-    const { profile } = props
-
     return (
         <>
             <Nav className="ms-auto d-flex align-items-center">
