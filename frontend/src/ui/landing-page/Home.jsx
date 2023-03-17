@@ -10,7 +10,6 @@ import {fetchProfileBySkillId} from "../../store/profiles.js";
 import {SkillDropDown} from "./componeents/Search/SkillDropDown.jsx";
 import {Search} from './componeents/Search/Search.jsx'
 
-
 export const Home = () => {
 
     // adds all maker profiles to page

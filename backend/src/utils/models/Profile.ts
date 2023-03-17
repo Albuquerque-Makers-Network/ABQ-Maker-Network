@@ -67,7 +67,7 @@ export async function selectPartialProfileByProfileFullName (profileFullName: st
         return result?.length === 1 ? result [0] : null
 }
 export async function selectPartialProfileByProfileName (profileName: string): Promise<Profile|null> {
-    const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_name = ${profileName}`
+    const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_name ILIKE ${profileName}`
     return result?.length === 1 ? result [0] : null
 }
 
