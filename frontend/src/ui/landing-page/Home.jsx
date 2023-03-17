@@ -2,12 +2,13 @@ import React from "react"
 import {Search} from "./componeents/Search/Search.jsx";
 import {SkillIcons} from "./componeents/SkillIcons.jsx"
 import {ProfileCards} from "./componeents/ProfileCards.jsx";
-import {Container, Image, Row} from "react-bootstrap";
+import {Col, Container, DropdownButton, Image, Row} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllProfiles} from "../../store/profiles.js";
 import {fetchAllSkills} from "../../store/skills.js";
 import {fetchProfileBySkillId} from "../../store/profiles.js";
+import {SkillDropDown} from "./componeents/Search/SkillDropDown.jsx";
 
 export const Home = () => {
 
@@ -52,8 +53,10 @@ export const Home = () => {
     React.useEffect(initialEffect, [])
 
     const filterProfilesBySkill = (skillId) => {
-        dispatch (fetchProfileBySkillId(skillId))
+        dispatch(fetchProfileBySkillId(skillId))
     }
+
+    // const filterProfilesinSearch =
 
     return (
         <>
@@ -67,7 +70,19 @@ export const Home = () => {
                     <Container className="my-5 mx-auto px-md-0 px-4">
                         <h3 className="my-3">Ready to start collaborating with others?</h3>
                         <p>Start searching by maker information or skill type.</p>
-                        <Search allSkills={allSkills}/>
+
+                        <Container fluid className="p-0">
+                            <Row>
+                                <Col sm={10}>
+                                    <Search/>
+                                </Col>
+                                <Col sm={2}>
+                                    <DropdownButton variant="outline-light" id="dropdown-button" title="All Skills">
+                                        {allSkills.map(allskill => <SkillDropDown filterProfilesBySkill={filterProfilesBySkill} allskill={allskill} key={allskill.skillId}/>)}
+                                    </DropdownButton>
+                                </Col>
+                            </Row>
+                        </Container>
                     </Container>
                 </Container>
             </section>
