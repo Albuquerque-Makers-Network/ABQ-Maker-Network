@@ -20,7 +20,7 @@ skillsRouter.route('/:skillId')
 skillsRouter.route('/SkillsIsPopular/Popular')
     .get(getAllIsPopularSkillsController)
 
-skillsRouter.route('/profileId/:profileId')
+skillsRouter.route('/:profileId')
   .get(asyncValidatorController([check
   ('profileId', 'please provide a valid profileId').isUUID()])
 , getSkillByProfileIdController
