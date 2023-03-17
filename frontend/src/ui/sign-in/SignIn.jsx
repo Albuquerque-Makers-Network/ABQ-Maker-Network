@@ -39,8 +39,8 @@ export function SignIn() {
             resetForm();
             let jwtToken = jwtDecode(reply.headers["authorization"])
             dispatch(getAuth(jwtToken));
-
           }
+          window.location.href = '/'
         });
   };
 
@@ -108,7 +108,6 @@ function SignInFormContent(props){
         </Form.Group>
 
         <Form.Group className="d-flex justify-content-center">
-          {/*<Button variant="light" type="submit" className="mb-3 fw-bold border border-dark border-2">Submit</Button>*/}
           <Button id="sign-in-submit" className='m-2 btn mb-3 fw-bold border border-dark border-2' type="Submit">Submit</Button>
           {" "}
           <Button
