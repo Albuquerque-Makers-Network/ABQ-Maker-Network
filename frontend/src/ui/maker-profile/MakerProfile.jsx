@@ -22,7 +22,7 @@ export function MakerProfile() {
   const initialEffect = () => {
     dispatch (fetchProfileByProfileId(profileId))
     dispatch (fetchSkillByProfileId(profileId))
-    dispatch (fetchPortfolioByProfileId(profileId))
+   dispatch (fetchPortfolioByProfileId(profileId))
   }
 
   React.useEffect( initialEffect, [profileId])
@@ -35,14 +35,13 @@ export function MakerProfile() {
     }
   })
 
-  const portfolio = useSelector (state => {
+  const portfolios = useSelector (state => {
     if (state?.portfolios[profileId]){
       return state.portfolios[profileId]
     } else {
       return null
     }
   })
-
 
   const skill = useSelector (state => {
     if (state?.skills.constructor.name === "Object"){
@@ -58,9 +57,11 @@ export function MakerProfile() {
   }
 
   //renders portfolios on page
-  const renderedPortfolios = (portfolios) => {
-    return portfolios.map (portfolio => <PortfolioImage portfolio={portfolio}/> )
-  }
+  //   const renderedPortfolio = (portfolios) => {
+  //   setTimeout (() => {
+  //       return portfolios.map (portfolio => <PortfolioImage portfolio={portfolio}/> )
+  //     }, 3000)
+  // }
 
       return (
         <>
@@ -89,7 +90,7 @@ export function MakerProfile() {
           <Container>
             <Row>
               <Col className="my-3">
-                {/*{renderedPortfolios(portfolio)}*/}
+                {setTimeout(() => {portfolios.map(portfolio => <PortfolioImage portfolio={portfolio}/> )}, 3000) }
               </Col>
               <Col xs={12} md={4} className="rounded-4 p-4 mt-4 mb-auto text-white" id="pricing">
                 <h2 className="text-md-center text-sm-start">Pricing:</h2>

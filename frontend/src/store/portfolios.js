@@ -31,9 +31,8 @@ export const fetchPortfolioByProfileId = (profileId) => {
   )
 
   dispatch(getPortfoliosByProfileId(portfolios))
-    }
+  }
 }
-
 
 
 export default portfolioSlice.reducer

@@ -1,4 +1,4 @@
-import {Col, Container, Image} from "react-bootstrap";
+import {Col} from "react-bootstrap";
 import React from "react";
 
 
