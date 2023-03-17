@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {httpConfig} from "../ui/shared/utils/httpconfig"
+import {setAllProfiles} from "./profiles.js";
 
 const skillSlice = createSlice({
     name: "skills",
@@ -51,7 +52,6 @@ export const fetchAllPopularSkills = () => {
         dispatch (setAllPopularSkills(popularSkillsDictionary))
     }
 }
-
 
 
 export default skillSlice.reducer

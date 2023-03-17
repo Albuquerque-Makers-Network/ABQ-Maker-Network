@@ -7,7 +7,7 @@ import {fetchProfileByProfileId} from "../../store/profiles.js";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {PortfolioImages} from "./PortfolioImage.jsx";
-import portfolios, {fetchPortfolioByProfileId} from "../../store/portfolios.js";
+import portfolios, {fetchAllPortfolios, fetchPortfolioByProfileId} from "../../store/portfolios.js";
 
 
 export function MakerProfile() {
@@ -15,12 +15,14 @@ export function MakerProfile() {
 
   //extracts profileId from Object
   const profileId = selectedProfileId.profileId
+  const portfolioProfileId = profileId
 
   const dispatch = useDispatch()
 
   const initialEffect = () => {
     dispatch (fetchProfileByProfileId(profileId))
-    dispatch (fetchPortfolioByProfileId(profileId))
+    // dispatch (fetchAllPortfolios())
+    // dispatch (fetchSkillsByMakerProfileId (portfolioProfileId))
   }
 
   React.useEffect( initialEffect, [profileId])
@@ -33,13 +35,19 @@ export function MakerProfile() {
     }
   })
 
-  const portfolio = useSelector (state => {
-    if (state?.portfolios[profileId]){
-      return state.portfolios[profileId]
-    } else {
-      return null
-    }
-  })
+  // const portfolios = useSelector (state => {
+  //   if (state?.portfolios.constructor.name === "Object") {
+  //     return Object.values(state.portfolios)
+  //   } else {
+  //     return null
+  //   }
+  // })
+
+
+  //renders portfolios on mage
+  // const renderedPortfolios = (portfolios) => {
+  //   return portfolios.map (portfolio => <PortfolioImages portfolio={portfolio}/> )
+  // }
 
       return (
         <>
@@ -62,10 +70,7 @@ export function MakerProfile() {
               </Col>
             </Row>
           </Container>
-          {portfolios.map (portfolios =>
-            <PortfolioImages
-              portfolio={portfolio}
-              key={portfolio.portfolioProfileId} />)}
+          {/*{renderedPortfolios(portfolios)}*/}
           <Container>
             <Row>
               <Col className="my-3">
