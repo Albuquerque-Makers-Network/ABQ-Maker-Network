@@ -69,6 +69,29 @@ export const fetchProfileBySkillId = (skillId) => async (dispatch, getState) => 
     }
 }
 
+export const fetchProfileByProfileName = (profileName) => async (dispatch, getState) => {
+    const state = getState()
+
+    const profiles = state.profiles
+
+    if (profiles[profileName] === undefined) {
+        const {data} = await httpConfig(`/profileName/${profileName}`)
+        if (Array.isArray(data)=== false){
+            throw new Error('data is malformed')
+        }
+        const profileDictionary = data.reduce(
+            (accumulator, currentValue) => {
+                accumulator[currentValue.profileId] = currentValue
+                return accumulator
+            },
+            {}
+        )
+        dispatch (setAllProfiles(profileDictionary))
+    }
+}
+
+
+
 
 
 export default profileSlice.reducer

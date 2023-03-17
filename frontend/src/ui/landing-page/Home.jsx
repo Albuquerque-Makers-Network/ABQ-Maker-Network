@@ -1,14 +1,14 @@
 import React from "react"
-import {Search} from "./componeents/Search/Search.jsx";
 import {SkillIcons} from "./componeents/SkillIcons.jsx"
 import {ProfileCards} from "./componeents/ProfileCards.jsx";
 import {Col, Container, DropdownButton, Image, Row} from "react-bootstrap";
 import Logo from "../../assets/maker-network-logo.png";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllProfiles} from "../../store/profiles.js";
+import {fetchAllProfiles, fetchProfileByProfileName} from "../../store/profiles.js";
 import {fetchAllSkills} from "../../store/skills.js";
 import {fetchProfileBySkillId} from "../../store/profiles.js";
 import {SkillDropDown} from "./componeents/Search/SkillDropDown.jsx";
+import {Search} from './componeents/Search/Search.jsx'
 
 export const Home = () => {
 
@@ -56,7 +56,9 @@ export const Home = () => {
         dispatch(fetchProfileBySkillId(skillId))
     }
 
-    // const filterProfilesinSearch =
+    const filterProfilesinSearch =(profileName)=> {
+        dispatch (fetchProfileByProfileName(profileName))
+    }
 
     return (
         <>
