@@ -16,21 +16,24 @@ const portfolioSlice = createSlice ({
 
 export const { getAllPortfolios, getPortfoliosByProfileId } = portfolioSlice.actions
 
-export const fetchPortfolioByProfileId = (portfolioProfileId) => async (dispatch, getState) => {
-  const state = getState()
-  const portfolios = state.portfolios
-  if (portfolios[portfolioProfileId] === undefined){
-  const {data} = await httpConfig(`/apis/portfolio/${portfolioProfileId}`)
-  dispatch(getPortfoliosByProfileId(data))
+export const fetchPortfolioByProfileId = (profileId) => {
+  return async function (dispatch) {
+  const { data } = await httpConfig(`/apis/portfolioProfileId/${profileId}`)
+  if ( Array.isArray(data)===false) {
+    throw new Error('data is malformed')
+  }
+
+  const portfolios = data.reduce (
+    (accumulator, currentValue) => {
+      accumulator[currentValue.portfolioProfileId] = currentValue
+      return accumulator
+    }
+  )
+
+  dispatch(getPortfoliosByProfileId(portfolios))
     }
 }
 
-export const fetchAllPortfolios = () => {
-  return async function (dispatch) {
-    const {data} = await httpConfig(`/apis/portfolio`)
-    dispatch(getAllPortfolios(data))
-  }
-}
 
 
 export default portfolioSlice.reducer

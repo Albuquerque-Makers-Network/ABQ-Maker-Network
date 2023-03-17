@@ -26,9 +26,9 @@ return < Portfolio [] >
 }
 
 export async function selectPortfolioByPortfolioProfileId
-( portfolioProfileId: string ) : Promise < Portfolio [] > {
+( profileId: string ) : Promise < Portfolio [] > {
   return < Portfolio [] >
-  await sql `SELECT portfolio_id, portfolio_profile_id, portfolio_image_url FROM portfolio WHERE portfolio_profile_id = ${ portfolioProfileId }`
+  await sql `SELECT portfolio_id, portfolio_profile_id, portfolio_image_url FROM portfolio WHERE portfolio_profile_id = ${ profileId }`
 }
 
 export async function deletePortfolio ( portfolioId : string ) : Promise < string > {

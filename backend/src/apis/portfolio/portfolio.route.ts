@@ -18,8 +18,8 @@ function deletePortfolioController() {
 
 }
 
-portfolioRoute.route ( '/profile/:portfolioProfileId' )
-  .get ( asyncValidatorController ( [ check ( 'portfolioProfileId', 'Please provide a valid portfolio profile ID' ).isUUID () ])
+portfolioRoute.route ( '/portfolioProfileId/:profileId' )
+  .get ( asyncValidatorController ( [ check ( 'profileId', 'Please provide a valid profile ID' ).isUUID () ])
     , getPortfolioImageByProfileIdController )
   .post ( isLoggedIn, asyncValidatorController ( [ check ( 'portfolioImageUrl', 'Please provide a valid Image URL' ).isURL () ])
     , postPortfolioController )

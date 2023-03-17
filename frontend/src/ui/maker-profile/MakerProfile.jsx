@@ -53,8 +53,6 @@ export function MakerProfile() {
     }
   })
 
-  console.log(skill.skillId)
-
   //renders portfolios on page
   // const renderedPortfolios = (portfolios) => {
   //   return portfolios.map (portfolio => <PortfolioImages portfolio={portfolio}/> )
