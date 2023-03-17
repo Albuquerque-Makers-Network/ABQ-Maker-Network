@@ -18,14 +18,14 @@ export const { getAllPortfolios, getPortfoliosByProfileId } = portfolioSlice.act
 
 export const fetchPortfolioByProfileId = (profileId) => {
   return async function (dispatch) {
-  const { data } = await httpConfig(`/apis/portfolioProfileId/${profileId}`)
+  const { data } = await httpConfig(`/apis/portfolio/portfolioProfileId/${profileId}`)
   if ( Array.isArray(data)===false) {
     throw new Error('data is malformed')
   }
 
   const portfolios = data.reduce (
     (accumulator, currentValue) => {
-      accumulator[currentValue.portfolioProfileId] = currentValue
+      accumulator[currentValue.portfolioId] = currentValue
       return accumulator
     }
   )

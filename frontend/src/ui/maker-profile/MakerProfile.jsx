@@ -6,8 +6,8 @@ import "./MakerProfile.css"
 import {fetchProfileByProfileId} from "../../store/profiles.js";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import {PortfolioImages} from "./components/PortfolioImage.jsx";
-import portfolios, {fetchPortfolioByProfileId} from "../../store/portfolios.js";
+import {PortfolioImage} from "./components/PortfolioImage.jsx";
+import {fetchPortfolioByProfileId} from "../../store/portfolios.js";
 import {fetchSkillByProfileId} from "../../store/skills.js";
 
 
@@ -43,7 +43,6 @@ export function MakerProfile() {
     }
   })
 
-  // console.log(portfolio.portfolioId)
 
   const skill = useSelector (state => {
     if (state?.skills.constructor.name === "Object"){
@@ -53,14 +52,14 @@ export function MakerProfile() {
     }
   })
 
-  //renders portfolios on page
-  // const renderedPortfolios = (portfolios) => {
-  //   return portfolios.map (portfolio => <PortfolioImages portfolio={portfolio}/> )
-  // }
-
   //renders skills on page
   const renderedSkills = (skills) => {
     return skills.map (skill => <Skill skill={skill}/> )
+  }
+
+  //renders portfolios on page
+  const renderedPortfolios = (portfolios) => {
+    return portfolios.map (portfolio => <PortfolioImage portfolio={portfolio}/> )
   }
 
       return (
@@ -90,7 +89,7 @@ export function MakerProfile() {
           <Container>
             <Row>
               <Col className="my-3">
-                {/*{renderedPortfolios(portfolios)}*/}
+                {/*{renderedPortfolios(portfolio)}*/}
               </Col>
               <Col xs={12} md={4} className="rounded-4 p-4 mt-4 mb-auto text-white" id="pricing">
                 <h2 className="text-md-center text-sm-start">Pricing:</h2>
