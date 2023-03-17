@@ -35,15 +35,13 @@ export const Home = () => {
         } else []
     })
 
-    // console.log(popularSkills)
-
+    // all skill selectors for icons and dropdown
     const allSkills = useSelector (state => {
         if (state?.skills.constructor.name === "Object"){
             return Object.values(state.skills)
         } else []
     })
 
-    // console.log(profile)
 
     const dispatch = useDispatch()
     const initialEffect = () => {
@@ -56,9 +54,13 @@ export const Home = () => {
         dispatch(fetchProfileBySkillId(skillId))
     }
 
+    // search functionality
     const filterProfilesinSearch =(profileName)=> {
         dispatch (fetchProfileByProfileName(profileName))
     }
+
+
+
 
     return (
         <>
@@ -76,7 +78,7 @@ export const Home = () => {
                         <Container fluid className="p-0">
                             <Row>
                                 <Col sm={10}>
-                                    <Search/>
+                                   <Search/>
                                 </Col>
                                 <Col sm={2}>
                                     <DropdownButton variant="outline-light" id="dropdown-button" title="All Skills">
