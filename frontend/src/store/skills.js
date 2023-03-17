@@ -11,11 +11,14 @@ const skillSlice = createSlice({
         },
         setAllPopularSkills: (skills, action) =>{
             return action.payload
+        },
+        setProfileSkills: (skills, action) =>{
+            return action.payload
         }
     }
 })
 
-export const {setAllSkills, setAllPopularSkills} = skillSlice.actions
+export const {setAllSkills, setAllPopularSkills, setProfileSkills} = skillSlice.actions
 
 export const fetchAllSkills = () => {
     return async function (dispatch) {
@@ -52,6 +55,27 @@ export const fetchAllPopularSkills = () => {
         dispatch (setAllPopularSkills(popularSkillsDictionary))
     }
 }
+
+export const fetchSkillByProfileId = (profileId) => async (dispatch, getState) => {
+    const state = getState()
+    const skills = state.skills
+
+    if (skills[profileId] === undefined) {
+        const {data} = await httpConfig(`/apis/skills/profiles/${profileId}`)
+        if (Array.isArray(data)=== false){
+            throw new Error('data is malformed')
+        }
+        const SkillsDictionary = data.reduce(
+          (accumulator, currentValue) => {
+              accumulator[currentValue.skillId] = currentValue
+              return accumulator
+          },
+          {}
+        )
+        dispatch (setProfileSkills(SkillsDictionary))
+    }
+}
+
 
 
 export default skillSlice.reducer

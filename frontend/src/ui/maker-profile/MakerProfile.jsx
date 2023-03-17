@@ -44,7 +44,7 @@ export function MakerProfile() {
   // })
 
 
-  //renders portfolios on mage
+  //renders portfolios on page
   // const renderedPortfolios = (portfolios) => {
   //   return portfolios.map (portfolio => <PortfolioImages portfolio={portfolio}/> )
   // }
