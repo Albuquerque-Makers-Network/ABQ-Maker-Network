@@ -2,10 +2,20 @@ import React from "react";
 import {Dropdown} from "react-bootstrap";
 
 export function SkillDropDown(props) {
-    const {allSkills} = props
+
+    const {allskill, filterProfilesBySkill} = props
+
+    function handleClick() {
+
+        filterProfilesBySkill(allskill.skillId)
+
+    }
+
     return (
         <>
-            <Dropdown.Item>{allSkills.skillType}</Dropdown.Item>
+            <Dropdown.Item onClick={handleClick}>
+                {allskill.skillType}
+            </Dropdown.Item>
         </>
     )
 }

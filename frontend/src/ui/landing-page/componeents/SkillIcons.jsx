@@ -1,8 +1,6 @@
 import React from "react"
 import {Col, Button, Image} from "react-bootstrap";
 import "../LandingPage.css"
-
-
 export function SkillIcons(props) {
 
     const {popularSkill, filterProfilesBySkill} = props
@@ -10,7 +8,6 @@ export function SkillIcons(props) {
     function handleClick() {
 
         filterProfilesBySkill(popularSkill.skillId)
-
     }
 
     return (
