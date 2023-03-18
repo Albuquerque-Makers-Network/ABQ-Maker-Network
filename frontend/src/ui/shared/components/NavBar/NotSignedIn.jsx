@@ -6,7 +6,8 @@ export const NotSignedIn = (props) => {
         <>
             <Nav className="ms-auto d-flex align-items-center">
                 <Nav.Link  href="/">Home</Nav.Link>
-                <Nav.Link href="/sign-up">Sign In/Up</Nav.Link>
+                <Nav.Link href="/sign-up">Sign Up</Nav.Link>
+                <Nav.Link href="/sign-in">Sign In</Nav.Link>
             </Nav>
         </>
     )

@@ -69,13 +69,13 @@ export const fetchProfileBySkillId = (skillId) => async (dispatch, getState) => 
     }
 }
 
-export const fetchProfileByProfileName = (profileName) => async (dispatch, getState) => {
+export const fetchProfileByKeyword = (keyword) => async (dispatch, getState) => {
     const state = getState()
 
     const profiles = state.profiles
 
-    if (profiles[profileName] === undefined) {
-        const {data} = await httpConfig(`/profileName/${profileName}`)
+    if (profiles[keyword] === undefined) {
+        const {data} = await httpConfig(`/apis/profile/search/${keyword}`)
         if (Array.isArray(data)=== false){
             throw new Error('data is malformed')
         }

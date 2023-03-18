@@ -6,6 +6,7 @@ import {Formik} from "formik";
 import {DisplayStatus} from "../../../shared/components/display-status/display-status.jsx";
 import {DisplayError} from "../../../shared/components/display-error/DisplayError.jsx";
 import * as Yup from "yup";
+import {fetchProfileByKeyword} from "../../../../store/profiles.js";
 
 
 export const Search = () => {
@@ -22,9 +23,13 @@ export const Search = () => {
             .min(1, "A search keyword must be at least one character."),
     });
 
-    const submitSearch = (values, {resetForm, setStatus}) => {
-
+    const submitSearch = (values, {resetForm}) => {
+        console.log(values)
+        dispatch (fetchProfileByKeyword(values.searchKeyword))
+        resetForm()
     }
+
+    // can add set status to fetch function if wanted
 
     return(
         <Formik initialValues={searchResults} onSubmit={submitSearch} validationSchema={validator}>
@@ -69,6 +74,7 @@ function SearchContent(props){
                     </InputGroup>
                     <DisplayError errors={errors} touched={touched} field={"searchKeyword"}/>
                 </Form.Group>
+                <p>by</p>
                 <Form.Group className='ms-2'>
                     <Button id='search-button' type='submit' variant="outline-light">Search</Button>
                 </Form.Group>
