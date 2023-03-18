@@ -7,7 +7,10 @@ import {
     selectPartialProfileByProfileFullName,
     selectPartialProfileByProfileName,
     updateProfile,
-    selectWholeProfileByProfileId, selectAllIsMakerProfiles, selectProfileBySkillId
+    selectWholeProfileByProfileId,
+    selectAllIsMakerProfiles,
+    selectProfileBySkillId,
+    selectPartialProfileByKeyword
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
 
@@ -179,5 +182,29 @@ export async function getProfileBySkillIdController (request: Request, response:
         return response.json(status)
     } catch (error:any) {
         return (response.json({status: 400, data: null, message: error.message}))
+    }
+}
+
+
+/**
+ * Express controller that returns a profile by a value in profileEmail, profileFullName, or profileName.
+ * @param request  An object modeling the current request provided by Express.
+ * @param response an object modeling the response that will be sent to the client.
+ * @return A promise containing a status object with either a success or failure message set to the message field
+ */
+
+export async function getAllProfilesByValueController (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const { keyword } = request.params
+        const postGresResponse = await selectPartialProfileByKeyword(keyword)
+        const data = postGresResponse ?? null
+        const status: Status = {status: 200, message: null, data}
+        return response.json(status)
+    } catch (error) {
+        return response.json({
+            status: 500,
+            message: '',
+            data: []
+        })
     }
 }

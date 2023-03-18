@@ -65,7 +65,7 @@ export const Home = () => {
 
                     <Container className="my-5 mx-auto px-md-0 px-4">
                         <h3 className="my-3">Ready to start collaborating with others?</h3>
-                        <p>Start searching by maker information or skill type.</p>
+                        <p>Start searching by maker information or by selecting a skill type.</p>
 
                         <Container fluid className="p-0">
                             <Row>

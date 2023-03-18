@@ -35,10 +35,3 @@
     color: white;
     padding: 1em;
 }
-
-/*hides all skill button on smaller screens*/
-@media (max-width: 576px){
-    #dropdown-button {
-        display: none
-    }
-}

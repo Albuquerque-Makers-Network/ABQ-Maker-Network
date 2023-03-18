@@ -67,9 +67,10 @@ export async function selectPartialProfileByProfileFullName (profileFullName: st
         return result?.length === 1 ? result [0] : null
 }
 export async function selectPartialProfileByProfileName (profileName: string): Promise<Profile|null> {
-    const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_name ILIKE ${profileName}`
+    const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_name = ${profileName}`
     return result?.length === 1 ? result [0] : null
 }
+
 
 // used in search and update profile controllers
 export async function selectPartialProfileByProfileId (profileId: string): Promise<Profile|null> {
@@ -87,5 +88,9 @@ export async function selectProfileBySkillId (skillId: string): Promise<Profile[
     JOIN skill ON maker_skill.maker_skill_id = skill.skill_id WHERE skill_id = ${skillId}`
 }
 
-
-
+export async function selectPartialProfileByKeyword (keyword: string): Promise<Profile[]> {
+    const formattedKeyWord = `%${keyword}%`
+    const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name,
+       profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_name ILIKE ${formattedKeyWord} OR profile_full_name ILIKE ${formattedKeyWord} OR profile_email ILIKE ${formattedKeyWord}`
+    return result
+}

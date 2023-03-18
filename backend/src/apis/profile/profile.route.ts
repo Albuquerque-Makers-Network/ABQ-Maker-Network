@@ -1,5 +1,5 @@
 import {
-    getAllIsMakerProfilesController,
+    getAllIsMakerProfilesController, getAllProfilesByValueController,
     getProfileByProfileEmailController,
     getProfileByProfileFullNameController,
     getProfileByProfileIdController,
@@ -44,3 +44,6 @@ profileRoute.route('/skills/:skillId')
     .get(asyncValidatorController([check('skillId', 'please provide a valid skillId').isUUID()])
         , getProfileBySkillIdController
     )
+
+profileRoute.route('/search/:keyword')
+    .get(getAllProfilesByValueController)

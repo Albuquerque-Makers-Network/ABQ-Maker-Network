@@ -58,7 +58,7 @@ function SearchContent(props){
     return(
         <>
             <Form onSubmit={handleSubmit} className="d-flex">
-                <Form.Group>
+                <Form.Group className='w-100'>
                     {/*min-width: 43rem;*/}
                     <InputGroup>
                         <Form.Control
@@ -67,15 +67,14 @@ function SearchContent(props){
                             name='searchKeyword'
                             type='text'
                             values={values.searchKeyword}
-                            placeholder="Search for a Maker Here"
+                            placeholder="Search by Maker Info"
                             onChange={handleChange}
                             onBlur={handleBlur}
                         />
                     </InputGroup>
                     <DisplayError errors={errors} touched={touched} field={"searchKeyword"}/>
                 </Form.Group>
-                <p>by</p>
-                <Form.Group className='ms-2'>
+                <Form.Group className='ms-4'>
                     <Button id='search-button' type='submit' variant="outline-light">Search</Button>
                 </Form.Group>
             </Form>
