@@ -49,7 +49,9 @@ export const SignUp = () => {
             resetForm();
           }
           setStatus({message, type})
+          window.location.replace('/sign-in')
         }
+
       )
   }
 
@@ -181,7 +183,7 @@ function SignUpFormContent (props) {
                     className="mb-3 fw-bold border border-dark border-2">Submit</Button>
           </Form.Group>
 
-          <Container className='my-4 text-center'>
+          <Container className='my-4 text-light text-center'>
             <h4>Already a member?</h4>
             <a href='./sign-in'><h5 className="text-light">Sign In HERE</h5></a>
           </Container>
@@ -189,7 +191,7 @@ function SignUpFormContent (props) {
           </Container>
         </section>
       </Form>
-<FormDebugger props={ props }/>
+{/*<FormDebugger props={ props }/>*/}
       <DisplayStatus status= { status } />
 
     </>
