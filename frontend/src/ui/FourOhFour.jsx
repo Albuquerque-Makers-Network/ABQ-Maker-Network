@@ -1,17 +1,21 @@
 import React from "react"
-import {Button, Container} from "react-bootstrap";
+import {Button, Container, Row, Col, Image} from "react-bootstrap";
 import "./App.css"
+import fourOhFour from "../assets/fourOhFour-gear.svg";
 
 export const FourOhFour = () => {
     return (
         <>
-            <Container className='my-5' id='error'>
-                <Container fluid id='error-content'>
-                    <h1 id='fourOHfour'>404</h1>
-                    <h1>This is not the page you were looking for</h1>
-                    <Button className='my-3' href="/" variant="light">Go Back Home</Button>
+                <Container className='text-center my-5'>
+                    <Row >
+                        <Col xs={12}>
+                            <Image id='pageError' fluid src={fourOhFour} alt='404 this is not the page you were looking for'/>
+                        </Col>
+                        <Col className='m-auto' xs={12}>
+                            <Button className='my-5' href="/" variant="dark">Go Back Home</Button>
+                        </Col>
+                    </Row>
                 </Container>
-            </Container>
         </>
     )
 };

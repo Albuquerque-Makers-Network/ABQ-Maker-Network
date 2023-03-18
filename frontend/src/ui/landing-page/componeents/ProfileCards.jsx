@@ -8,7 +8,7 @@ export function ProfileCards(props) {
 
   return (
     <>
-      <Col xs={6} sm={6} md={4} lg={3}>
+      <Col className='my-3' xs={6} sm={6} md={4} lg={3}>
         <Link id='home-card-link' to={`/maker-profile/${profile.profileId}`} className='my-3' >
             <Card id='profile-card'>
                 <Container id="home-profile-card-image" className='d-flex p-0 m-0'>

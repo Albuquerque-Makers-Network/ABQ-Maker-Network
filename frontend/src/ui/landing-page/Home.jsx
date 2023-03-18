@@ -59,13 +59,13 @@ export const Home = () => {
             <section id='intro'>
                 <Container id='intro-content'>
                     <Container  className='text-center my-3'>
-                    <Image className="me-4" fluid src={Logo} alt='image of ABQ Maker Network logo. Text reads ABQ Maker Network.' width='150rem'/>
+                    <Image className="me-4" src={Logo} alt='image of ABQ Maker Network logo. Text reads ABQ Maker Network.' width='150rem'/>
                     <h2 className="text-center my-5">Welcome to the ABQ Maker Network!</h2>
                     </Container>
 
                     <Container className="my-5 mx-auto px-md-0 px-4">
                         <h3 className="my-3">Ready to start collaborating with others?</h3>
-                        <p>Start searching by maker information or by selecting a skill type.</p>
+                        <p>Start searching by maker information (username, email, or full name) in the search bar or selecting a skill type.</p>
 
                         <Container fluid className="p-0">
                             <Row>
@@ -86,7 +86,7 @@ export const Home = () => {
                 <Container className="my-5 mx-auto px-md-0 px-4">
                     <h4 className="my-3">Popular Skills</h4>
                     <Container>
-                        <Row id='skill-icons' className='gap-md- gap-lg-3'>
+                        <Row id='skill-icons' className='gap-lg-3'>
                             {popularSkills.map(popularSkill => <SkillIcons filterProfilesBySkill={filterProfilesBySkill} popularSkill={popularSkill} key={popularSkill.skillId}/>)}
                         </Row>
                     </Container>

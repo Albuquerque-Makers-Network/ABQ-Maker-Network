@@ -14,7 +14,7 @@ export function SkillIcons(props) {
         <>
             <Col onClick={handleClick} xs={3} md={2} lg={1} className='text-center p-1'>
                 <Image fluid src={popularSkill.skillIconUrl} width='100'/>
-                <p>{popularSkill.skillType}</p>
+                <p className='my-1' >{popularSkill.skillType}</p>
             </Col>
         </>
     )

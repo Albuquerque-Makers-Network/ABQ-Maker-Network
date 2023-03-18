@@ -48,25 +48,10 @@ p{
 
 /*404 page*/
 
-#error {
-    background-image: url("../assets/fourOhFour-gear.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 50vh;
-    display: flex;
-    color: white;
-    align-items: center;
-    text-align: center;
-    padding: 10rem;
+#pageError {
+    max-height: 50vh;
 }
 
-#error-content{
-    width: 50%;
-}
-
-#fourOHfour {
-    font-size: 10rem;
-}
 
 /*Navigation Bar*/
 
