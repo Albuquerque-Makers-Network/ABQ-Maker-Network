@@ -27,6 +27,8 @@ export const fetchPortfolioByProfileId = (profileId) => {
     (accumulator, currentValue) => {
       accumulator[currentValue.portfolioId] = currentValue
       return accumulator
+    } , {
+
     }
   )
 

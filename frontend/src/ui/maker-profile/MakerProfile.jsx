@@ -36,12 +36,14 @@ export function MakerProfile() {
   })
 
   const portfolios = useSelector (state => {
-    if (state?.portfolios[profileId]){
-      return state.portfolios[profileId]
+    if (state?.portfolios.constructor.name ==="Object"){
+      return Object.values(state.portfolios)
     } else {
       return null
     }
   })
+
+  console.log(portfolios)
 
   const skill = useSelector (state => {
     if (state?.skills.constructor.name === "Object"){
@@ -56,12 +58,10 @@ export function MakerProfile() {
     return skills.map (skill => <Skill skill={skill}/> )
   }
 
-  //renders portfolios on page
-  //   const renderedPortfolio = (portfolios) => {
-  //   setTimeout (() => {
-  //       return portfolios.map (portfolio => <PortfolioImage portfolio={portfolio}/> )
-  //     }, 3000)
-  // }
+  if (profile === null) {
+    return (<h1>Loading</h1>)
+  }
+
 
       return (
         <>
@@ -87,15 +87,13 @@ export function MakerProfile() {
             </Row>
           </Container>
 
-          <Container>
+          <Container className="container-fluid">
             <Row>
-              <Col className="my-3">
-                {setTimeout(() => {portfolios.map(portfolio => <PortfolioImage portfolio={portfolio}/> )}, 3000) }
-              </Col>
-              <Col xs={12} md={4} className="rounded-4 p-4 mt-4 mb-auto text-white" id="pricing">
+              <Col xs={12} md={4} className="col-auto rounded-4 p-4 mt-4 mb-auto text-white me-md-4 me-0 order-2 order-md-1" id="pricing">
                 <h2 className="text-md-center text-sm-start">Pricing:</h2>
                 <p className=" mt-3">{profile.profilePricing}</p>
               </Col>
+              { portfolios.map(portfolio => <PortfolioImage portfolio={portfolio}/> ) }
             </Row>
           </Container>
 
