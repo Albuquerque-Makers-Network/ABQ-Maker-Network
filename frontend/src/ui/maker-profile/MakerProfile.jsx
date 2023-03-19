@@ -58,7 +58,8 @@ export function MakerProfile() {
     return skills.map (skill => <Skill skill={skill}/> )
   }
 
-  if (profile === null) {
+
+  if (profile === null || portfolios === null) {
     return (<h1>Loading</h1>)
   }
 

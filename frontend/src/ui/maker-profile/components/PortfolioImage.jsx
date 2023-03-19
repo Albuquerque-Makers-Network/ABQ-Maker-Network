@@ -6,8 +6,8 @@ const { portfolio } = props
 
   return (
     <>
-      <Col className = "mt-4 col-auto p-2 rounded-4 order-1 order-md-2" id="portfolio-image">
-          <Image src={portfolio.portfolioImageUrl} className="rounded-4"/>
+      <Col className="mt-4 col-auto p-2 order-1 order-md-2">
+          <Image src={portfolio.portfolioImageUrl} id="portfolio-image" className="rounded-4"/>
       </Col>
     </>
   )

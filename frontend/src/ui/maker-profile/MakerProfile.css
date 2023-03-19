@@ -15,8 +15,9 @@
 }
 
 #portfolio-image {
-    max-height: 300px;
-    max-width: 300px;
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover;
 }
 
 #profile-name, #skills-name, #pricing,  #about-me-text, #email-text {
@@ -24,5 +25,5 @@
 }
 
 #pricing {
-    min-height: 300px;
+    min-height: 250px;
 }
