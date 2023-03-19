@@ -1,24 +1,26 @@
+DELETE FROM maker_skill;
+DELETE FROM skill;
 INSERT INTO skill(skill_id, skill_type, skill_is_popular, skill_icon_url) VALUES
 
-                                            (gen_random_uuid(), 'Woodworking', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678917965/skill-icons-woodworking_a4m0kw.svg'),
-                                            (gen_random_uuid(), 'Metalworking', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678917962/skill-icons-metalworking_cxwaiw.svg'),
+                                            (gen_random_uuid(), 'Woodworking', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926493/SkillIcons/maker-network-assets_WoodWorking_u9yygt.svg'),
+                                            (gen_random_uuid(), 'Metalworking', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926490/SkillIcons/maker-network-assets_MetalWorking_ldbmbm.svg'),
                                             (gen_random_uuid(), 'General Fabrication', false, null),
-                                            (gen_random_uuid(), 'Welding', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678917965/skill-icons-welding_jvk0va.svg'),
+                                            (gen_random_uuid(), 'Welding', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926492/SkillIcons/maker-network-assets_Welding_lfbvvq.svg'),
                                             (gen_random_uuid(), 'Furniture Building', false, null),
                                             (gen_random_uuid(), 'Resin Crafting', false, null),
                                             (gen_random_uuid(), 'Plasma Cutting', false, null),
                                             (gen_random_uuid(), 'Machining', false, null),
-                                            (gen_random_uuid(), 'Laser Cutting', true,'https://res.cloudinary.com/dldavnvm3/image/upload/v1678917962/skill-icons-laser_stlveo.svg'),
-                                            (gen_random_uuid(), '3D Printing', true,'https://res.cloudinary.com/dldavnvm3/image/upload/v1678912639/skill-icons-3dPrint_kupiyu.svg'),
+                                            (gen_random_uuid(), 'Laser Cutting', true,'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926490/SkillIcons/maker-network-assets_Laser_nclmog.svg'),
+                                            (gen_random_uuid(), '3D Printing', true,'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926490/SkillIcons/maker-network-assets_3dPrinting_abecrc.svg'),
                                             (gen_random_uuid(), '3D Modeling', false, null),
                                             (gen_random_uuid(), 'CNC', false, null),
-                                            (gen_random_uuid(), 'Printing', true,'https://res.cloudinary.com/dldavnvm3/image/upload/v1678917962/skill-icons-printing_f5ydts.svg'),
+                                            (gen_random_uuid(), 'Printing', true,'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926490/SkillIcons/maker-network-assets_Printing_xov20d.svg'),
                                             (gen_random_uuid(), 'Sticker Making', false, null),
-                                            (gen_random_uuid(), 'Jewelry Making', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678917962/skill-icons-jewelry_bqgrmw.svg'),
+                                            (gen_random_uuid(), 'Jewelry Making', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926490/SkillIcons/maker-network-assets_Jewelry_eaa7js.svg'),
                                             (gen_random_uuid(), 'Graphic Design', false, null),
                                             (gen_random_uuid(), 'Photography', false, null),
                                             (gen_random_uuid(), 'Rapid Prototyping', false, null),
-                                            (gen_random_uuid(), 'Ceramics', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678917962/skill-icons-ceramics_il2fni.svg'),
+                                            (gen_random_uuid(), 'Ceramics', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926490/SkillIcons/maker-network-assets_Ceramics_ppbivv.svg'),
                                             (gen_random_uuid(), 'Stained Glass', false, null),
                                             (gen_random_uuid(), 'Glassblowing', false, null),
                                             (gen_random_uuid(), 'Textiles', false, null),
@@ -28,5 +30,5 @@ INSERT INTO skill(skill_id, skill_type, skill_is_popular, skill_icon_url) VALUES
                                             (gen_random_uuid(), 'Sculpture', false, null),
                                             (gen_random_uuid(), 'Illustration', false, null),
                                             (gen_random_uuid(), 'Animation', false, null),
-                                            (gen_random_uuid(), 'Screen Printing', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678917962/skill-icons-screenprint_hew0xe.svg'),
-                                            (gen_random_uuid(), 'Sewing', false, null);
+                                            (gen_random_uuid(), 'Screen Printing', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926492/SkillIcons/maker-network-assets_Screenprinting_djgo2y.svg'),
+                                            (gen_random_uuid(), 'Sewing', true, 'https://res.cloudinary.com/dldavnvm3/image/upload/v1678926492/SkillIcons/maker-network-assets_Sewing_eddqot.svg');
