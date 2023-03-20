@@ -19,7 +19,7 @@ export const CommunityAccount = () => {
 
         <>
           <section>
-            <Container id="community-account" className="mt-5 rounded-4 border border-dark border-3">
+            <Container id="community-account" className="mt-5 mb-3 rounded-4 border border-dark border-3">
                 {profile &&
                     <>
                     <EditCommunityAccountForm profile={profile}/>

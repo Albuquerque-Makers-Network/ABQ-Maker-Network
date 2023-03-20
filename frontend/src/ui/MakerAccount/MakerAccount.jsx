@@ -7,43 +7,32 @@ import {UserName} from "./components/UserName.jsx";
 import {PhotoUpload} from "./components/PhotoUpload.jsx";
 import {Categories} from "./components/Categories.jsx";
 import "./MakerAccount.css"
+import {EditMakerAccountForm} from "./EditMakerAccountForm.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCurrentUser } from "../../store/currentUser";
+export const MakerAccount= () => {
 
+    const dispatch = useDispatch()
+    const profile = useSelector(state => state.currentUser ? state.currentUser : null)
 
+    const sideEffects = () => {
+        dispatch(fetchCurrentUser())
+    }
 
-export function MakerAccount() {
+    React.useEffect(sideEffects, [dispatch])
     return (
+
         <>
         <section>
-            <Container className="maker-account-form">
+            <Container id="maker-account" className='p-5'>
                 <h1 className='mt-5'>Account Settings</h1>
-                <Row id='primary-content'>
-                    <Col sm={12} lg={4}>
-                        <UserName />
-                    </Col>
-                    <Col sm={12} lg={8}>
-                        <Row>
-                            <Col xs={12} lg={6}>
-                                <AboutMe />
-                            </Col>
-                            <Col xs={12} lg={6}>
-                                <Pricing />
-                            </Col>
-                            <Col xs={12}>
-                                <Categories />
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <PhotoUpload />
-                <Form.Group>
-                    <Container className="d-grid my-4">
-                        <Button type="submit" size="lg" id="changes-button">
-                            Submit Changes
-                        </Button>
-                    </Container>
-                </Form.Group>
+                {profile &&
+                    <>
+                        <EditMakerAccountForm profile={profile}/>
+                    </>
+                }
             </Container>
         </section>
         </>
     )
-}
+};

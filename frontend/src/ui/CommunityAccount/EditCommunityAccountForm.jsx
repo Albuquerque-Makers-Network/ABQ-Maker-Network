@@ -31,7 +31,6 @@ export const EditCommunityAccountForm = (props) => {
 
     function submitEditedProfile (values, { resetForm, setStatus }) {
 
-
             httpConfig.put(`/apis/profile/${profile.profileId}`, values)
                 .then(reply => {
                     let {message, type} = reply
@@ -179,11 +178,11 @@ export const EditCommunityAccountForm = (props) => {
                 </Form.Group>
 
                 <Form.Group className="d-flex justify-content-center">
-                    <Button variant="light" type="submit" className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
-                        onClick={handleSubmit}
-                        disabled={!isValid || isSubmitting || (Object.keys(touched).length === 0 && touched.constructor === Object)}
-                    >Submit changes</Button>
-                    {" "}
+                    <Button variant="light"
+                            type="submit"
+                            className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'>
+                            Submit changes</Button>
+                            {" "}
                     <Button
                         className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
                         onClick={handleReset}
