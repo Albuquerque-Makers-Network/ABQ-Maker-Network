@@ -3,6 +3,10 @@
     border: 1mm ridge var(--cusOffBlack);
 }
 
+#profile-image{
+    background-color: var(--cusLightGrey)
+}
+
 .profile-skills {
     background-color: var(--cusyellow);
     border: solid 2px var(--cusOffBlack);
