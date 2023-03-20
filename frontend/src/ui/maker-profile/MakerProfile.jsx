@@ -9,6 +9,9 @@ import {useParams} from "react-router-dom";
 import {PortfolioImage} from "./components/PortfolioImage.jsx";
 import {fetchPortfolioByProfileId} from "../../store/portfolios.js";
 import {fetchSkillByProfileId} from "../../store/skills.js";
+import {fetchCurrentUser} from "../../store/currentUser.js";
+import {NotSignedIn} from "../shared/components/NavBar/NotSignedIn.jsx";
+import {SignedIn} from "../shared/components/NavBar/SignedIn.jsx";
 
 
 export function MakerProfile() {
@@ -72,6 +75,14 @@ export function MakerProfile() {
       return (<h1>Loading</h1>)
     }
 
+  const signedInUser = useSelector(state => state.currentUser ? state.currentUser : null)
+
+  const sideEffects = () => {
+    dispatch(fetchCurrentUser())
+  }
+
+  React.useEffect(sideEffects, [dispatch])
+
     return (
       <>
         <Container className="p-5 ps-lg-0 mt-5 mx-auto rounded-4" id="background-about-me">
@@ -84,7 +95,17 @@ export function MakerProfile() {
             <Col lg={5} className="order-3 order-sm-2 text-light">
               <h1 className="text-center text-md-start" id="profile-name">{profile.profileFullName}</h1>
               <p className="mt-3" id="about-me-text">{profile.profileAboutMe}</p>
-              <p id="email-text">{profile.profileEmail}</p>
+              <p id="email-text"> {!signedInUser &&
+                <>
+                  <p>Please sign-in to display contact info!</p>
+                </>
+              }
+
+                {signedInUser &&
+                  <>
+                    {profile.profileEmail}
+                  </>
+                }</p>
             </Col>
 
             <Col className="order-2 order-sm-3 my-3 mt-lg-0 d-block d-lg-inline justify-content-center">

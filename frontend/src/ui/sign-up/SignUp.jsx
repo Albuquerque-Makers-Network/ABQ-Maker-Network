@@ -6,6 +6,7 @@ import {Field, Formik} from "formik"
 import * as Yup from "yup"
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
+import {FormDebugger} from "../shared/FormDebugger.jsx";
 
 export const SignUp = () => {
 
@@ -187,7 +188,7 @@ function SignUpFormContent (props) {
           </Container>
         </section>
       </Form>
-{/*<FormDebugger props={ props }/>*/}
+<FormDebugger props={ props }/>
       <DisplayStatus status= { status } />
 
     </>
