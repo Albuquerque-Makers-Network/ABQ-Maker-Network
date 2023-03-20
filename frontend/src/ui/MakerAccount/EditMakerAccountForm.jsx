@@ -19,10 +19,10 @@ export const EditMakerAccountForm = (props) => {
             .email( 'Email must be a valid email' ),
         profileName: Yup.string()
             .max ( 64, 'Username cannot be more than 64 characters' ),
-        profileAboutMe: Yup.string()
-            .max ( 350, 'About be me cannot be more than 350 characters' ),
-        profilePricing: Yup.string()
-            .max ( 128, 'Profile pricing cannot be more than 128 characters'),
+        // profileAboutMe: Yup.string()
+        //     .max ( 350, 'About be me cannot be more than 350 characters' ),
+        // profilePricing: Yup.string()
+        //     .max ( 128, 'Profile pricing cannot be more than 128 characters'),
         profileImageUrl: Yup.mixed()
     })
 
@@ -80,6 +80,7 @@ function EditProfileFormContent (props) {
         handleChange,
         handleBlur,
         handleSubmit,
+        handleReset
 
     } = props
 
@@ -159,7 +160,7 @@ function EditProfileFormContent (props) {
                                         as="textarea"
                                         rows={10}
                                         size='lg'
-                                        value={values.profileAboutMe}
+                                        defaultValue={values.profileAboutMe}
                                         placeholder="Write a little something about yourself..."
                                         onChange={handleChange}
                                         onBlur={handleBlur}
@@ -169,28 +170,28 @@ function EditProfileFormContent (props) {
                                     </Form.Group>
                                 </Container>
                             </Col>
-                                <Col xs={12} lg={6}>
-                                    <Container id='pricing-setting' className="mt-5 mx-auto rounded-4 p-3">
-                                    <h2 className="text-center pt-3">Pricing</h2>
-                                    <Form.Group className="mb-4 px-3" controlId="pricing">
-                                    <Form.Label></Form.Label>
-                                    <InputGroup>
-                                        <FormControl
-                                        className="form-control"
-                                        name="pricing"
-                                        as="textarea"
-                                        rows={10}
-                                        size='lg'
-                                        value={values.profilePricing}
-                                        placeholder="Let us know your pricing structure."
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        />
-                                    </InputGroup>
-                                    <DisplayError errors={errors} touched={touched} field={'pricing'}/>
-                                    </Form.Group>
-                                    </Container>
-                                </Col>
+                    {/*            <Col xs={12} lg={6}>*/}
+                    {/*                <Container id='price-setting' className="mt-5 mx-auto rounded-4 p-3">*/}
+                    {/*                <h2 className="text-center pt-3">Pricing</h2>*/}
+                    {/*                <Form.Group className="mb-4 px-3" controlId="pricing">*/}
+                    {/*                <Form.Label></Form.Label>*/}
+                    {/*                <InputGroup>*/}
+                    {/*                    <FormControl*/}
+                    {/*                    className="form-control"*/}
+                    {/*                    name="pricing"*/}
+                    {/*                    as="textarea"*/}
+                    {/*                    rows={10}*/}
+                    {/*                    size='lg'*/}
+                    {/*                    defaultValue={values.profilePricing}*/}
+                    {/*                    placeholder="Let us know your pricing structure."*/}
+                    {/*                    onChange={handleChange}*/}
+                    {/*                    onBlur={handleBlur}*/}
+                    {/*                    />*/}
+                    {/*                </InputGroup>*/}
+                    {/*                <DisplayError errors={errors} touched={touched} field={'pricing'}/>*/}
+                    {/*                </Form.Group>*/}
+                    {/*                </Container>*/}
+                    {/*            </Col>*/}
                                     <Col xs={12}>
                                         <Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">
                                             <h2 className="text-center pt-3">Categories / Skills</h2>
@@ -277,17 +278,17 @@ function EditProfileFormContent (props) {
                         <Button variant="light" type="submit" className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
                         >Submit changes</Button>
                         {''}
-                        {/*<Button*/}
-                        {/*    className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'*/}
-                        {/*    onClick={handleReset}*/}
-                        {/*    disabled={!dirty || isSubmitting}*/}
-                        {/*>Reset</Button>*/}
+                        <Button
+                            className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
+                            onClick={handleReset}
+                            disabled={!dirty || isSubmitting}
+                        >Reset</Button>
                         </Form.Group>
                 </Form>
             </Container>
             <DisplayStatus status={status}/>
 
-            {/*<FormDebugger {...props} />*/}
+            <FormDebugger {...props} />
         </>
     )
 }
@@ -313,7 +314,7 @@ function ImageDropZone ({ formikProps }) {
                     formikProps.values.profileImageUrl &&
                     <>
                         <div className="bg-transparent m-0">
-                            <Image  fluid={true} height={100} rounded={true} thumbnail={true} width={100} alt="profile pic" src={formikProps.values.profileImageUrl} />
+                            <Image  fluid={true} maxHeight={250} rounded={true} thumbnail={true} width={100} alt="profile pic" src={formikProps.values.profileImageUrl} />
                         </div>
 
                     </>
