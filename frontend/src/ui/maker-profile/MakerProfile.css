@@ -12,15 +12,6 @@
     border: solid 2px var(--cusOffBlack);
 }
 
-/*@media (max-aspect-ratio: 1/1) {*/
-/*    #portfolio-image {*/
-/*        height: 25vh;*/
-/*        max-height: 250px;*/
-/*        max-width: 100px;*/
-/*        object-fit: cover;*/
-/*    }*/
-/*}*/
-
 #portfolio-image {
     height: 25vh;
     max-height: 250px;
