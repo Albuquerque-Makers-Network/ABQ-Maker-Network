@@ -282,12 +282,12 @@ function EditProfileFormContent (props) {
                         {/*    onClick={handleReset}*/}
                         {/*    disabled={!dirty || isSubmitting}*/}
                         {/*>Reset</Button>*/}
-                    </Form.Group>
+                        </Form.Group>
                 </Form>
             </Container>
             <DisplayStatus status={status}/>
 
-            <FormDebugger {...props} />
+            {/*<FormDebugger {...props} />*/}
         </>
     )
 }

@@ -1,4 +1,4 @@
-#category-container, #about-me-setting, #pricing-setting, #user-name-setting, #portfolio-setting{
+#category-container, #about-me-setting, #price-setting, #user-name-setting, #portfolio-setting {
     background-color: var(--cusDarkGrey);
     border: 1mm ridge var(--cusOffBlack);
     color: White
