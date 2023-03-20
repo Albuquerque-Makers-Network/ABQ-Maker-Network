@@ -29,7 +29,7 @@ export function Navigation(){
                     <Navbar.Toggle className='ms-auto mb-3 border-3'  aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse className='my-3' id="basic-navbar-nav" >
                         {!profile &&
-                            <>
+                                <>
                                 <NotSignedIn profile={profile}/>
                             </>
                         }

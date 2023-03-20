@@ -83,6 +83,4 @@ function SearchContent(props){
             </Container>
         </>
         )
-
-
 }

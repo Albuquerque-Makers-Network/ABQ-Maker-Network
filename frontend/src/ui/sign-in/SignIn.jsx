@@ -98,6 +98,7 @@ function SignInFormContent(props){
             <Form.Control
                 className='form-control'
                 name="profilePassword"
+                type = "password"
                 value={values.profilePassword}
                 placeholder="Enter Password"
                 onChange={handleChange}

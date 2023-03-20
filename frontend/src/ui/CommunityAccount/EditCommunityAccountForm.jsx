@@ -192,7 +192,7 @@ export const EditCommunityAccountForm = (props) => {
                 </Form>
                 <DisplayStatus status={status}/>
 
-                <FormDebugger {...props} />
+                {/*<FormDebugger {...props} />*/}
 
             </>
     )
