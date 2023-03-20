@@ -43,8 +43,6 @@ export function MakerProfile() {
     }
   })
 
-  console.log(portfolios)
-
   const skill = useSelector (state => {
     if (state?.skills.constructor.name === "Object"){
       return Object.values(state.skills)
@@ -58,13 +56,9 @@ export function MakerProfile() {
     return skills.map (skill => <Skill skill={skill}/> )
   }
 
-
   if (profile === null) {
-    return (<h1>Loading</h1>)
+    setTimeout (() => {(<h1>Loading</h1>)}, 1000)
   }
-
-    // if ( portfolios === null)
-
 
       return (
         <>
@@ -76,7 +70,7 @@ export function MakerProfile() {
               </Col>
 
               <Col lg={6} className="order-3 order-sm-2 text-light">
-                <h1 className="text-center text-md-start" id="profile-name">{profile.profileName}</h1>
+                <h1 className="text-center text-md-start" id="profile-name">{profile.profileFullName}</h1>
                 <p className="mt-3" id="about-me-text">{profile.profileAboutMe}</p>
                 <p id="email-text">{profile.profileEmail}</p>
               </Col>
