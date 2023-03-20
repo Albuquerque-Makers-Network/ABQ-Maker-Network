@@ -64,7 +64,6 @@ export function MakerProfile() {
       }
     }
 
-
     if (profile === null) {
       return (<h1>Loading</h1>)
     }
@@ -73,12 +72,12 @@ export function MakerProfile() {
       <>
         <Container className="p-5 ps-lg-0 mt-5 mx-auto rounded-4" id="background-about-me">
           <Row>
-            <Col className="d-flex align-content-center">
+            <Col className="d-flex align-content-center px-5">
               <Image roundedCircle height={250} width={250} src={profile.profileImageUrl}
                      className=" d-block mx-auto mb-lg-0 mb-3" id="profile-image"/>
             </Col>
 
-            <Col lg={6} className="order-3 order-sm-2 text-light">
+            <Col lg={5} className="order-3 order-sm-2 text-light">
               <h1 className="text-center text-md-start" id="profile-name">{profile.profileFullName}</h1>
               <p className="mt-3" id="about-me-text">{profile.profileAboutMe}</p>
               <p id="email-text">{profile.profileEmail}</p>
@@ -94,14 +93,16 @@ export function MakerProfile() {
         </Container>
 
         <Container className="container-fluid">
+          <Row id="portfolio-element">
+              {renderedPortfolios(portfolios)}
+          </Row>
           <Row>
-            <Col xs={12} md={4}
+            <Col xs={12} md={6}
                  className="col-auto rounded-4 p-4 mt-4 mb-auto text-white me-md-4 me-0 order-2 order-md-1"
                  id="pricing">
               <h2 className="text-md-center text-sm-start">Pricing:</h2>
               <p className=" mt-3">{profile.profilePricing}</p>
             </Col>
-            {renderedPortfolios(portfolios)}
           </Row>
         </Container>
 
