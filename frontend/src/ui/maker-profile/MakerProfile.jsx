@@ -59,9 +59,11 @@ export function MakerProfile() {
   }
 
 
-  if (profile === null || portfolios === null) {
+  if (profile === null) {
     return (<h1>Loading</h1>)
   }
+
+    // if ( portfolios === null)
 
 
       return (

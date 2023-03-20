@@ -4,10 +4,8 @@ import React from "react"
 import { httpConfig } from "../shared/utils/httpconfig"
 import {Field, Formik} from "formik"
 import * as Yup from "yup"
-import {Link} from "react-router-dom";
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
-import {FormDebugger} from "../shared/FormDebugger.jsx";
 
 export const SignUp = () => {
 
@@ -54,8 +52,6 @@ export const SignUp = () => {
 
       )
   }
-
-  console.log(signUpValues)
 
 return (
     <Formik initialValues= { signUpValues }
