@@ -29,9 +29,10 @@ export const SignUp = () => {
     profilePassword: Yup.string ()
       .required ( 'Password is required' )
       .min ( 8, 'Password must be at least eight characters'),
-    profilePasswordConfirm: Yup.string ()
-      .required ( 'Password confirmation is required')
-      .min ( 8, 'Password must be at least eight characters'),
+    profilePasswordConfirm: Yup.string()
+      .when("profilePassword", {
+        is: val => (val && val.length > 0), then: Yup.string().oneOf([Yup.ref("profilePassword")], "Password confirmation must match")
+      }),
     profileIsMaker: Yup.boolean ()
       .required ( 'Account Type must be selected'),
     profileName: Yup.string ()

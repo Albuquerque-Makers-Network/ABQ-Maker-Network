@@ -13,6 +13,7 @@ import {
     selectPartialProfileByKeyword
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
+import {setHash} from "../../utils/auth.utils";
 
 
 /**
@@ -33,19 +34,21 @@ export async function putProfileController (request: Request, response: Response
             return response.json({status: 400, data: null, message: 'you are not allowed to preform this task!'})
         }
 
-        console.log('this works')
         const {
             profileAboutMe,
             profileEmail,
             profileFullName,
+            profilePassword,
             profileImageUrl,
             profileIsMaker,
             profileName,
             profilePricing} = request.body
+        const profileHash = await setHash(profilePassword)
 
         const performUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
+            const profileHash = await setHash(profilePassword)
             const previousProfile: Profile = await selectWholeProfileByProfileId(partialProfile.profileId as string) as Profile
-            const newProfile:Profile = {...previousProfile, ...partialProfile }
+            const newProfile:Profile = {...previousProfile, profileHash, ...partialProfile }
             await updateProfile(newProfile)
             return response.json ({ status: 200, data: null, message: 'Profile successfully updated'})
         }
