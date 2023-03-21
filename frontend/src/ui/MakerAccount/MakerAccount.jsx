@@ -35,7 +35,7 @@ export const MakerAccount= () => {
                         <Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">
                             <h2 className="text-center pt-3">Categories / Skills</h2>
                             <Row>
-                                {allSkills.map(allskill => <SkillToggleForm profile={profile} allskill={allskill} key={allskill.skillId}/>)}
+                                <SkillToggleForm profile={profile} allskills={allSkills}/>
                             </Row>
                         </Container>
                     </>

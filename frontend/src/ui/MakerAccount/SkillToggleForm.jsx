@@ -2,22 +2,23 @@ import React from "react";
 import * as Yup from 'yup'
 import {Formik} from "formik";
 import {httpConfig} from "../shared/utils/httpconfig.js";
-import {Form, InputGroup, Col} from "react-bootstrap";
+import {Form, InputGroup, Col, Button} from "react-bootstrap";
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
+import {FormDebugger} from "../shared/FormDebugger.jsx";
 
 export const SkillToggleForm = (props) => {
 
-    const {profile, allskill} = props
+    const {profile, allskills} = props
 
-    const skillToggleInitialValues = {
-        profile,
-        allskill
+    const initialvalues = {
+        makerSkillIds: []
+
     }
 
     function submitEditedMakerProfile (values, { resetForm, setStatus }) {
 
         const submitUpdatedMakerSkills = (updatedMakerSkill) => {
-            httpConfig.put(`/apis/maker-skill/${profile.profileId}/${allskill.skillId}`, updatedMakerSkill)
+            httpConfig.post(`/apis/maker-skill/`, updatedMakerSkill)
                 .then(reply => {
                     let {message, type} = reply
                     if (reply.status === 200) {
@@ -31,52 +32,63 @@ export const SkillToggleForm = (props) => {
     }
 
     return (
-        <Formik initialValues={skillToggleInitialValues} onSubmit={submitEditedMakerProfile}>
-            {skillToggleContent}
+        <Formik initialValues={initialvalues} onSubmit={submitEditedMakerProfile}>
+            {(props)=> {
+                const {
+                    setFieldValue,
+                    status,
+                    values,
+                    errors,
+                    touched,
+                    dirty,
+                    isSubmitting,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    handleReset,
+                } = props
+
+                console.log("this is:", values)
+
+                return(
+                    <>
+                        <Col className='p-0, my-0' xs={6} lg={4}>
+                            <Form onSubmit={handleSubmit}>
+                                {allskills.map(skill=>(
+                                    <Form.Group controlId = "">
+                                    <InputGroup className="py-1">
+                                        <Form.Check
+                                            inline label={skill.skillType}
+                                            name="makerSkillIds"
+                                            type="switch"
+                                            id={"skillType"}
+                                            value={skill.skillId}
+                                            onChange = { handleChange }
+                                            onBlur = { handleBlur }
+                                        />
+                                    </InputGroup>
+                                    {/*<DisplayError errors={errors} touched={touched} field={"profileIsMaker"}/>*/}
+                                </Form.Group>))}
+                                <Form.Group className="d-flex justify-content-center">
+                                    <Button id="sign-up-submit"
+                                            variant="light"
+                                            type="Submit"
+                                            className="mb-3 fw-bold border border-dark border-2">Submit</Button>
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                        {/*<FormDebugger className="bg-dark" props={ props }/>*/}
+                    </>
+                )
+            }
+            }
         </Formik>
+
+
     )
+
 }
 
 function skillToggleContent(props) {
 
-    const {
-        setFieldValue,
-        status,
-        values,
-        errors,
-        touched,
-        dirty,
-        isSubmitting,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        handleReset,
-    } = props
-
-    console.log("this is:", values)
-
-    return(
-        <>
-            <Col className='p-0, my-0' xs={6} lg={4}>
-                    <Form>
-                        <Form.Group controlId = "">
-                            <InputGroup className="py-1">
-                                    <Form.Check
-                                        inline label={values.allskill.skillType}
-                                        name="skillType"
-                                        type="switch"
-                                        id={"skillType"}
-                                        value={values.allskill.skillId}
-                                        onChange = { handleChange }
-                                        onBlur = { handleBlur }
-                                    />
-
-                                {/*<Form.Check inline label="Community Member" name="profileIsMaker" type={"radio"} id={"profileIsMaker"} value={false} onChange = { handleChange } onBlur = { handleBlur } defaultChecked={values.profileIsMaker === false}/>*/}
-                            </InputGroup>
-                            {/*<DisplayError errors={errors} touched={touched} field={"profileIsMaker"}/>*/}
-                        </Form.Group>
-                    </Form>
-            </Col>
-        </>
-    )
 }
