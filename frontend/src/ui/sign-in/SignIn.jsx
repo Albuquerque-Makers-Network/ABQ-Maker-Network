@@ -39,8 +39,9 @@ export function SignIn() {
             resetForm();
             let jwtToken = jwtDecode(reply.headers["authorization"])
             dispatch(getAuth(jwtToken));
+            window.location.href = '/'
           }
-          window.location.href = '/'
+
         });
   };
 

@@ -1,22 +1,26 @@
 import React from "react";
 import {Container, Row, Col, Image, Button, Form} from "react-bootstrap";
 import "../App.css";
-import {AboutMe} from "./components/AboutMe.jsx";
-import {Pricing} from "./components/Pricing.jsx";
-import {UserName} from "./components/UserName.jsx";
-import {PhotoUpload} from "./components/PhotoUpload.jsx";
-import {Categories} from "./components/Categories.jsx";
 import "./MakerAccount.css"
 import {EditMakerAccountForm} from "./EditMakerAccountForm.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentUser } from "../../store/currentUser";
+import {SkillToggleForm} from "./SkillToggleForm"
+import {fetchAllSkills} from "../../store/skills.js";
+import {fetchAllProfiles} from "../../store/profiles.js";
 export const MakerAccount= () => {
 
     const dispatch = useDispatch()
     const profile = useSelector(state => state.currentUser ? state.currentUser : null)
 
+    const allSkills = useSelector (state => {
+        if (state?.skills.constructor.name === "Object"){
+            return Object.values(state.skills)
+        } else []
+    })
+
     const sideEffects = () => {
-        dispatch(fetchCurrentUser())
+        dispatch(fetchCurrentUser()), dispatch(fetchAllSkills())
     }
 
     React.useEffect(sideEffects, [dispatch])
@@ -29,6 +33,7 @@ export const MakerAccount= () => {
                 {profile &&
                     <>
                         <EditMakerAccountForm profile={profile}/>
+                        <SkillToggleForm/>
                     </>
                 }
             </Container>
