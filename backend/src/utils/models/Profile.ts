@@ -2,17 +2,17 @@ import {sql} from "../database.utils";
 
 export interface PartialProfile {
     profileId: string|null
-    profileAboutMe: string
+    profileAboutMe: string|null
     profileEmail: string
     profileFullName: string
     profileImageUrl: string|null
     profileIsMaker: boolean
     profileName: string
-    profilePricing: string
+    profilePricing: string|null
 }
 export interface Profile {
     profileId: string|null
-    profileAboutMe: string
+    profileAboutMe: string|null
     profileActivationToken: string|null
     profileEmail: string
     profileFullName: string
@@ -20,7 +20,7 @@ export interface Profile {
     profileImageUrl: string|null
     profileIsMaker: boolean
     profileName: string
-    profilePricing: string
+    profilePricing: string|null
 }
 
 /**
