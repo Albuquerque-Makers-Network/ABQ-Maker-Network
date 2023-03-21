@@ -19,11 +19,13 @@ export const EditMakerAccountForm = (props) => {
             .email( 'Email must be a valid email' ),
         profileName: Yup.string()
             .max ( 64, 'Username cannot be more than 64 characters' ),
-        // profileAboutMe: Yup.string()
-        //     .max ( 350, 'About be me cannot be more than 350 characters' ),
-        // profilePricing: Yup.string()
-        //     .max ( 128, 'Profile pricing cannot be more than 128 characters'),
-        profileImageUrl: Yup.mixed()
+        profileAboutMe: Yup.string()
+            .max ( 350, 'About be me cannot be more than 350 characters' )
+            .nullable(),
+        profilePricing: Yup.string()
+            .max ( 128, 'Profile pricing cannot be more than 128 characters')
+            .nullable()
+        // profileImageUrl: Yup.mixed()
     })
 
     function submitEditedProfile (values, { resetForm, setStatus }) {
@@ -40,20 +42,21 @@ export const EditMakerAccountForm = (props) => {
                 })
         }
 
-        if (values.profileImageUrl !== undefined) {
-            httpConfig.post(`/apis/image-upload/`, values.profileImageUrl)
-                .then(reply => {
-                let {message, type} = reply
-                if (reply.status === 200) {
-                    submitUpdatedProfile({...values, profileImageUrl: message})
-                } else {
-                    setStatus({message, type})
-                    }
-                }
-            )
-        } else {
-            submitUpdatedProfile(values)
-        }
+        // if (values.profileImageUrl !== undefined) {
+        //     httpConfig.post(`/apis/image-upload/`, values.profileImageUrl)
+        //         .then(reply => {
+        //         let {message, type} = reply
+        //         if (reply.status === 200) {
+        //             submitUpdatedProfile({...values, profileImageUrl: message})
+        //         } else {
+        //             setStatus({message, type})
+        //             }
+        //         }
+        //     )
+        // }
+        // else {
+        //     submitUpdatedProfile(values)
+        // }
     }
 
     return (
@@ -151,47 +154,47 @@ function EditProfileFormContent (props) {
                             <Col xs={12} lg={6}>
                                 <Container id='about-me-setting' className="mt-5 mx-auto rounded-4 p-3">
                                     <h2 className="text-center pt-3">About Me</h2>
-                                    <Form.Group className="mb-4 px-3" controlId="aboutMe">
+                                    <Form.Group className="mb-4 px-3" controlId="profileAboutMe">
                                     <Form.Label></Form.Label>
                                     <InputGroup>
                                         <FormControl
                                         className="form-control"
-                                        name="aboutMe"
+                                        name="profileAboutMe"
                                         as="textarea"
                                         rows={10}
                                         size='lg'
-                                        defaultValue={values.profileAboutMe}
+                                        value={values.profileAboutMe}
                                         placeholder="Write a little something about yourself..."
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         />
                                     </InputGroup>
-                                    <DisplayError errors={errors} touched={touched} field={'aboutMe'}/>
+                                    <DisplayError errors={errors} touched={touched} field={'profileAboutMe'}/>
                                     </Form.Group>
                                 </Container>
                             </Col>
-                    {/*            <Col xs={12} lg={6}>*/}
-                    {/*                <Container id='price-setting' className="mt-5 mx-auto rounded-4 p-3">*/}
-                    {/*                <h2 className="text-center pt-3">Pricing</h2>*/}
-                    {/*                <Form.Group className="mb-4 px-3" controlId="pricing">*/}
-                    {/*                <Form.Label></Form.Label>*/}
-                    {/*                <InputGroup>*/}
-                    {/*                    <FormControl*/}
-                    {/*                    className="form-control"*/}
-                    {/*                    name="pricing"*/}
-                    {/*                    as="textarea"*/}
-                    {/*                    rows={10}*/}
-                    {/*                    size='lg'*/}
-                    {/*                    defaultValue={values.profilePricing}*/}
-                    {/*                    placeholder="Let us know your pricing structure."*/}
-                    {/*                    onChange={handleChange}*/}
-                    {/*                    onBlur={handleBlur}*/}
-                    {/*                    />*/}
-                    {/*                </InputGroup>*/}
-                    {/*                <DisplayError errors={errors} touched={touched} field={'pricing'}/>*/}
-                    {/*                </Form.Group>*/}
-                    {/*                </Container>*/}
-                    {/*            </Col>*/}
+                                <Col xs={12} lg={6}>
+                                    <Container id='price-setting' className="mt-5 mx-auto rounded-4 p-3">
+                                    <h2 className="text-center pt-3">Pricing</h2>
+                                    <Form.Group className="mb-4 px-3" controlId="profilePricing">
+                                    <Form.Label></Form.Label>
+                                    <InputGroup>
+                                        <FormControl
+                                        className="form-control"
+                                        name="profilePricing"
+                                        as="textarea"
+                                        rows={10}
+                                        size='lg'
+                                        defaultValue={values.profilePricing}
+                                        placeholder="Let us know your pricing structure."
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        />
+                                    </InputGroup>
+                                    <DisplayError errors={errors} touched={touched} field={'profilePricing'}/>
+                                    </Form.Group>
+                                    </Container>
+                                </Col>
                                     <Col xs={12}>
                                         <Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">
                                             <h2 className="text-center pt-3">Categories / Skills</h2>
@@ -262,20 +265,21 @@ function EditProfileFormContent (props) {
                         </Row>
                     </Col>
                 </Row>
-                <Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">
-                        <h2 className="text-center pt-3">Upload Profile Image</h2>
-                    <ImageDropZone
-                        formikProps={{
-                            values,
-                            handleChange,
-                            handleBlur,
-                            setFieldValue,
-                            fieldValue: 'profileImageUrl'
-                        }}
-                    />
-                </Container>
+                {/*<Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">*/}
+                {/*        <h2 className="text-center pt-3">Upload Profile Image</h2>*/}
+                {/*    <ImageDropZone*/}
+                {/*        formikProps={{*/}
+                {/*            values,*/}
+                {/*            handleChange,*/}
+                {/*            handleBlur,*/}
+                {/*            setFieldValue,*/}
+                {/*            fieldValue: 'profileImageUrl'*/}
+                {/*        }}*/}
+                {/*    />*/}
+                {/*</Container>*/}
                     <Form.Group className={"mt-3"}>
                         <Button variant="light" type="submit" className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
+                                onClick={handleChange}
                         >Submit changes</Button>
                         {''}
                         <Button
@@ -293,53 +297,53 @@ function EditProfileFormContent (props) {
     )
 }
 
-function ImageDropZone ({ formikProps }) {
-
-    const onDrop = React.useCallback(acceptedFiles => {
-
-        const formData = new FormData()
-        formData.append('image', acceptedFiles[0])
-
-        formikProps.setFieldValue(formikProps.fieldValue, formData)
-
-    }, [formikProps])
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
-
-    return (
-        <Form.Group className={"mb-3"} {...getRootProps()}>
-            <Form.Label>User Image</Form.Label>
-
-            <InputGroup size="lg" className="">
-                {
-                    formikProps.values.profileImageUrl &&
-                    <>
-                        <div className="bg-transparent m-0">
-                            <Image  fluid={true} maxHeight={250} rounded={true} thumbnail={true} width={100} alt="profile pic" src={formikProps.values.profileImageUrl} />
-                        </div>
-
-                    </>
-                }
-                <div className="d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
-                    <FormControl
-                        aria-label="profile avatar file drag and drop area"
-                        aria-describedby="image drag drop area"
-                        className="form-control-file"
-                        accept="image/*"
-                        onChange={formikProps.handleChange}
-                        onBlur={formikProps.handleBlur}
-                        {...getInputProps()}
-                    />
-                    {
-                        isDragActive ?
-                            <span className="align-items-center" >Drop image here</span> :
-                            <span className="align-items-center" >Drag and drop image here, or click here to select an image</span>
-                    }
-                </div>
-
-            </InputGroup>
-        </Form.Group>
-    )
-}
+// function ImageDropZone ({ formikProps }) {
+//
+//     const onDrop = React.useCallback(acceptedFiles => {
+//
+//         const formData = new FormData()
+//         formData.append('image', acceptedFiles[0])
+//
+//         formikProps.setFieldValue(formikProps.fieldValue, formData)
+//
+//     }, [formikProps])
+//     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+//
+//     return (
+//         <Form.Group className={"mb-3"} {...getRootProps()}>
+//             <Form.Label>User Image</Form.Label>
+//
+//             <InputGroup size="lg" className="">
+//                 {
+//                     formikProps.values.profileImageUrl &&
+//                     <>
+//                         <div className="bg-transparent m-0">
+//                             <Image  fluid={true} maxHeight={200} rounded={true} thumbnail={true} width={100} alt="profile pic" src={formikProps.values.profileImageUrl} />
+//                         </div>
+//
+//                     </>
+//                 }
+//                 <div className="d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
+//                     <FormControl
+//                         aria-label="profile avatar file drag and drop area"
+//                         aria-describedby="image drag drop area"
+//                         className="form-control-file"
+//                         accept="image/*"
+//                         onChange={formikProps.handleChange}
+//                         onBlur={formikProps.handleBlur}
+//                         {...getInputProps()}
+//                     />
+//                     {
+//                         isDragActive ?
+//                             <span className="align-items-center" >Drop image here</span> :
+//                             <span className="align-items-center" >Drag and drop image here, or click here to select an image</span>
+//                     }
+//                 </div>
+//
+//             </InputGroup>
+//         </Form.Group>
+//     )
+// }
 
 
 

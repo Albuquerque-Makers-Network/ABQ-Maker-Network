@@ -1,3 +1,13 @@
+import React from "react";
+import * as Yup from "yup";
+import {Field, Formik, useField} from "formik";
+import {Button, Container, Image, Form, FormControl, InputGroup, Row, Col, Stack} from "react-bootstrap";
+import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
+import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
+import {FormDebugger} from "../shared/FormDebugger.jsx";
+import {httpConfig} from "../shared/utils/httpconfig.js";
+import {useDropzone} from "react-dropzone";
+
 
 export const ImageUploadUpdate = (props) => {
     const { profile } = props
@@ -69,47 +79,18 @@ function EditProfileFormContent (props) {
 
     return (
         <>
+        <Container className="maker-image-upload">
+                {/*<Form onSubmit={handleSubmit}>*/}
+
+                            <Container id='user-name-setting' className="mt-5 mx-auto rounded-4 p-3">
+                                <h2 className="text-center pt-3">Profile Image</h2>
+                                <Image fluid roundedCircle src={values.profileImageUrl} alt="profile picture" className="d-block mx-auto mt-5 mb-3" id="profile-image"/>
+
+                            </Container>
+
             <Form onSubmit={handleSubmit} className="bg-light border rounded p-3">
-                <h2>Edit Profile Form</h2>
+                <h2>Upload/Update Profile Images</h2>
                 {/*controlId must match what is passed to the initialValues prop*/}
-                <Form.Group className="mb-1" controlId="profileEmail">
-                    <Form.Label>email</Form.Label>
-                    <InputGroup>
-                        <InputGroup.Text>
-                            <FontAwesomeIcon icon="envelope"/>
-                        </InputGroup.Text>
-                        <FormControl
-                            className="form-control"
-                            name="profileEmail"
-                            type="text"
-                            value={values.profileEmail}
-                            placeholder="your@email.you"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-
-                        />
-                    </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={'profileEmail'}/>
-                </Form.Group>
-                <Form.Group className="mb-1" controlId="profileAtHandle">
-                    <Form.Label>Handle </Form.Label>
-                    <InputGroup>
-                        <InputGroup.Text>
-                            <FontAwesomeIcon icon="dove"/>
-                        </InputGroup.Text>
-                        <FormControl
-                            className="form-control"
-                            name="profileAtHandle"
-                            type="text"
-                            value={values.profileAtHandle}
-                            placeholder="handle"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-
-                        />
-                    </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={'profileAtHandle'}/>
-                </Form.Group>
 
                 <ImageDropZone
                     formikProps={{
@@ -131,7 +112,11 @@ function EditProfileFormContent (props) {
                     </Button>
                 </Form.Group>
             </Form>
+        </Container>
             <DisplayStatus status={status} />
+
+
+            <FormDebugger {...props} />
         </>
 
     )
@@ -158,7 +143,7 @@ function ImageDropZone ({ formikProps }) {
                     formikProps.values.profileAvatarUrl &&
                     <>
                         <div className="bg-transparent m-0">
-                            <Image  fluid={true} height={100} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.values.profileAvatarUrl} />
+                            <Image  fluid={true} height={200} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.values.profileAvatarUrl} />
                         </div>
 
                     </>
@@ -183,6 +168,9 @@ function ImageDropZone ({ formikProps }) {
 
             </InputGroup>
         </Form.Group>
+
+
+
     )
 }
 

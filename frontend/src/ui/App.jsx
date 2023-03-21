@@ -10,7 +10,7 @@ import {MakerProfile} from "./maker-profile/MakerProfile.jsx";
 import {Navigation} from "./shared/components/NavBar/Navigation.jsx";
 import {Provider} from "react-redux";
 import {SignIn} from "./sign-in/SignIn.jsx";
-
+import {MakerImageUpload} from "./maker-image-upload/MakerImageUpload.jsx";
 
 
 export function App(props) {
@@ -28,6 +28,7 @@ export function App(props) {
                             <Route path={'/maker-profile/:profileId'} element={<MakerProfile />} />
                             <Route path={'/community-account'} element={<CommunityAccount />} />
                             <Route path={'/maker-account'} element={<MakerAccount />} />
+                            <Route path={'/maker-image-upload'} element={<MakerImageUpload />} />
                         </Routes>
                     </BrowserRouter>
                 </Provider>
