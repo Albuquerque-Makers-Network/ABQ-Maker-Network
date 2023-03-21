@@ -4,22 +4,14 @@
 }
 
 #profile-image{
-    background-color: var(--cusLightGrey)
+    background-color: var(--cusLightGrey);
+    object-fit: cover;
 }
 
 .profile-skills {
     background-color: var(--cusyellow);
     border: solid 2px var(--cusOffBlack);
 }
-
-/*@media (max-aspect-ratio: 1/1) {*/
-/*    #portfolio-image {*/
-/*        height: 25vh;*/
-/*        max-height: 250px;*/
-/*        max-width: 100px;*/
-/*        object-fit: cover;*/
-/*    }*/
-/*}*/
 
 #portfolio-image {
     height: 25vh;
@@ -33,7 +25,6 @@
     align-self: center;
     transform: scale(2)
 }
-
 
 #profile-name, #skills-name, #pricing,  #about-me-text, #email-text {
     text-shadow: 2px 2px var(--cusOffBlack);

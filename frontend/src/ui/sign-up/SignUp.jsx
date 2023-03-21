@@ -6,6 +6,7 @@ import {Field, Formik} from "formik"
 import * as Yup from "yup"
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
+import {FormDebugger} from "../shared/FormDebugger.jsx";
 
 export const SignUp = () => {
 
@@ -28,9 +29,10 @@ export const SignUp = () => {
     profilePassword: Yup.string ()
       .required ( 'Password is required' )
       .min ( 8, 'Password must be at least eight characters'),
-    profilePasswordConfirm: Yup.string ()
-      .required ( 'Password confirmation is required')
-      .min ( 8, 'Password must be at least eight characters'),
+    profilePasswordConfirm: Yup.string()
+      .when("profilePassword", {
+        is: val => (val && val.length > 0), then: Yup.string().oneOf([Yup.ref("profilePassword")], "Password confirmation must match")
+      }),
     profileIsMaker: Yup.boolean ()
       .required ( 'Account Type must be selected'),
     profileName: Yup.string ()
@@ -187,7 +189,7 @@ function SignUpFormContent (props) {
           </Container>
         </section>
       </Form>
-{/*<FormDebugger props={ props }/>*/}
+<FormDebugger props={ props }/>
       <DisplayStatus status= { status } />
 
     </>

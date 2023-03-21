@@ -9,16 +9,20 @@ import {useParams} from "react-router-dom";
 import {PortfolioImage} from "./components/PortfolioImage.jsx";
 import {fetchPortfolioByProfileId} from "../../store/portfolios.js";
 import {fetchSkillByProfileId} from "../../store/skills.js";
+import {fetchCurrentUser} from "../../store/currentUser.js";
+import {NotSignedIn} from "../shared/components/NavBar/NotSignedIn.jsx";
+import {SignedIn} from "../shared/components/NavBar/SignedIn.jsx";
 
 
 export function MakerProfile() {
   let selectedProfileId = useParams()
 
-  //extracts profileId from Object
+  // Extracts profileId from Object
   const profileId = selectedProfileId.profileId
 
   const dispatch = useDispatch()
 
+  // Brings information from database into Redux store
   const initialEffect = () => {
     dispatch(fetchProfileByProfileId(profileId))
     dispatch(fetchSkillByProfileId(profileId))
@@ -27,6 +31,7 @@ export function MakerProfile() {
 
   React.useEffect(initialEffect, [profileId])
 
+  // Selects profile, portfolios, skill information from Redux store
   const profile = useSelector(state => {
     if (state?.profiles[profileId]) {
       return state.profiles[profileId]
@@ -51,11 +56,12 @@ export function MakerProfile() {
     }
   })
 
-  //renders skills on page
+  // Renders skills on page
   const renderedSkills = (skills) => {
     return skills.map(skill => <Skill skill={skill}/>)
   }
 
+  // Renders portfolios once they are in Redux store
   const renderedPortfolios = (portfolios) => {
     if (portfolios === null) {
       return (<h5> No portfolios to display </h5>)
@@ -64,9 +70,18 @@ export function MakerProfile() {
       }
     }
 
+    // Renders page once profile is retrieved
     if (profile === null) {
       return (<h1>Loading</h1>)
     }
+
+  const signedInUser = useSelector(state => state.currentUser ? state.currentUser : null)
+
+  const sideEffects = () => {
+    dispatch(fetchCurrentUser())
+  }
+
+  React.useEffect(sideEffects, [dispatch])
 
     return (
       <>
@@ -80,7 +95,17 @@ export function MakerProfile() {
             <Col lg={5} className="order-3 order-sm-2 text-light">
               <h1 className="text-center text-md-start" id="profile-name">{profile.profileFullName}</h1>
               <p className="mt-3" id="about-me-text">{profile.profileAboutMe}</p>
-              <p id="email-text">{profile.profileEmail}</p>
+              <p id="email-text"> {!signedInUser &&
+                <>
+                  <p>Please sign-in to display contact info!</p>
+                </>
+              }
+
+                {signedInUser &&
+                  <>
+                    {profile.profileEmail}
+                  </>
+                }</p>
             </Col>
 
             <Col className="order-2 order-sm-3 my-3 mt-lg-0 d-block d-lg-inline justify-content-center">
@@ -105,7 +130,6 @@ export function MakerProfile() {
             </Col>
           </Row>
         </Container>
-
       </>
     )
   }
