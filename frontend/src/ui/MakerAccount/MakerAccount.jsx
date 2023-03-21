@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Row, Col, Image, Button, Form} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import "../App.css";
 import "./MakerAccount.css"
 import {EditMakerAccountForm} from "./EditMakerAccountForm.jsx";
@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentUser } from "../../store/currentUser";
 import {SkillToggleForm} from "./SkillToggleForm"
 import {fetchAllSkills} from "../../store/skills.js";
-import {fetchAllProfiles} from "../../store/profiles.js";
 export const MakerAccount= () => {
 
     const dispatch = useDispatch()
@@ -20,12 +19,14 @@ export const MakerAccount= () => {
     })
 
     const sideEffects = () => {
-        dispatch(fetchCurrentUser()), dispatch(fetchAllSkills())
+        dispatch(fetchCurrentUser())
+            ,
+            dispatch(fetchAllSkills())
     }
 
     React.useEffect(sideEffects, [dispatch])
-    return (
 
+    return (
         <>
         <section>
             <Container id="maker-account" className='p-5'>
@@ -33,7 +34,13 @@ export const MakerAccount= () => {
                 {profile &&
                     <>
                         <EditMakerAccountForm profile={profile}/>
-                        <SkillToggleForm/>
+                        <Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">
+                            <h2 className="text-center pt-3">Categories / Skills</h2>
+                            <Row>
+                                {allSkills.map(allskill => <SkillToggleForm profile={profile} allskill={allskill} key={allskill.skillId}/>)}
+                            </Row>
+
+                        </Container>
                     </>
                 }
             </Container>

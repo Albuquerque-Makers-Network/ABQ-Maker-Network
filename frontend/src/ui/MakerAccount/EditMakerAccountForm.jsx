@@ -1,7 +1,7 @@
 import React from "react";
 import * as Yup from "yup";
 import {Formik} from "formik";
-import {Button, Container, Image, Form, FormControl, InputGroup, Row, Col, Stack} from "react-bootstrap";
+import {Button, Container, Image, Form, FormControl, InputGroup, Row, Col, Alert} from "react-bootstrap";
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
 import {FormDebugger} from "../shared/FormDebugger.jsx";
@@ -70,6 +70,10 @@ function EditProfileFormContent (props) {
 
     } = props
 
+    const handleProfileClick = () => {
+        window.location.replace('/maker-image-upload')
+    }
+
     return (
         <>
 
@@ -79,8 +83,9 @@ function EditProfileFormContent (props) {
                     <Col sm={12} lg={4}>
                         <Container id='user-name-setting' className="mt-2 mx-auto rounded-4 p-3">
                             <h2 className="text-center pt-3">User Info</h2>
-                                {/*<Image fluid roundedCircle src={values.profileImageUrl} alt="profile picture" className="d-block mx-auto mt-5 mb-3" id="profile-image"/>*/}
-                                <Form.Group className="mb-4 px-3" controlId="profileFullName">
+                                <Image fluid roundedCircle src={values.profileImageUrl} alt="profile picture" className="d-block mx-auto mt-5 mb-3" id="profile-image"/>
+                                <a href='/maker-image-upload'><h6 className="text-light text-center">Update Profile Photo HERE</h6></a>
+                                <Form.Group className="my-4 mb-4 px-3" controlId="profileFullName">
                                     <Form.Label>Full Name</Form.Label>
                                     <InputGroup>
                                         <FormControl
