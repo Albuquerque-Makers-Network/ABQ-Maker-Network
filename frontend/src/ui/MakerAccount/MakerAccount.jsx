@@ -39,7 +39,6 @@ export const MakerAccount= () => {
                             <Row>
                                 {allSkills.map(allskill => <SkillToggleForm profile={profile} allskill={allskill} key={allskill.skillId}/>)}
                             </Row>
-
                         </Container>
                     </>
                 }

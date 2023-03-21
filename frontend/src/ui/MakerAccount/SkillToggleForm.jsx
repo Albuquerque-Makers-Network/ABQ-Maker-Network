@@ -9,10 +9,10 @@ export const SkillToggleForm = (props) => {
 
     const {profile, allskill} = props
 
-    function submitEditedProfile (values, { resetForm, setStatus }) {
+    function submitEditedMakerProfile (values, { resetForm, setStatus }) {
 
-        const submitUpdatedProfile = (updatedProfile) => {
-            httpConfig.put(`/apis/profile/${profile.profileId}`, updatedProfile)
+        const submitUpdatedMakerSkills = (updatedMakerSkill) => {
+            httpConfig.put(`/apis/maker-skill/${profile.profileId}/${allskill.skillId}`, updatedMakerSkill)
                 .then(reply => {
                     let {message, type} = reply
                     if (reply.status === 200) {
@@ -22,12 +22,13 @@ export const SkillToggleForm = (props) => {
                     return (reply)
                 })
         }
-        {submitUpdatedProfile(values)}
+        {submitUpdatedMakerSkills(values)}
     }
 
+    // /:makerSkillMakerProfileId/:makerSkillId
 
     return (
-        <Formik initialValues={allskill} onSubmit={submitEditedProfile}>
+        <Formik initialValues={allskill} onSubmit={submitEditedMakerProfile}>
             {skillToggleContent}
         </Formik>
     )
@@ -53,7 +54,7 @@ function skillToggleContent(props) {
 
     return(
         <>
-            <Col className='p-0, my-0' lg={3}>
+            <Col className='p-0, my-0' xs={6} sm={4} lg={3}>
                     <Form>
                         <Form.Group className="" controlId = "">
                             <InputGroup className="">
@@ -62,7 +63,7 @@ function skillToggleContent(props) {
                                         name="profileIsMaker"
                                         type="switch"
                                         id={"profileIsMaker"}
-                                        // value={false}
+                                        value={true}
                                         onChange = { handleChange }
                                         onBlur = { handleBlur }
                                     />
