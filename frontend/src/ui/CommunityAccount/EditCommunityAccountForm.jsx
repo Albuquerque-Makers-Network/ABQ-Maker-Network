@@ -19,13 +19,13 @@ export const EditCommunityAccountForm = (props) => {
             .email( 'Email must be a valid email' ),
         profileName: Yup.string()
             .max ( 64, 'Username cannot be more than 64 characters' ),
-        profilePassword: Yup.string()
-            .min ( 8, 'Password must be at least eight characters' )
-            .max ( 15, 'Password must not exceed fifteen characters' ),
-        profilePasswordConfirm: Yup.string()
-          .when("profilePassword", {
-            is: val => (val && val.length > 0), then: Yup.string().oneOf([Yup.ref("profilePassword")], "Password confirmation must match")
-          })
+        // profilePassword: Yup.string()
+        //     .min ( 8, 'Password must be at least eight characters' )
+        //     .max ( 15, 'Password must not exceed fifteen characters' ),
+        // profilePasswordConfirm: Yup.string()
+        //   .when("profilePassword", {
+        //     is: val => (val && val.length > 0), then: Yup.string().oneOf([Yup.ref("profilePassword")], "Password confirmation must match")
+        //   })
     })
 
     function submitEditedProfile (values, { resetForm, setStatus }) {
@@ -133,43 +133,43 @@ export const EditCommunityAccountForm = (props) => {
                     <DisplayError errors={errors} touched={touched} field={'profileName'}/>
                 </Form.Group>
 
-                <Form.Group className="mb-4 px-3" controlId="profilePassword">
-                    <Form.Label>Update your password</Form.Label>
-                    <InputGroup>
-                      <InputGroup.Text>
-                        {/*<FontAwesomeIcon icon="envelope"/>*/}
-                      </InputGroup.Text>
-                        <FormControl
-                            className="form-control"
-                            name="profilePassword"
-                            type="password"
-                            value={values.profilePassword}
-                            placeholder="Password"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                    </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={'profilePassword'}/>
-                </Form.Group>
-                <Form.Group className="mb-4 px-3" controlId="profilePasswordConfirm">
-                    <Form.Label>Confirm your updated password</Form.Label>
-                    <InputGroup>
-                        <InputGroup.Text>
-                            {/*<FontAwesomeIcon icon="envelope"/>*/}
-                        </InputGroup.Text>
-                        <FormControl
-                            className="form-control"
-                            name="profilePasswordConfirm"
-                            type="password"
-                            value={values.profilePasswordConfirm}
-                            placeholder="Password"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
+                {/*<Form.Group className="mb-4 px-3" controlId="profilePassword">*/}
+                {/*    <Form.Label>Update your password</Form.Label>*/}
+                {/*    <InputGroup>*/}
+                {/*      <InputGroup.Text>*/}
+                {/*        /!*<FontAwesomeIcon icon="envelope"/>*!/*/}
+                {/*      </InputGroup.Text>*/}
+                {/*        <FormControl*/}
+                {/*            className="form-control"*/}
+                {/*            name="profilePassword"*/}
+                {/*            type="password"*/}
+                {/*            value={values.profilePassword}*/}
+                {/*            placeholder="Password"*/}
+                {/*            onChange={handleChange}*/}
+                {/*            onBlur={handleBlur}*/}
+                {/*        />*/}
+                {/*    </InputGroup>*/}
+                {/*    <DisplayError errors={errors} touched={touched} field={'profilePassword'}/>*/}
+                {/*</Form.Group>*/}
+                {/*<Form.Group className="mb-4 px-3" controlId="profilePasswordConfirm">*/}
+                {/*    <Form.Label>Confirm your updated password</Form.Label>*/}
+                {/*    <InputGroup>*/}
+                {/*        <InputGroup.Text>*/}
+                {/*            /!*<FontAwesomeIcon icon="envelope"/>*!/*/}
+                {/*        </InputGroup.Text>*/}
+                {/*        <FormControl*/}
+                {/*            className="form-control"*/}
+                {/*            name="profilePasswordConfirm"*/}
+                {/*            type="password"*/}
+                {/*            value={values.profilePasswordConfirm}*/}
+                {/*            placeholder="Password"*/}
+                {/*            onChange={handleChange}*/}
+                {/*            onBlur={handleBlur}*/}
 
-                        />
-                    </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={'profilePasswordConfirm'}/>
-                </Form.Group>
+                {/*        />*/}
+                {/*    </InputGroup>*/}
+                {/*    <DisplayError errors={errors} touched={touched} field={'profilePasswordConfirm'}/>*/}
+                {/*</Form.Group>*/}
 
                 <Form.Group className="d-flex justify-content-center">
                     <Button variant="light"
@@ -186,7 +186,7 @@ export const EditCommunityAccountForm = (props) => {
                 </Form>
                 <DisplayStatus status={status}/>
 
-                <FormDebugger {...props} />
+                {/*<FormDebugger {...props} />*/}
 
             </>
     )
