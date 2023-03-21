@@ -33,7 +33,6 @@ export const fetchAllSkills = () => {
             },
         {}
         )
-        console.log('these are all skills', skillsDictionary)
         dispatch (setAllSkills(skillsDictionary))
     }
 }
@@ -51,7 +50,6 @@ export const fetchAllPopularSkills = () => {
             },
             {}
         )
-        console.log('these are popular', popularSkillsDictionary)
         dispatch (setAllPopularSkills(popularSkillsDictionary))
     }
 }
@@ -72,7 +70,5 @@ export const fetchSkillByProfileId = (profileId) => {
             dispatch(setProfileSkills(skills))
         }
     }
-
-
 
 export default skillSlice.reducer

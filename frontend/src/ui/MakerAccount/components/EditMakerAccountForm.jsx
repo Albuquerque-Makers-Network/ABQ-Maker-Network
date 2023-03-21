@@ -26,14 +26,14 @@ export const EditMakerAccountForm = (props) => {
             .nullable()
     })
 
-    function submitEditedProfile (values, { resetForm, setStatus }) {
+    function submitEditedProfile (values, { setStatus }) {
 
         const submitUpdatedProfile = (updatedProfile) => {
             httpConfig.put(`/apis/profile/${profile.profileId}`, updatedProfile)
                 .then(reply => {
                     let {message, type} = reply
                     if (reply.status === 200) {
-                        resetForm()
+                        window.location.reload()
                     }
                     setStatus({message, type})
                     return (reply)

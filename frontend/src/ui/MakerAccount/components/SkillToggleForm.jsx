@@ -16,14 +16,13 @@ export const SkillToggleForm = (props) => {
 
     }
 
-    function submitEditedMakerProfile (values, { resetForm, setStatus }) {
+    function submitEditedMakerProfile (values, {setStatus }) {
 
         const submitUpdatedMakerSkills = (updatedMakerSkill) => {
             httpConfig.post(`/apis/maker-skill/`, updatedMakerSkill)
                 .then(reply => {
                     let {message, type} = reply
                     if (reply.status === 200) {
-                        resetForm()
                     }
                     setStatus({message, type})
                     return (reply)
@@ -83,7 +82,7 @@ export const SkillToggleForm = (props) => {
                                         >Submit New Skills</Button>
                         </Form.Group>
                       </Form>
-
+                        <DisplayStatus status={status}/>
                     </>
                 )
             }

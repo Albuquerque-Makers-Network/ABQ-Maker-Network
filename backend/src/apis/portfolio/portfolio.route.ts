@@ -1,6 +1,6 @@
 import {Router} from "express";
 import {asyncValidatorController} from "../../utils/controllers/async-validator.controller";
-import {check, checkSchema} from "express-validator";
+import {check} from "express-validator";
 import {
   deletePortfolioImageController,
   getPortfolioByPortfolioIdController,
