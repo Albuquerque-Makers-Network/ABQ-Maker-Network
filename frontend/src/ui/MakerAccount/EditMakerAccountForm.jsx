@@ -186,15 +186,11 @@ function EditProfileFormContent (props) {
                         </Col>
                     </Row>
                         <Form.Group className={"mt-3"}>
-                            <Button variant="light" type="submit" className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
-                                    onClick={handleChange}
-                            >Submit User Information Changes</Button>
-                            {/*{''}*/}
-                            <Button
-                                className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
-                                onClick={handleReset}
-                                disabled={!dirty || isSubmitting}
-                            >Reset User Information</Button>
+                            <Button variant="light"
+                                    type="submit"
+                                    className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
+                                    onClick={handleSubmit}
+                            >Submit User Information</Button>
                             </Form.Group>
                 </Form>
             <DisplayStatus status={status}/>
