@@ -9,6 +9,11 @@ export const SkillToggleForm = (props) => {
 
     const {profile, allskill} = props
 
+    const skillToggleInitialValues = {
+        profile,
+        allskill
+    }
+
     function submitEditedMakerProfile (values, { resetForm, setStatus }) {
 
         const submitUpdatedMakerSkills = (updatedMakerSkill) => {
@@ -25,10 +30,8 @@ export const SkillToggleForm = (props) => {
         {submitUpdatedMakerSkills(values)}
     }
 
-    // /:makerSkillMakerProfileId/:makerSkillId
-
     return (
-        <Formik initialValues={allskill} onSubmit={submitEditedMakerProfile}>
+        <Formik initialValues={skillToggleInitialValues} onSubmit={submitEditedMakerProfile}>
             {skillToggleContent}
         </Formik>
     )
@@ -50,25 +53,27 @@ function skillToggleContent(props) {
         handleReset,
     } = props
 
-    const {allskill} = props
+    console.log("this is:", values)
 
     return(
         <>
-            <Col className='p-0, my-0' xs={6} sm={4} lg={3}>
+            <Col className='p-0, my-0' xs={6} lg={4}>
                     <Form>
-                        <Form.Group className="" controlId = "">
-                            <InputGroup className="">
+                        <Form.Group controlId = "">
+                            <InputGroup className="py-1">
                                     <Form.Check
-                                        inline label="Skills"
-                                        name="profileIsMaker"
+                                        inline label={values.allskill.skillType}
+                                        name="skillType"
                                         type="switch"
-                                        id={"profileIsMaker"}
-                                        value={true}
+                                        id={"skillType"}
+                                        value={values.allskill.skillId}
                                         onChange = { handleChange }
                                         onBlur = { handleBlur }
                                     />
+
+                                {/*<Form.Check inline label="Community Member" name="profileIsMaker" type={"radio"} id={"profileIsMaker"} value={false} onChange = { handleChange } onBlur = { handleBlur } defaultChecked={values.profileIsMaker === false}/>*/}
                             </InputGroup>
-                            <DisplayError errors={errors} touched={touched} field={"profileIsMaker"}/>
+                            {/*<DisplayError errors={errors} touched={touched} field={"profileIsMaker"}/>*/}
                         </Form.Group>
                     </Form>
             </Col>

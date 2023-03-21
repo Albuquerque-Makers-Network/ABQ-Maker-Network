@@ -19,9 +19,7 @@ export const MakerAccount= () => {
     })
 
     const sideEffects = () => {
-        dispatch(fetchCurrentUser())
-            ,
-            dispatch(fetchAllSkills())
+        dispatch(fetchCurrentUser()), dispatch(fetchAllSkills())
     }
 
     React.useEffect(sideEffects, [dispatch])
