@@ -13,7 +13,7 @@ export const ImageUploadUpdate = (props) => {
     const { profile } = props
 
     const validationObject = Yup.object().shape({
-        profileAvatarUrl: Yup.mixed(),
+        profileImageUrl: Yup.mixed(),
         profileAtHandle: Yup.string()
             .min(1, 'profile @handle is to long.')
     })
@@ -33,13 +33,13 @@ export const ImageUploadUpdate = (props) => {
                 })
         }
 
-        if (values.profileAvatarUrl !== undefined) {
-            httpConfig.post(`/apis/image-upload/`, values.profileAvatarUrl)
+        if (values.profileImageUrl !== undefined) {
+            httpConfig.post(`/apis/image-upload/`, values.profileImageUrl)
                 .then(reply => {
                         let { message, type } = reply
 
                         if (reply.status === 200) {
-                            submitUpdatedProfile({ ...values, profileAvatarUrl: message })
+                            submitUpdatedProfile({ ...values, profileImageUrl: message })
                         } else {
                             setStatus({ message, type })
                         }
@@ -98,7 +98,7 @@ function EditProfileFormContent (props) {
                         handleChange,
                         handleBlur,
                         setFieldValue,
-                        fieldValue: 'profileAvatarUrl'
+                        fieldValue: 'profileImageUrl'
                     }}
                 />
                 <Form.Group className={"mt-3"}>
@@ -140,7 +140,7 @@ function ImageDropZone ({ formikProps }) {
 
             <InputGroup size="lg" className="">
                 {
-                    formikProps.values.profileAvatarUrl &&
+                    formikProps.values.profileImageUrl &&
                     <>
                         <div className="bg-transparent m-0">
                             <Image  fluid={true} height={200} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.values.profileAvatarUrl} />
