@@ -2,10 +2,10 @@ import React from "react";
 import * as Yup from "yup";
 import {Formik} from "formik";
 import {Button, Container, Image, Form, FormControl, InputGroup, Row, Col, Alert} from "react-bootstrap";
-import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
-import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
-import {FormDebugger} from "../shared/FormDebugger.jsx";
-import {httpConfig} from "../shared/utils/httpconfig.js";
+import {DisplayError} from "../../shared/components/display-error/DisplayError.jsx";
+import {DisplayStatus} from "../../shared/components/display-status/display-status.jsx";
+import {FormDebugger} from "../../shared/FormDebugger.jsx";
+import {httpConfig} from "../../shared/utils/httpconfig.js";
 
 export const EditMakerAccountForm = (props) => {
 
@@ -26,14 +26,14 @@ export const EditMakerAccountForm = (props) => {
             .nullable()
     })
 
-    function submitEditedProfile (values, { resetForm, setStatus }) {
+    function submitEditedProfile (values, { setStatus }) {
 
         const submitUpdatedProfile = (updatedProfile) => {
             httpConfig.put(`/apis/profile/${profile.profileId}`, updatedProfile)
                 .then(reply => {
                     let {message, type} = reply
                     if (reply.status === 200) {
-                        resetForm()
+                        window.location.reload()
                     }
                     setStatus({message, type})
                     return (reply)

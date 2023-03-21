@@ -2,10 +2,10 @@ import React from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import "../App.css";
 import "./MakerAccount.css"
-import {EditMakerAccountForm} from "./EditMakerAccountForm.jsx";
+import {EditMakerAccountForm} from "./components/EditMakerAccountForm.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentUser } from "../../store/currentUser";
-import {SkillToggleForm} from "./SkillToggleForm"
+import {SkillToggleForm} from "./components/SkillToggleForm.jsx"
 import {fetchAllSkills} from "../../store/skills.js";
 export const MakerAccount= () => {
 
@@ -33,10 +33,8 @@ export const MakerAccount= () => {
                     <>
                         <EditMakerAccountForm profile={profile}/>
                         <Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">
-                            <h2 className="text-center pt-3">Categories / Skills</h2>
-                            <Row>
-                                {allSkills.map(allskill => <SkillToggleForm profile={profile} allskill={allskill} key={allskill.skillId}/>)}
-                            </Row>
+                            <h2 className="text-center py-3">Categories / Skills</h2>
+                                <SkillToggleForm profile={profile} allskills={allSkills}/>
                         </Container>
                     </>
                 }
