@@ -2,10 +2,10 @@ import React from "react";
 import * as Yup from "yup";
 import {Formik} from "formik";
 import {Button, Container, Image, Form, FormControl, InputGroup, Row, Col, Alert} from "react-bootstrap";
-import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
-import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
-import {FormDebugger} from "../shared/FormDebugger.jsx";
-import {httpConfig} from "../shared/utils/httpconfig.js";
+import {DisplayError} from "../../shared/components/display-error/DisplayError.jsx";
+import {DisplayStatus} from "../../shared/components/display-status/display-status.jsx";
+import {FormDebugger} from "../../shared/FormDebugger.jsx";
+import {httpConfig} from "../../shared/utils/httpconfig.js";
 
 export const EditMakerAccountForm = (props) => {
 
