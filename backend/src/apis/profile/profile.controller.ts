@@ -48,7 +48,7 @@ export async function putProfileController (request: Request, response: Response
         const performUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
             const profileHash = await setHash(profilePassword)
             const previousProfile: Profile = await selectWholeProfileByProfileId(partialProfile.profileId as string) as Profile
-            const newProfile:Profile = {...previousProfile, profileHash, ...partialProfile }
+            const newProfile:Profile = {...previousProfile, ...partialProfile }
             await updateProfile(newProfile)
             return response.json ({ status: 200, data: null, message: 'Profile successfully updated'})
         }
