@@ -1,9 +1,7 @@
 import React from "react";
-import * as Yup from 'yup'
 import {Formik} from "formik";
 import {httpConfig} from "../../shared/utils/httpconfig.js";
 import {Form, InputGroup, Col, Button, Row} from "react-bootstrap";
-import {DisplayError} from "../../shared/components/display-error/DisplayError.jsx";
 import {FormDebugger} from "../../shared/FormDebugger.jsx";
 import {DisplayStatus} from "../../shared/components/display-status/display-status.jsx";
 
@@ -53,7 +51,7 @@ export const SkillToggleForm = (props) => {
                 return(
                     <>
                     <Form onSubmit={handleSubmit}>
-                        <Row>
+                        <Row className='ps-5'>
                             {allskills.map(skill=>(
                             <Col className='p-0, my-0' xs={6} lg={4}>
 

@@ -78,14 +78,15 @@ function EditProfileFormContent (props) {
         <>
 
             <Form onSubmit={handleSubmit}>
-                <h3 className='mt-5'>User Information Settings</h3>
+                <Container id="user-info-setting" className="rounded-4 p-sm-5">
+                    <h2 className='text-center pb-3'>My Profile</h2>
                 <Row id='primary-content'>
                     <Col sm={12} lg={4}>
                         <Container id='user-name-setting' className="mt-2 mx-auto rounded-4 p-3">
                             <h2 className="text-center pt-3">User Info</h2>
                                 <Image fluid roundedCircle src={values.profileImageUrl} alt="profile picture" className="d-block mx-auto mt-5 mb-3" id="profile-image"/>
-                                <a href='/maker-image-upload'><h6 className="text-light text-center">Update Profile Photo HERE</h6></a>
-                                <Form.Group className="my-4 mb-4 px-3" controlId="profileFullName">
+                                <a href='/maker-image-upload'><h6 className=" text-dark text-center">Update Profile Photo HERE</h6></a>
+                                <Form.Group className="my-4 mb-4 px-3 fw-bold" controlId="profileFullName">
                                     <Form.Label>Full Name</Form.Label>
                                     <InputGroup>
                                         <FormControl
@@ -100,7 +101,7 @@ function EditProfileFormContent (props) {
                                     </InputGroup>
                                     <DisplayError errors={errors} touched={touched} field={'profileFullName'}/>
                                 </Form.Group>
-                                <Form.Group className="mb-4 px-3" controlId="profileEmail">
+                                <Form.Group className="mb-4 px-3 fw-bold" controlId="profileEmail">
                                     <Form.Label>Update your e-mail address</Form.Label>
                                     <InputGroup>
                                         <InputGroup.Text>
@@ -117,7 +118,7 @@ function EditProfileFormContent (props) {
                                     </InputGroup>
                                     <DisplayError errors={errors} touched={touched} field={'profileEmail'}/>
                                 </Form.Group>
-                                <Form.Group className="mb-4 px-3" controlId="profileName">
+                                <Form.Group className="mb-4 px-3 fw-bold" controlId="profileName">
                                     <Form.Label>Username</Form.Label>
                                     <InputGroup>
                                         <InputGroup.Text>
@@ -138,7 +139,7 @@ function EditProfileFormContent (props) {
                         </Col>
                         <Col sm={12} lg={8}>
                             <Row>
-                                <Col xs={12} lg={6}>
+                                <Col xs={12}>
                                     <Container id='about-me-setting' className="mt-2 mx-auto rounded-4 p-3">
                                         <h2 className="text-center pt-3">About Me</h2>
                                         <Form.Group className="mb-4 px-3" controlId="profileAboutMe">
@@ -148,7 +149,7 @@ function EditProfileFormContent (props) {
                                             className="form-control"
                                             name="profileAboutMe"
                                             as="textarea"
-                                            rows={10}
+                                            rows={8}
                                             size='lg'
                                             value={values.profileAboutMe}
                                             placeholder="Write a little something about yourself..."
@@ -160,7 +161,7 @@ function EditProfileFormContent (props) {
                                         </Form.Group>
                                     </Container>
                                 </Col>
-                                    <Col xs={12} lg={6}>
+                                    <Col xs={12}>
                                         <Container id='price-setting' className="mt-2 mx-auto rounded-4 p-3">
                                         <h2 className="text-center pt-3">Pricing</h2>
                                         <Form.Group className="mb-4 px-3" controlId="profilePricing">
@@ -170,7 +171,7 @@ function EditProfileFormContent (props) {
                                             className="form-control"
                                             name="profilePricing"
                                             as="textarea"
-                                            rows={10}
+                                            rows={4}
                                             size='lg'
                                             defaultValue={values.profilePricing}
                                             placeholder="Let us know your pricing structure."
@@ -185,13 +186,14 @@ function EditProfileFormContent (props) {
                             </Row>
                         </Col>
                     </Row>
-                        <Form.Group className={"mt-3"}>
+                        <Form.Group className={"mt-3 text-center"}>
                             <Button variant="light"
                                     type="submit"
                                     className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2'
                                     onClick={handleSubmit}
-                            >Submit User Information</Button>
+                            >Submit Profile Changes</Button>
                             </Form.Group>
+                </Container>
                 </Form>
             <DisplayStatus status={status}/>
 

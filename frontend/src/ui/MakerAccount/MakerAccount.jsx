@@ -28,12 +28,12 @@ export const MakerAccount= () => {
         <>
         <section>
             <Container id="maker-account" className='p-5'>
-                <h1 className='mt-5'>Account Settings</h1>
                 {profile &&
                     <>
+                        <h1 className='my-5'>Account Settings</h1>
                         <EditMakerAccountForm profile={profile}/>
                         <Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">
-                            <h2 className="text-center py-3">Categories / Skills</h2>
+                            <h2 className="text-center pt-5 pb-3">Categories / Skills</h2>
                                 <SkillToggleForm profile={profile} allskills={allSkills}/>
                         </Container>
                     </>
