@@ -1,13 +1,11 @@
-import { NextFunction, Request, Response } from 'express'
+import { Request, Response } from 'express'
 import { Status } from '../../utils/interfaces/Status';
 import { Profile, selectProfileByProfileActivationToken, updateProfile } from "../../utils/models/Profile";
 
-export async function activationController ( request: Request, response: Response, nextFunction: NextFunction ): Promise<Response<Status>> {
+export async function activationController ( request: Request, response: Response): Promise<Response<Status>> {
   try {
     const {activation} = request.params
-    console.log(activation)
     const profile = await selectProfileByProfileActivationToken(activation)
-    console.log ( profile )
 
     const activationFailed = (): Response => response.json ({
       status: 400,

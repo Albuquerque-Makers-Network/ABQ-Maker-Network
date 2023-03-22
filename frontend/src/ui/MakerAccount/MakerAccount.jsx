@@ -1,49 +1,45 @@
 import React from "react";
-import {Container, Row, Col, Image, Button, Form} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import "../App.css";
-import {AboutMe} from "./components/AboutMe.jsx";
-import {Pricing} from "./components/Pricing.jsx";
-import {UserName} from "./components/UserName.jsx";
-import {PhotoUpload} from "./components/PhotoUpload.jsx";
-import {Categories} from "./components/Categories.jsx";
 import "./MakerAccount.css"
+import {EditMakerAccountForm} from "./components/EditMakerAccountForm.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCurrentUser } from "../../store/currentUser";
+import {SkillToggleForm} from "./components/SkillToggleForm.jsx"
+import {fetchAllSkills} from "../../store/skills.js";
+export const MakerAccount= () => {
 
+    const dispatch = useDispatch()
+    const profile = useSelector(state => state.currentUser ? state.currentUser : null)
 
+    const allSkills = useSelector (state => {
+        if (state?.skills.constructor.name === "Object"){
+            return Object.values(state.skills)
+        } else []
+    })
 
-export function MakerAccount() {
+    const sideEffects = () => {
+        dispatch(fetchCurrentUser()), dispatch(fetchAllSkills())
+    }
+
+    React.useEffect(sideEffects, [dispatch])
+
     return (
         <>
         <section>
-            <Container className="maker-account-form">
-                <h1 className='mt-5'>Account Settings</h1>
-                <Row id='primary-content'>
-                    <Col sm={12} lg={4}>
-                        <UserName />
-                    </Col>
-                    <Col sm={12} lg={8}>
-                        <Row>
-                            <Col xs={12} lg={6}>
-                                <AboutMe />
-                            </Col>
-                            <Col xs={12} lg={6}>
-                                <Pricing />
-                            </Col>
-                            <Col xs={12}>
-                                <Categories />
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <PhotoUpload />
-                <Form.Group>
-                    <Container className="d-grid my-4">
-                        <Button type="submit" size="lg" id="changes-button">
-                            Submit Changes
-                        </Button>
-                    </Container>
-                </Form.Group>
+            <Container id="maker-account" className='p-5'>
+                {profile &&
+                    <>
+                        <h1 className='my-5'>Account Settings</h1>
+                        <EditMakerAccountForm profile={profile}/>
+                        <Container id='category-container' className="mt-5 mb-4 rounded-4 px-4 pb-4">
+                            <h2 className="text-center pt-5 pb-3">Categories / Skills</h2>
+                                <SkillToggleForm profile={profile} allskills={allSkills}/>
+                        </Container>
+                    </>
+                }
             </Container>
         </section>
         </>
     )
-}
+};

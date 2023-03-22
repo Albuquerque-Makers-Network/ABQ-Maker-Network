@@ -2,25 +2,25 @@ import {sql} from "../database.utils";
 
 export interface PartialProfile {
     profileId: string|null
-    profileAboutMe: string
+    profileAboutMe: string|null
     profileEmail: string
     profileFullName: string
     profileImageUrl: string|null
-    profileIsMaker: string
+    profileIsMaker: boolean
     profileName: string
-    profilePricing: string
+    profilePricing: string|null
 }
 export interface Profile {
     profileId: string|null
-    profileAboutMe: string
+    profileAboutMe: string|null
     profileActivationToken: string|null
     profileEmail: string
     profileFullName: string
     profileHash: string
     profileImageUrl: string|null
-    profileIsMaker: string
+    profileIsMaker: boolean
     profileName: string
-    profilePricing: string
+    profilePricing: string|null
 }
 
 /**
@@ -71,8 +71,26 @@ export async function selectPartialProfileByProfileName (profileName: string): P
     return result?.length === 1 ? result [0] : null
 }
 
+
 // used in search and update profile controllers
 export async function selectPartialProfileByProfileId (profileId: string): Promise<Profile|null> {
     const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_id = ${profileId}`
     return result?.length === 1 ? result[0] : null
+}
+
+export async function selectAllIsMakerProfiles (): Promise<Profile[]> {
+    return sql<Profile[]> `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_is_maker = true ORDER BY profile_full_name DESC`
+}
+
+export async function selectProfileBySkillId (skillId: string): Promise<Profile[]>{
+    return sql<Profile[]> `SELECT profile_id, profile_about_me, profile_email, profile_full_name, profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile
+    JOIN maker_skill ON profile.profile_id = maker_skill.maker_skill_maker_profile_id
+    JOIN skill ON maker_skill.maker_skill_id = skill.skill_id WHERE skill_id = ${skillId}`
+}
+
+export async function selectPartialProfileByKeyword (keyword: string): Promise<Profile[]> {
+    const formattedKeyWord = `%${keyword}%`
+    const result = <Profile[]> await sql `SELECT profile_id, profile_about_me, profile_email, profile_full_name,
+       profile_image_url, profile_is_maker, profile_name, profile_pricing FROM profile WHERE profile_name ILIKE ${formattedKeyWord} OR profile_full_name ILIKE ${formattedKeyWord} OR profile_email ILIKE ${formattedKeyWord}`
+    return result
 }

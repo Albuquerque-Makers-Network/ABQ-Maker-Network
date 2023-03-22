@@ -1,5 +1,10 @@
 import { asyncValidatorController } from "../../utils/controllers/async-validator.controller";
-import { getAllSkillsController, getSkillbySkillIdController } from "./skill.controller";
+import {
+    getAllIsPopularSkillsController,
+    getAllSkillsController,
+    getSkillByProfileIdController,
+    getSkillBySkillIdController
+} from "./skill.controller";
 import { Router } from "express";
 import { check } from "express-validator";
 
@@ -10,8 +15,16 @@ skillsRouter.route('/')
 skillsRouter.route('/:skillId')
     .get(asyncValidatorController([
     check('skillId', 'please provide a valid skillId').isUUID()
-]), getSkillbySkillIdController)
+]), getSkillBySkillIdController)
 
+skillsRouter.route('/SkillsIsPopular/Popular')
+    .get(getAllIsPopularSkillsController)
+
+skillsRouter.route('/profileId/:profileId')
+  .get(asyncValidatorController([check
+  ('profileId', 'please provide a valid profileId').isUUID()])
+, getSkillByProfileIdController
+  )
 
 
 

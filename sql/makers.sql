@@ -13,7 +13,7 @@ CREATE TABLE profile
     profile_full_name VARCHAR(32) NOT NULL,
     profile_hash CHAR(97) NOT NULL,
     profile_image_url VARCHAR(128),
-    profile_is_maker CHAR(1) NOT NULL,
+    profile_is_maker BOOLEAN NOT NULL,
     profile_name VARCHAR(64) NOT NULL UNIQUE,
     profile_pricing VARCHAR(128),
     PRIMARY KEY (profile_id)
@@ -23,7 +23,7 @@ CREATE TABLE portfolio
 (
     portfolio_id UUID NOT NULL,
     portfolio_profile_id UUID NOT NULL,
-    portfolio_image_url VARCHAR(128),
+    portfolio_image_url VARCHAR(256),
     PRIMARY KEY (portfolio_id),
     FOREIGN KEY (portfolio_profile_id) REFERENCES profile (profile_id)
 );
@@ -33,6 +33,8 @@ CREATE TABLE skill
 (
     skill_id UUID NOT NULL,
     skill_type VARCHAR(64),
+    skill_icon_url VARCHAR(256),
+    skill_is_popular BOOLEAN,
     PRIMARY KEY (skill_id)
 );
 

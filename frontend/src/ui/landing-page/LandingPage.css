@@ -8,10 +8,19 @@
     font-family: Bungee, cursive;
 }
 
+#home-profile-card-image{
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+#home-card-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 #profile-card:hover{
     scale: 1.1;
 }
-
 
 #search-button:hover, #dropdown-button:hover{
     background-color: var(--cusyellow);
@@ -25,11 +34,4 @@
     background-size: cover;
     color: white;
     padding: 1em;
-}
-
-/*hides all skill button on smaller screens*/
-@media (max-width: 576px){
-    #dropdown-button {
-        display: none
-    }
 }

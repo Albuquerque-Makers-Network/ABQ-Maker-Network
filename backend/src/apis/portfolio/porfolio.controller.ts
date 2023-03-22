@@ -40,8 +40,8 @@ export async function postPortfolioController (request: Request, response: Respo
 export async function getPortfolioImageByProfileIdController ( request: Request, response: Response ) : Promise <Response> {
 
     try {
-        const { portfolioProfileId } = request.params
-        const postGresResponse = await selectPortfolioByPortfolioProfileId ( portfolioProfileId )
+        const { profileId } = request.params
+        const postGresResponse = await selectPortfolioByPortfolioProfileId ( profileId )
         const data = postGresResponse ?? null
         const status: Status = { status: 200, data, message: null}
         return response.json(status)

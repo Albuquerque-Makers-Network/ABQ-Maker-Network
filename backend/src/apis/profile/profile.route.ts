@@ -1,8 +1,9 @@
 import {
+    getAllIsMakerProfilesController, getAllProfilesByValueController,
     getProfileByProfileEmailController,
     getProfileByProfileFullNameController,
     getProfileByProfileIdController,
-    getProfileByProfileNameController,
+    getProfileByProfileNameController, getProfileBySkillIdController,
     putProfileController
 } from "./profile.controller";
 import { Router } from 'express'
@@ -14,8 +15,8 @@ import { profileValidator } from "./profile.validator";
 
 export const profileRoute: Router = Router()
 profileRoute.route('/')
-.post(putProfileController)
-
+    .post(putProfileController)
+    .get (getAllIsMakerProfilesController)
 
 profileRoute.route('/:profileId')
     .get(asyncValidatorController([check('profileId', 'please provide a valid profileId').isUUID()])
@@ -38,3 +39,11 @@ profileRoute.route('/profileEmail/:profileEmail')
     .get(asyncValidatorController([check('profileEmail', 'please provide a valid profileEmail').isString()])
         , getProfileByProfileEmailController
     )
+
+profileRoute.route('/skills/:skillId')
+    .get(asyncValidatorController([check('skillId', 'please provide a valid skillId').isUUID()])
+        , getProfileBySkillIdController
+    )
+
+profileRoute.route('/search/:keyword')
+    .get(getAllProfilesByValueController)

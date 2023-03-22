@@ -1,52 +1,135 @@
 import {Col, Container, Image, Row} from "react-bootstrap";
-import {PortfolioImage} from "./PortfolioImage.jsx";
 import React from "react";
-import {Skill} from "./Skill.jsx";
+import {Skill} from "./components/Skill.jsx";
 import "../App.css"
 import "./MakerProfile.css"
+import {fetchProfileByProfileId} from "../../store/profiles.js";
+import {useDispatch, useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
+import {PortfolioImage} from "./components/PortfolioImage.jsx";
+import {fetchPortfolioByProfileId} from "../../store/portfolios.js";
+import {fetchSkillByProfileId} from "../../store/skills.js";
+import {fetchCurrentUser} from "../../store/currentUser.js";
+import {NotSignedIn} from "../shared/components/NavBar/NotSignedIn.jsx";
+import {SignedIn} from "../shared/components/NavBar/SignedIn.jsx";
+
 
 export function MakerProfile() {
+  let selectedProfileId = useParams()
 
+  // Extracts profileId from Object
+  const profileId = selectedProfileId.profileId
 
-  return (
-    <>
-      <Container className="p-5 ps-lg-0 mt-5 mx-auto rounded-4" id="background-about-me">
-        <Row>
-          <Col className="d-flex align-content-center">
-            <Image roundedCircle height={250} width={250} src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                   alt="profile picture" className=" d-block mx-auto mb-lg-0 mb-3" id="profile-image"/>
-          </Col>
+  const dispatch = useDispatch()
 
-          <Col lg={6} className="order-3 order-sm-2 text-light">
-            <h1 className="text-center text-md-start" id="profile-name">profileFullName</h1>
-            <p className="mt-3" id="about-me-text">profileAboutMe: As High as Honor. The winds of Winter. Never Resting. Can a
-              man still be brave if he’s afraid? That is the only time a man can be brave.Forgive my manners. I don't
-              see many ladies these days. Lucky for the ladies. A forked purple lightning bolt, on black field speckled
-              with four-pointed stars. The tourney of Ashford Meadows. It's ten thousand miles between Kings landing and
-              the wall.</p>
-            <p id="email-text">profileEmail</p>
-          </Col>
+  // Brings information from database into Redux store
+  const initialEffect = () => {
+    dispatch(fetchProfileByProfileId(profileId))
+    dispatch(fetchSkillByProfileId(profileId))
+    dispatch(fetchPortfolioByProfileId(profileId))
+  }
 
-          <Col className="order-2 order-sm-3 my-3 mt-lg-0 d-block d-lg-inline">
-            <h2 className="text-center text-lg-start text-light" id="skills-name">Skills:</h2>
-            <Skill/>
-          </Col>
-        </Row>
-      </Container>
+  React.useEffect(initialEffect, [profileId])
 
-      <Container>
-        <Row>
-          <Col className="my-3">
-            <PortfolioImage/>
-          </Col>
+  // Selects profile, portfolios, skill information from Redux store
+  const profile = useSelector(state => {
+    if (state?.profiles[profileId]) {
+      return state.profiles[profileId]
+    } else {
+      return null
+    }
+  })
 
-          <Col xs={12} md={4} className="rounded-4 p-4 mt-4 mb-auto text-white" id="pricing">
-            <h2 className="text-md-center text-sm-start">Pricing:</h2>
-            <p className=" mt-3">profilePricing: Jin ave sekke verven anni m'orvikoon. Hash yer dothrae chek asshekh?
-              Ki fin yeni?</p>
-          </Col>
-        </Row>
-      </Container>
-    </>
-  )
-}
+  const portfolios = useSelector(state => {
+    if (state?.portfolios.constructor.name === "Object") {
+      return Object.values(state.portfolios)
+    } else {
+      return null
+    }
+  })
+
+  const skill = useSelector(state => {
+    if (state?.skills.constructor.name === "Object") {
+      return Object.values(state.skills)
+    } else {
+      return null
+    }
+  })
+
+  // Renders skills on page
+  const renderedSkills = (skills) => {
+    return skills.map(skill => <Skill skill={skill}/>)
+  }
+
+  // Renders portfolios once they are in Redux store
+  const renderedPortfolios = (portfolios) => {
+    if (portfolios === null) {
+      return (<h5> No portfolios to display </h5>)
+    } else {
+      return (portfolios.map(portfolio => <PortfolioImage portfolio={portfolio}/>))
+      }
+    }
+
+    // Renders page once profile is retrieved
+    if (profile === null) {
+      return (<h1>Loading</h1>)
+    }
+
+  const signedInUser = useSelector(state => state.currentUser ? state.currentUser : null)
+
+  const sideEffects = () => {
+    dispatch(fetchCurrentUser())
+  }
+
+  React.useEffect(sideEffects, [dispatch])
+
+    return (
+      <>
+        <Container className="p-5 ps-lg-0 mt-5 mx-auto rounded-4" id="background-about-me">
+          <Row>
+            <Col className="d-flex align-content-center px-5">
+              <Image roundedCircle height={250} width={250} src={profile.profileImageUrl}
+                     className=" d-block mx-auto mb-lg-0 mb-3" id="profile-image"/>
+            </Col>
+
+            <Col lg={5} className="order-3 order-sm-2 text-light">
+              <h1 className="text-center text-md-start" id="profile-name">{profile.profileFullName}</h1>
+              <p className="mt-3" id="about-me-text">{profile.profileAboutMe}</p>
+              <p id="email-text"> {!signedInUser &&
+                <>
+                  <p>Please sign-in to display contact info!</p>
+                </>
+              }
+
+                {signedInUser &&
+                  <>
+                    {profile.profileEmail}
+                  </>
+                }</p>
+            </Col>
+
+            <Col className="order-2 order-sm-3 my-3 mt-lg-0 d-block d-lg-inline justify-content-center">
+              <h2 className="text-center text-lg-start text-light" id="skills-name">Skills:</h2>
+              <Row>
+                {renderedSkills(skill)}
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+
+        <Container className="container-fluid">
+          <Row id="portfolio-element">
+              {renderedPortfolios(portfolios)}
+          </Row>
+          <Row>
+            <Col xs={12} md={6}
+                 className="col-auto rounded-4 p-4 mt-4 mb-auto text-white me-md-4 me-0 order-2 order-md-1"
+                 id="pricing">
+              <h2 className="text-md-center text-sm-start">Pricing:</h2>
+              <p className=" mt-3">{profile.profilePricing}</p>
+            </Col>
+          </Row>
+        </Container>
+      </>
+    )
+  }

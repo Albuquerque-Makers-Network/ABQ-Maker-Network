@@ -6,6 +6,7 @@ import {
   insertMakerSkill
 } from "../../utils/models/MakerSkill";
 import {Status} from "../../utils/interfaces/Status";
+import {Profile} from "../../utils/models/Profile";
 
 
 /**
@@ -57,10 +58,13 @@ export async function deleteMakerSkillController ( request: Request, response: R
 export async function postMakerSkillController ( request: Request, response: Response ) : Promise <Response> {
 
   try {
-    const { makerSkillMakerProfileId, makerSkillId } = request.params
-    const postGresResponse = await insertMakerSkill ( { makerSkillMakerProfileId, makerSkillId })
-    const data = postGresResponse ?? null
-    const status: Status = { status: 400, data, message: null }
+    const { makerSkillIds } = request.body
+    const profile: Profile = request.session.profile as Profile
+    const makerSkillMakerProfileId: string = profile.profileId as string
+      for (let makerSkillId of makerSkillIds) {
+        const postGresResponse = await insertMakerSkill ( {makerSkillMakerProfileId, makerSkillId })
+      }
+    const status: Status = { status: 400, data: null, message: "maker skill inserted successfully" }
     return response.json (status)
    } catch ( error: any ) {
     return ( response.json ( { status: 400, data: null, message: error.message }) )

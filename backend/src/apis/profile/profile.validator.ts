@@ -35,7 +35,11 @@ export const profileValidator: Schema = {
         }
     },
     profileImageUrl: {
-        optional: true,
+        optional: {
+            options: {
+                nullable: true
+            }
+        },
         isURL: {
             errorMessage: 'Profile image is malformed please upload new image'
         }

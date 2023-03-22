@@ -7,9 +7,13 @@ import {
     selectPartialProfileByProfileFullName,
     selectPartialProfileByProfileName,
     updateProfile,
-    selectWholeProfileByProfileId
+    selectWholeProfileByProfileId,
+    selectAllIsMakerProfiles,
+    selectProfileBySkillId,
+    selectPartialProfileByKeyword
 } from "../../utils/models/Profile";
 import {Status} from "../../utils/interfaces/Status";
+import {setHash} from "../../utils/auth.utils";
 
 
 /**
@@ -30,17 +34,19 @@ export async function putProfileController (request: Request, response: Response
             return response.json({status: 400, data: null, message: 'you are not allowed to preform this task!'})
         }
 
-        console.log('this works')
         const {
             profileAboutMe,
             profileEmail,
             profileFullName,
+            profilePassword,
             profileImageUrl,
             profileIsMaker,
             profileName,
             profilePricing} = request.body
+        const profileHash = await setHash(profilePassword)
 
         const performUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
+            const profileHash = await setHash(profilePassword)
             const previousProfile: Profile = await selectWholeProfileByProfileId(partialProfile.profileId as string) as Profile
             const newProfile:Profile = {...previousProfile, ...partialProfile }
             await updateProfile(newProfile)
@@ -58,7 +64,7 @@ export async function putProfileController (request: Request, response: Response
         catch (error:any){
         return response.json({status: 400, data: null, message: error.message})
         }
-    };
+    }
 
 
 /**
@@ -78,7 +84,7 @@ export async function getProfileByProfileIdController (request: Request, respons
     } catch (error:any) {
         return (response.json({status: 400, data: null, message: error.message}))
     }
-};
+}
 
 /**
  * Express controller that returns a profile object with the provided profileName
@@ -100,7 +106,7 @@ export async function getProfileByProfileNameController (request: Request, respo
             data: []
         })
     }
-};
+}
 
 
 /**
@@ -123,7 +129,7 @@ export async function getProfileByProfileFullNameController (request: Request, r
             data: []
         })
     }
-};
+}
 
 
 /**
@@ -146,4 +152,62 @@ export async function getProfileByProfileEmailController (request: Request, resp
             data: []
         })
     }
-};
+}
+
+export async function getAllIsMakerProfilesController (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const data = await selectAllIsMakerProfiles()
+        // return the response
+        const status: Status = {status: 200, message: null, data}
+        return response.json(status)
+    } catch (error) {
+        return response.json({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+}
+
+/**
+ * Express controller that returns a profile object by skillId through Maker_Skill table
+ * @param request  An object modeling the current request provided by Express.
+ * @param response an object modeling the response that will be sent to the client.
+ * @return A promise containing a status object with either a success or failure message set to the message field
+ */
+
+export async function getProfileBySkillIdController (request: Request, response: Response): Promise<Response> {
+    try {
+        const { skillId } = request.params
+        const postGresResponse = await selectProfileBySkillId(skillId)
+        const data = postGresResponse ?? null
+        const status: Status = { status: 200, data, message: null }
+        return response.json(status)
+    } catch (error:any) {
+        return (response.json({status: 400, data: null, message: error.message}))
+    }
+}
+
+
+/**
+ * Express controller that returns a profile by a value in profileEmail, profileFullName, or profileName.
+ * @param request  An object modeling the current request provided by Express.
+ * @param response an object modeling the response that will be sent to the client.
+ * @return A promise containing a status object with either a success or failure message set to the message field
+ */
+
+export async function getAllProfilesByValueController (request: Request, response: Response): Promise<Response<Status>> {
+    try {
+        const { keyword } = request.params
+        const postGresResponse = await selectPartialProfileByKeyword(keyword)
+        const data = postGresResponse ?? null
+        const status: Status = {status: 200, message: null, data}
+        return response.json(status)
+    } catch (error) {
+        return response.json({
+            status: 500,
+            message: '',
+            data: []
+        })
+    }
+}
