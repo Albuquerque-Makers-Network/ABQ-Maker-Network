@@ -102,10 +102,8 @@ function EditProfileFormContent (props) {
                                     <DisplayError errors={errors} touched={touched} field={'profileFullName'}/>
                                 </Form.Group>
                                 <Form.Group className="mb-4 px-3 fw-bold" controlId="profileEmail">
-                                    <Form.Label>Update your e-mail address</Form.Label>
+                                    <Form.Label>E-mail address</Form.Label>
                                     <InputGroup>
-                                        <InputGroup.Text>
-                                        </InputGroup.Text>
                                         <FormControl
                                         className="form-control"
                                         name="profileEmail"
@@ -121,8 +119,6 @@ function EditProfileFormContent (props) {
                                 <Form.Group className="mb-4 px-3 fw-bold" controlId="profileName">
                                     <Form.Label>Username</Form.Label>
                                     <InputGroup>
-                                        <InputGroup.Text>
-                                        </InputGroup.Text>
                                         <FormControl
                                         className="form-control"
                                         name="profileName"
