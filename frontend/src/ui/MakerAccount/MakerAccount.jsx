@@ -1,12 +1,12 @@
 import React from "react";
-import {Container, Row, Col, Button} from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import "../App.css";
 import "./MakerAccount.css"
-import {EditMakerAccountForm} from "./components/EditMakerAccountForm.jsx";
+import { EditMakerAccountForm } from "./components/EditMakerAccountForm.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentUser } from "../../store/currentUser";
-import {SkillToggleForm} from "./components/SkillToggleForm.jsx"
-import {fetchAllSkills} from "../../store/skills.js";
+import { SkillToggleForm } from "./components/SkillToggleForm.jsx"
+import { fetchAllSkills } from "../../store/skills.js";
 export const MakerAccount= () => {
 
     const dispatch = useDispatch()
