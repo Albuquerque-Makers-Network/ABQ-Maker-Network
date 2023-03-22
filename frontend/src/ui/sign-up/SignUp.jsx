@@ -189,7 +189,7 @@ function SignUpFormContent (props) {
           </Container>
         </section>
       </Form>
-<FormDebugger props={ props }/>
+{/*<FormDebugger props={ props }/>*/}
       <DisplayStatus status= { status } />
 
     </>

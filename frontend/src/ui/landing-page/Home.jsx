@@ -73,7 +73,7 @@ export const Home = () => {
                                    <Search/>
                                 </Col>
                                 <Col sm={2}>
-                                    <DropdownButton variant="outline-light" id="dropdown-button" title="All Skills">
+                                    <DropdownButton className='mt-4 mt-sm-0'  variant="outline-light" id="dropdown-button" title="All Skills">
                                         {allSkills.map(allskill => <SkillDropDown filterProfilesBySkill={filterProfilesBySkill} allskill={allskill} key={allskill.skillId}/>)}
                                     </DropdownButton>
                                 </Col>
