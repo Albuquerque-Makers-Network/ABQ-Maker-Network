@@ -51,8 +51,8 @@ export const SkillToggleForm = (props) => {
                     <>
                     <Form onSubmit={handleSubmit}>
                         <Row className='ps-5'>
-                            {allskills.map(skill=>(
-                            <Col className='p-0, my-0' xs={6} lg={4}>
+                            {allskills.map((skill, index)=>(
+                            <Col className='p-0, my-0' xs={6} lg={4} key={index}>
 
                                     <Form.Group controlId = "">
                                         <InputGroup className="py-1">

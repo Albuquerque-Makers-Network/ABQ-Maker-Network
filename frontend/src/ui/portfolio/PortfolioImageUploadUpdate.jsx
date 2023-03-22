@@ -1,30 +1,27 @@
 import React from "react";
 import * as Yup from "yup";
-import {Field, Formik, useField} from "formik";
-import {Button, Container, Image, Form, FormControl, InputGroup, Row, Col, Stack} from "react-bootstrap";
-import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
+import {Formik} from "formik";
+import {Button, Container, Image, Form, FormControl, InputGroup} from "react-bootstrap";
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
-import {FormDebugger} from "../shared/FormDebugger.jsx";
 import {httpConfig} from "../shared/utils/httpconfig.js";
 import {useDropzone} from "react-dropzone";
 import {PortfolioImage} from "../maker-profile/components/PortfolioImage.jsx";
-import portfolios from "../../store/portfolios.js";
 import {useSelector} from "react-redux";
 
 
 export const PortfolioImageUploadUpdate = (props) => {
     const { portfolio } = props
-    const { profile } = props
-
+   const newPortfolio = {
+      portfolioImageUrl: ""
+   }
     const validationObject = Yup.object().shape({
         portfolioImageUrl: Yup.mixed(),
-        // portfolioProfileId: Yup.string()
     })
 
     function submitEditedPortfolio (values, { resetForm, setStatus }) {
 
         const submitUpdatedPortfolio = (updatedPortfolio) => {
-            httpConfig.put(`/apis/portfolio/portfolioProfileId/${portfolio.portfolioProfileId}`, updatedPortfolio)
+            httpConfig.post(`/apis/portfolio/portfolioProfileId/${portfolio.portfolioProfileId}`, updatedPortfolio)
                 .then(reply => {
                     let { message, type } = reply
 
@@ -55,7 +52,7 @@ export const PortfolioImageUploadUpdate = (props) => {
 
     return (
         <Formik
-            initialValues={portfolio}
+            initialValues={newPortfolio}
             onSubmit={submitEditedPortfolio}
             validationSchema={validationObject}
         >
@@ -93,7 +90,7 @@ function EditPortfolioFormContent (props) {
     if (portfolios === null) {
       return (<h5> No portfolios to display </h5>)
     } else {
-      return (portfolios.map(portfolio => <PortfolioImage portfolio={portfolio}/>))
+      return (portfolios.map((portfolio, index) => <PortfolioImage portfolio={portfolio} key={index}/>))
     }
   }
 
@@ -161,10 +158,10 @@ function ImageDropZone ({ formikProps }) {
 
             <InputGroup size="lg" className="">
                 {
-                    formikProps.values.portfolioImageUrl &&
+                    formikProps.portfolioImageUrl &&
                     <>
                         <div className="bg-transparent m-0">
-                            <Image  fluid={true} height={200} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.values.portfolioImageUrl} />
+                            <Image  fluid={true} height={200} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.portfolioImageUrl} />
                         </div>
 
                     </>

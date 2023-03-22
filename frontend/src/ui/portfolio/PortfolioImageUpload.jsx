@@ -21,6 +21,14 @@ let selectedProfileId = useParams()
     }
     React.useEffect(sideEffects, [profileId])
 
+    const portfolio = useSelector(state => {
+        if (state?.portfolios.constructor.name === "Object") {
+            return Object.values(state.portfolios)
+        } else {
+            return null
+        }
+    })
+
 
     return(
         <>
@@ -29,7 +37,7 @@ let selectedProfileId = useParams()
                     <Col>
                         {profile &&
                             <>
-                                {<PortfolioImageUploadUpdate/>}
+                                {<PortfolioImageUploadUpdate portfolio={portfolio}/>}
                             </>
                         }
                     </Col>
