@@ -92,7 +92,7 @@ export function MakerProfile() {
             <Col lg={5} className="order-3 order-sm-2 text-light">
               <h1 className="text-center text-md-start" id="profile-name">{profile.profileFullName}</h1>
               <p className="mt-3" id="about-me-text">{profile.profileAboutMe}</p>
-              <p id="email-text"> {!signedInUser &&
+              <p id="email-text" className="mt-5"> {!signedInUser &&
                 <>
                   <p>Please sign-in to display contact info!</p>
                 </>
