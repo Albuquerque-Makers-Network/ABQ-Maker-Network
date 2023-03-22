@@ -10,9 +10,6 @@ import {PortfolioImage} from "./components/PortfolioImage.jsx";
 import {fetchPortfolioByProfileId} from "../../store/portfolios.js";
 import {fetchSkillByProfileId} from "../../store/skills.js";
 import {fetchCurrentUser} from "../../store/currentUser.js";
-import {NotSignedIn} from "../shared/components/NavBar/NotSignedIn.jsx";
-import {SignedIn} from "../shared/components/NavBar/SignedIn.jsx";
-
 
 export function MakerProfile() {
   let selectedProfileId = useParams()
@@ -58,7 +55,7 @@ export function MakerProfile() {
 
   // Renders skills on page
   const renderedSkills = (skills) => {
-    return skills.map(skill => <Skill skill={skill}/>)
+    return skills.map((skill, index) => <Skill skill={skill} key={index}/>)
   }
 
   // Renders portfolios once they are in Redux store
@@ -66,7 +63,7 @@ export function MakerProfile() {
     if (portfolios === null) {
       return (<h5> No portfolios to display </h5>)
     } else {
-      return (portfolios.map(portfolio => <PortfolioImage portfolio={portfolio}/>))
+      return (portfolios.map((portfolio, index) => <PortfolioImage portfolio={portfolio} key={index}/>))
       }
     }
 
