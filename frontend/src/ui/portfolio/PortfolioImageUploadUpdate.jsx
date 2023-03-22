@@ -8,7 +8,6 @@ import { useDropzone } from "react-dropzone";
 import { PortfolioImage } from "../maker-profile/components/PortfolioImage.jsx";
 import { useSelector } from "react-redux";
 
-
 export const PortfolioImageUploadUpdate = (props) => {
     const { portfolio } = props
    const newPortfolio = {
@@ -61,7 +60,6 @@ export const PortfolioImageUploadUpdate = (props) => {
     )
 
 }
-
 
 function EditPortfolioFormContent (props) {
     const {
