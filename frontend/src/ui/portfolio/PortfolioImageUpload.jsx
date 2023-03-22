@@ -19,7 +19,7 @@ let selectedProfileId = useParams()
     dispatch(fetchCurrentUser())
         dispatch(fetchPortfolioByProfileId(profileId))
     }
-    React.useEffect(sideEffects, [dispatch])
+    React.useEffect(sideEffects, [profileId])
     const portfolios = useSelector(state => {
         if (state?.portfolios.constructor.name === "Object") {
             return Object.values(state.portfolios)

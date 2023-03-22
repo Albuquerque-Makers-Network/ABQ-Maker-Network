@@ -31,7 +31,7 @@ export function App(props) {
                             <Route path={'/community-account'} element={<CommunityAccount />} />
                             <Route path={'/maker-account'} element={<MakerAccount />} />
                             <Route path={'/maker-image-upload'} element={<MakerImageUpload />} />
-                            <Route path={'/portfolio'} element={<PortfolioImageUpload />} />
+                            <Route path={'/portfolio/:profileId'} element={<PortfolioImageUpload />} />
                         </Routes>
                     </BrowserRouter>
                 </Provider>
