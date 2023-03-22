@@ -46,7 +46,6 @@ export async function selectProfileByProfileEmail (profileEmail: string): Promis
 
 
 export async function updateProfile (profile: Profile): Promise<string> {
-    console.log('profile in update profile function', profile)
     const {profileId, profileAboutMe, profileActivationToken, profileEmail, profileFullName, profileHash, profileImageUrl, profileIsMaker, profileName, profilePricing} = profile
     await sql `UPDATE profile SET profile_about_me = ${profileAboutMe}, profile_activation_token = ${profileActivationToken}, profile_email = ${profileEmail}, profile_full_name = ${profileFullName}, profile_hash = ${profileHash}, profile_image_url = ${profileImageUrl}, profile_is_maker = ${profileIsMaker}, profile_name = ${profileName}, profile_pricing = ${profilePricing} WHERE profile_id = ${profileId}`
     return 'Profile successfully updated'

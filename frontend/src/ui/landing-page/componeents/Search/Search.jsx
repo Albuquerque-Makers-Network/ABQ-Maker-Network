@@ -24,7 +24,6 @@ export const Search = () => {
     });
 
     const submitSearch = (values, {resetForm}) => {
-        console.log(values)
         dispatch (fetchProfileByKeyword(values.searchKeyword))
         resetForm()
     }

@@ -45,8 +45,6 @@ export const SkillToggleForm = (props) => {
                     handleReset,
                 } = props
 
-                console.log("this is:", values)
-
                 return(
                     <>
                     <Form onSubmit={handleSubmit}>

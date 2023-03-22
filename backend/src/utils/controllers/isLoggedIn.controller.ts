@@ -9,7 +9,6 @@ export function isLoggedIn (request: Request, response: Response, next: NextFunc
 
     // @ts-ignore
     const sessionProfile = (request: Request): Profile | undefined => request.session?.profile ?? undefined
-    console.log(request.sessionID)
 
     // @ts-ignore
     const signature = (request: Request): string => request.session?.signature ?? 'no signature'
