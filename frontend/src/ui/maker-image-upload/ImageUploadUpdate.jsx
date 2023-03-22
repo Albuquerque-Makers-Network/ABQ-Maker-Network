@@ -26,7 +26,7 @@ export const ImageUploadUpdate = (props) => {
                     let { message, type } = reply
 
                     if (reply.status === 200) {
-                        resetForm()
+                        location.reload()
                     }
                     setStatus({ message, type })
                     return (reply)
@@ -136,7 +136,7 @@ function ImageDropZone ({ formikProps }) {
 
     return (
         <Form.Group className={"mb-3"} {...getRootProps()}>
-            <Form.Label>User Avatar</Form.Label>
+            <Form.Label>User Image</Form.Label>
 
             <InputGroup size="lg" className="">
                 {
