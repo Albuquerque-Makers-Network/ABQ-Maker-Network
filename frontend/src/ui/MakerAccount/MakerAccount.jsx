@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Row, Col} from "react-bootstrap";
+import {Container, Row, Col, Button} from "react-bootstrap";
 import "../App.css";
 import "./MakerAccount.css"
 import {EditMakerAccountForm} from "./components/EditMakerAccountForm.jsx";
@@ -36,6 +36,7 @@ export const MakerAccount= () => {
                             <h2 className="text-center pt-5 pb-3">Categories / Skills</h2>
                                 <SkillToggleForm profile={profile} allskills={allSkills}/>
                         </Container>
+                        <a href={`/portfolio/${profile.profileId}`}><h6 className=" text-dark text-center">Update Profile Photo HERE</h6></a>
                     </>
                 }
             </Container>
