@@ -14,8 +14,6 @@ export const ImageUploadUpdate = (props) => {
 
     const validationObject = Yup.object().shape({
         profileImageUrl: Yup.mixed(),
-        profileAtHandle: Yup.string()
-            .min(1, 'profile @handle is to long.')
     })
 
     function submitEditedProfile (values, { resetForm, setStatus }) {

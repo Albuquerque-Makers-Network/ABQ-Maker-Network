@@ -11,7 +11,6 @@ export const SkillToggleForm = (props) => {
 
     const initialvalues = {
         makerSkillIds: []
-
     }
 
     function submitEditedMakerProfile (values, {setStatus }) {
