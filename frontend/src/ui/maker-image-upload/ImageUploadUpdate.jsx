@@ -86,7 +86,7 @@ function EditProfileFormContent (props) {
 
                             </Container>
 
-            <Form onSubmit={handleSubmit} className="bg-light border rounded p-3">
+            <Form onSubmit={handleSubmit} id="image-upload-form" className="rounded-4 mt-3 p-3">
                 <h2>Upload/Update Profile Images</h2>
                 {/*controlId must match what is passed to the initialValues prop*/}
 

@@ -1,4 +1,4 @@
-#category-container, #about-me-setting, #price-setting, #user-name-setting, #portfolio-setting {
+#category-container, #about-me-setting, #price-setting, #user-name-setting, #portfolio-setting, #upload-image {
     background-color: var(--cusDarkGrey);
     border: 1mm ridge var(--cusOffBlack);
     color: White
@@ -15,7 +15,3 @@
     color: white;
 }
 
-#upload-image{
-    background-color: var(--cusLightGrey);
-    border: 1mm ridge var(--cusOffBlack);
-}
