@@ -9,20 +9,22 @@ import {httpConfig} from "../shared/utils/httpconfig.js";
 import {useDropzone} from "react-dropzone";
 import {PortfolioImage} from "../maker-profile/components/PortfolioImage.jsx";
 import portfolios from "../../store/portfolios.js";
+import {useSelector} from "react-redux";
 
 
 export const PortfolioImageUploadUpdate = (props) => {
-    const {portfolio} = props
+    const { portfolio } = props
+    const { profile } = props
 
     const validationObject = Yup.object().shape({
         portfolioImageUrl: Yup.mixed(),
-        portfolioProfileId: Yup.string()
+        // portfolioProfileId: Yup.string()
     })
 
     function submitEditedPortfolio (values, { resetForm, setStatus }) {
 
         const submitUpdatedPortfolio = (updatedPortfolio) => {
-            httpConfig.put(`/apis/portfolio/portfolioProfileId/${profile.profileId}`, updatedPortfolio)
+            httpConfig.put(`/apis/portfolio/portfolioProfileId/${portfolio.portfolioProfileId}`, updatedPortfolio)
                 .then(reply => {
                     let { message, type } = reply
 
@@ -51,8 +53,6 @@ export const PortfolioImageUploadUpdate = (props) => {
         }
     }
 
-
-
     return (
         <Formik
             initialValues={portfolio}
@@ -64,6 +64,7 @@ export const PortfolioImageUploadUpdate = (props) => {
     )
 
 }
+
 
 function EditPortfolioFormContent (props) {
     const {
@@ -80,6 +81,23 @@ function EditPortfolioFormContent (props) {
         handleReset
     } = props
 
+  const portfolios = useSelector(state => {
+    if (state?.portfolios.constructor.name === "Object") {
+      return Object.values(state.portfolios)
+    } else {
+      return null
+    }
+  })
+
+  const renderedPortfolios = (portfolios) => {
+    if (portfolios === null) {
+      return (<h5> No portfolios to display </h5>)
+    } else {
+      return (portfolios.map(portfolio => <PortfolioImage portfolio={portfolio}/>))
+    }
+  }
+
+
     return (
         <>
         <Container className="maker-image-upload">
@@ -87,7 +105,7 @@ function EditPortfolioFormContent (props) {
 
                             <Container id='user-name-setting' className="mt-5 mx-auto rounded-4 p-3">
                                 <h2 className="text-center pt-3">Profile Image</h2>
-                                <Image src={portfolio.portfolioImageUrl} />
+                                {renderedPortfolios(portfolios)}
 
                             </Container>
 
@@ -146,7 +164,7 @@ function ImageDropZone ({ formikProps }) {
                     formikProps.values.portfolioImageUrl &&
                     <>
                         <div className="bg-transparent m-0">
-                            <Image  fluid={true} height={200} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.values.profileAvatarUrl} />
+                            <Image  fluid={true} height={200} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.values.portfolioImageUrl} />
                         </div>
 
                     </>
@@ -176,5 +194,3 @@ function ImageDropZone ({ formikProps }) {
 
     )
 }
-
-
