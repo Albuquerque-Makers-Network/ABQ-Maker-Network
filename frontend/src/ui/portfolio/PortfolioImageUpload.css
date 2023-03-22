@@ -14,3 +14,8 @@
     background-color: var(--cusOffBlack);
     color: white;
 }
+
+#upload-image{
+    background-color: var(--cusLightGrey);
+    border: 1mm ridge var(--cusOffBlack);
+}
