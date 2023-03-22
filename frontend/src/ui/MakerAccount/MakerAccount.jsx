@@ -36,7 +36,11 @@ export const MakerAccount= () => {
                             <h2 className="text-center pt-5 pb-3">Categories / Skills</h2>
                                 <SkillToggleForm profile={profile} allskills={allSkills}/>
                         </Container>
-                        <a href={`/portfolio/${profile.profileId}`}><h6 className=" text-dark text-center">Update Profile Photo HERE</h6></a>
+                        <Container id='portfolio-redirect-container' className=" text-center mt-5 mb-4 rounded-4 px-4 pb-4">
+                            <h2 className="text-center pt-5 pb-3">Portfolio</h2>
+                            <p>Show off your work! Add or make changes to your portfolio gallery.</p>
+                            <Button className='m-2 btn btn-danger mb-3 fw-bold border border-dark border-2' variant='light' href={`/portfolio/${profile.profileId}`}> Go to Portfolio Page</Button>
+                        </Container>
                     </>
                 }
             </Container>

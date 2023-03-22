@@ -1,4 +1,4 @@
-#user-info-setting, #category-container {
+#user-info-setting, #category-container, #portfolio-redirect-container {
     background-color: var(--cusDarkGrey);
     border: 1mm ridge var(--cusOffBlack);
     color: White
