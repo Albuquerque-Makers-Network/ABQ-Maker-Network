@@ -126,7 +126,6 @@ function EditPortfolioFormContent (props) {
             </Form>
         </Container>
             <DisplayStatus status={status} />
-            {/*<FormDebugger {...props} />*/}
         </>
     )
 }

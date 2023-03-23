@@ -2,7 +2,6 @@ import React from "react";
 import {Formik} from "formik";
 import {httpConfig} from "../../shared/utils/httpconfig.js";
 import {Form, InputGroup, Col, Button, Row} from "react-bootstrap";
-import {FormDebugger} from "../../shared/FormDebugger.jsx";
 import {DisplayStatus} from "../../shared/components/display-status/display-status.jsx";
 
 export const SkillToggleForm = (props) => {

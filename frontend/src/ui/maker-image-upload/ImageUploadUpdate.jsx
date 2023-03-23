@@ -4,7 +4,6 @@ import {Field, Formik, useField} from "formik";
 import {Button, Container, Image, Form, FormControl, InputGroup, Row, Col, Stack} from "react-bootstrap";
 import {DisplayError} from "../shared/components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "../shared/components/display-status/display-status.jsx";
-import {FormDebugger} from "../shared/FormDebugger.jsx";
 import {httpConfig} from "../shared/utils/httpconfig.js";
 import {useDropzone} from "react-dropzone";
 
@@ -113,8 +112,6 @@ function EditProfileFormContent (props) {
         </Container>
             <DisplayStatus status={status} />
 
-
-            {/*<FormDebugger {...props} />*/}
         </>
 
     )
