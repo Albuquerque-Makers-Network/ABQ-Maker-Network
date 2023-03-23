@@ -43,10 +43,10 @@ export async function putProfileController (request: Request, response: Response
             profileIsMaker,
             profileName,
             profilePricing} = request.body
-        const profileHash = await setHash(profilePassword)
+        // const profileHash = await setHash(profilePassword)
 
         const performUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
-            const profileHash = await setHash(profilePassword)
+            // const profileHash = await setHash(profilePassword)
             const previousProfile: Profile = await selectWholeProfileByProfileId(partialProfile.profileId as string) as Profile
             const newProfile:Profile = {...previousProfile, ...partialProfile }
             await updateProfile(newProfile)

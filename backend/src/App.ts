@@ -15,7 +15,6 @@ import {makerSkillRoute} from "./apis/maker-skill/maker-skill.route";
 import {ImageUploadRouter} from "./apis/image-upload/image-upload.route";
 import {skillsRouter} from "./apis/skill/skill.route";
 import {portfolioRoute} from "./apis/portfolio/portfolio.route";
-import helmet from 'helmet'
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
 const RedisStore = RedisConnect(session)
@@ -47,8 +46,6 @@ export class App {
       resave: false
 
     }
-
-    this.app.use(helmet())
     this.app.use(morgan('dev'))
     this.app.use(express.json())
     this.app.use(session(sessionConfig))
